@@ -1,0 +1,70 @@
+---
+config:
+  theme: base
+  flowchart:
+    curve: basis
+---
+flowchart TD
+  %% Member Event Registration And QR Ticket
+  subgraph L0["Member"]
+    start(["Start"])
+    open["Open portal Events"]
+    register["Submit registration"]
+    ticket[/"Status: ticket active"/]
+  end
+  subgraph L1["Portal Events"]
+    blocked[/"Status: blocked"/]
+    notEligible[/"Status: not eligible"/]
+  end
+  subgraph L2["Event System"]
+    active{"Membership active?"}
+    eligible{"Eligible for event audience?"}
+    capacity{"Capacity available?"}
+    waitlist[/"Status: waitlisted"/]
+    confirmed[/"Status: confirmed"/]
+    qr["Generate ticket QR"]
+  end
+  subgraph L3["Payment"]
+    pay{"Payment complete / not required?"}
+    pending[/"Status: pending payment"/]
+  end
+  subgraph L4["Check-in Staff"]
+    scan{"QR scanned at event?"}
+    checked[/"Status: checked-in"/]
+  end
+  start --> open
+  open --> active
+  active -- "No" --> blocked
+  active -- "Yes" --> eligible
+  eligible -- "No" --> notEligible
+  eligible -- "Yes" --> capacity
+  capacity -- "No" --> waitlist
+  capacity -- "Yes" --> register
+  register --> pay
+  pay -- "No" --> pending
+  pending --> pay
+  pay -- "Yes" --> confirmed
+  confirmed --> qr
+  qr --> scan
+  scan -- "No" --> ticket
+  scan -- "Yes" --> checked
+  classDef start fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef process fill:#FFE8A6,stroke:#D6AE3E,color:#172033;
+  classDef decision fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef status fill:#D9C2F5,stroke:#9C6FD2,color:#172033;
+  class start start;
+  class open process;
+  class active decision;
+  class blocked status;
+  class eligible decision;
+  class notEligible status;
+  class capacity decision;
+  class waitlist status;
+  class register process;
+  class pay decision;
+  class pending status;
+  class confirmed status;
+  class qr process;
+  class scan decision;
+  class ticket status;
+  class checked status;

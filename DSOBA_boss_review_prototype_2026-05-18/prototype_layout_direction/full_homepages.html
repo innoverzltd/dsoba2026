@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DSOBA Full Homepage Theme Designs</title>
+    <style>
+      :root {
+        --navy: #0e1e2b;
+        --heritage: #02385c;
+        --gold: #d8b552;
+        --wine: #7d2138;
+        --cream: #f5efe4;
+        --ink: #111315;
+        --lime: #d8f36a;
+        --pink: #ff91ec;
+        --blue: #198ef2;
+        --green: #39c892;
+        --line: rgba(17, 24, 39, 0.14);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: #d9dee8;
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .deck {
+        display: grid;
+        gap: 80px;
+        padding: 48px;
+      }
+      .home {
+        display: grid;
+        grid-template-columns: 1440px 360px;
+        gap: 36px;
+        align-items: start;
+        width: 1836px;
+        overflow: visible;
+        border-radius: 0;
+        background: transparent !important;
+      }
+      .desktop-canvas {
+        position: relative;
+        isolation: isolate;
+        width: 1440px;
+        overflow: hidden;
+        border-radius: 24px;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.18);
+      }
+      .desktop-canvas:before,
+      .mobile-showcase:before {
+        position: absolute;
+        z-index: 10;
+        top: -38px;
+        left: 0;
+        min-height: 28px;
+        padding: 7px 11px 0;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.92);
+        color: #101828;
+        box-shadow: 0 8px 18px rgba(15,23,42,0.12);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .desktop-canvas:before { content: "Desktop homepage"; }
+      h1, h2, h3, p { margin: 0; }
+      img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 88px;
+        padding: 0 72px;
+        font-size: 14px;
+        font-weight: 900;
+      }
+      .logo {
+        position: relative;
+        display: grid;
+        width: 54px;
+        height: 64px;
+        place-items: center;
+        isolation: isolate;
+      }
+      .logo:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: 5px -12px 5px;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.15);
+        box-shadow: 0 15px 28px rgba(0,0,0,0.24);
+      }
+      .logo:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        right: -8px;
+        top: -6px;
+        width: 42px;
+        height: 74px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, transparent 0 22%, #8f1f3d 22% 42%, #f3f6fb 42% 54%, #23486c 54% 68%, #8f1f3d 68% 100%);
+        opacity: 0.4;
+        transform: rotate(34deg);
+      }
+      .nav { display: flex; align-items: center; gap: 24px; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 20px;
+        border-radius: 8px;
+        font-weight: 900;
+      }
+      .btn.gold { color: #161616; background: var(--gold); }
+      .btn.dark { color: #fff; background: var(--ink); }
+      .btn.light { color: var(--ink); background: #fff; border: 1px solid var(--line); }
+      .btn.lime { color: #111; background: var(--lime); }
+      .tag {
+        color: var(--gold);
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .section-title {
+        font-size: 46px;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+      .footer {
+        display: grid;
+        grid-template-columns: 1.2fr repeat(4, 1fr);
+        gap: 32px;
+        padding: 50px 72px;
+      }
+      .footer h3 { font-size: 15px; text-transform: uppercase; }
+      .footer p, .footer li { color: inherit; opacity: 0.72; font-size: 14px; line-height: 1.7; }
+      .footer ul { list-style: none; margin: 14px 0 0; padding: 0; }
+
+      .mobile-showcase {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        min-height: 1010px;
+        padding: 58px 10px 28px;
+        border: 1px solid rgba(15,23,42,0.12);
+        border-radius: 24px;
+        background: #edf1f7;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+      }
+      .mobile-showcase:before { content: "Mobile homepage"; }
+      .phone {
+        width: 340px;
+        min-height: 920px;
+        overflow: hidden;
+        border: 10px solid #101216;
+        border-radius: 42px;
+        background: #fff;
+        box-shadow: 0 28px 70px rgba(15, 23, 42, 0.28);
+      }
+      .phone-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 70px;
+        padding: 12px 18px;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .phone-logo {
+        position: relative;
+        width: 42px;
+        height: 50px;
+      }
+      .phone-logo img { object-fit: contain; }
+      .phone-menu { font-size: 24px; line-height: 1; }
+      .phone-section { padding: 22px 20px; }
+      .phone h4 { margin: 0; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+      .phone h2 { margin: 8px 0 0; font-size: 34px; line-height: 0.96; letter-spacing: 0; }
+      .phone p { margin-top: 12px; font-size: 14px; line-height: 1.35; }
+      .phone-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; margin-top: 18px; padding: 0 16px; border-radius: 8px; font-size: 13px; font-weight: 900; }
+      .phone-card { overflow: hidden; border-radius: 16px; }
+      .phone-photo { height: 142px; overflow: hidden; border-radius: 14px; }
+      .phone-list { display: grid; gap: 10px; margin-top: 16px; }
+      .phone-list-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 52px; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 900; }
+      .phone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+      .phone-tile { min-height: 96px; padding: 12px; border-radius: 14px; font-size: 13px; font-weight: 900; }
+
+      .phone-modern { color: #fff; background: #0e1e2b; }
+      .phone-modern .phone-top { color: #f4d889; background: #081724; }
+      .phone-modern .hero-mobile { position: relative; min-height: 330px; padding: 24px 20px; }
+      .phone-modern .hero-mobile .bg { position: absolute; inset: 0; opacity: 0.32; }
+      .phone-modern .hero-mobile .copy { position: relative; z-index: 1; padding-top: 34px; }
+      .phone-modern h2 { color: #f4d889; font-family: Georgia, "Times New Roman", serif; }
+      .phone-modern .phone-btn { color: #111; background: #d8b552; }
+      .phone-modern .phone-list-row, .phone-modern .phone-tile { background: #7d2138; color: #fff; }
+      .phone-modern .latest-card {
+        margin-top: 16px;
+        padding: 16px;
+        border-radius: 14px;
+        background: #7d2138;
+      }
+      .phone-modern .latest-card h3 { color: #f4d889; font-size: 18px; }
+      .phone-modern .latest-card p { color: rgba(255,255,255,0.78); }
+      .phone-modern .event-scroll {
+        display: flex;
+        gap: 12px;
+        margin: 16px -20px 0;
+        padding: 0 20px 8px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+      .phone-modern .event-scroll::-webkit-scrollbar { height: 4px; }
+      .phone-modern .event-scroll::-webkit-scrollbar-thumb { background: rgba(244,216,137,0.7); border-radius: 999px; }
+      .phone-modern .mobile-event-card {
+        flex: 0 0 250px;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #122737;
+        border: 1px solid rgba(255,255,255,0.08);
+        scroll-snap-align: start;
+      }
+      .phone-modern .mobile-event-card .photo { height: 126px; overflow: hidden; }
+      .phone-modern .mobile-event-card .copy { padding: 14px; }
+      .phone-modern .mobile-event-card h3 { color: #f4d889; font-size: 17px; }
+      .phone-modern .mobile-event-card p { color: rgba(255,255,255,0.72); font-size: 12px; line-height: 1.35; }
+      .phone-modern .quick-buttons { display: grid; gap: 10px; margin-top: 16px; }
+      .phone-modern .quick-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 48px;
+        padding: 0 14px;
+        border-radius: 12px;
+        color: #f4d889;
+        background: #122737;
+        border: 1px solid rgba(244,216,137,0.22);
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .phone-modern .phone-footer {
+        margin-top: 6px;
+        padding: 20px;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        background: #081724;
+      }
+      .phone-modern .phone-footer strong { color: #f4d889; font-size: 14px; }
+      .phone-modern .phone-footer p { color: rgba(255,255,255,0.62); font-size: 12px; }
+      .phone-modern .footer-portal {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 42px;
+        margin-top: 14px;
+        padding: 0 13px;
+        border-radius: 12px;
+        color: #111;
+        background: #d8b552;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .phone-modern .mobile-footer-menu {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .phone-modern .mobile-footer-menu div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 42px;
+        padding: 0 12px;
+        border-radius: 10px;
+        color: rgba(255,255,255,0.88);
+        background: rgba(255,255,255,0.06);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .phone-modern .footer-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 16px;
+        color: rgba(255,255,255,0.52);
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .phone-heritage { color: #02385c; background: #f8f5ee; font-family: Georgia, "Times New Roman", serif; }
+      .phone-heritage .phone-top { color: #fff8e7; background: #02385c; font-family: Arial, Helvetica, sans-serif; }
+      .phone-heritage .phone-section:first-of-type { color: #fff8e7; background: #02385c; }
+      .phone-heritage .phone-btn { color: #111; background: #d8b552; font-family: Arial, Helvetica, sans-serif; }
+      .phone-heritage .phone-list-row, .phone-heritage .phone-tile { background: #fffdf8; border: 1px solid rgba(2,56,92,0.14); color: #02385c; }
+      .phone-heritage .editorial-scroll {
+        display: flex;
+        gap: 12px;
+        margin: 16px -20px 0;
+        padding: 0 20px 8px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+      .phone-heritage .editorial-scroll::-webkit-scrollbar { height: 4px; }
+      .phone-heritage .editorial-scroll::-webkit-scrollbar-thumb { background: rgba(2,56,92,0.32); border-radius: 999px; }
+      .phone-heritage .mobile-editorial-card {
+        flex: 0 0 245px;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #fffdf8;
+        border: 1px solid rgba(2,56,92,0.16);
+        scroll-snap-align: start;
+      }
+      .phone-heritage .mobile-editorial-card .photo { height: 122px; overflow: hidden; }
+      .phone-heritage .mobile-editorial-card .copy { padding: 14px; }
+      .phone-heritage .mobile-editorial-card h3 { color: #02385c; font-size: 20px; }
+      .phone-heritage .mobile-editorial-card p { color: #4a5965; font: 12px/1.35 Arial, Helvetica, sans-serif; }
+      .phone-heritage .mobile-lifecycle {
+        display: grid;
+        gap: 0;
+        margin-top: 16px;
+        padding-left: 12px;
+        border-left: 2px solid rgba(2,56,92,0.18);
+      }
+      .phone-heritage .mobile-life-step {
+        position: relative;
+        padding: 0 0 16px 18px;
+      }
+      .phone-heritage .mobile-life-step:before {
+        content: "";
+        position: absolute;
+        left: -19px;
+        top: 2px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #d8b552;
+        box-shadow: 0 0 0 4px #f8f5ee;
+      }
+      .phone-heritage .mobile-life-step strong { display: block; color: #02385c; font-size: 15px; }
+      .phone-heritage .mobile-life-step span { display: block; margin-top: 4px; color: #4a5965; font: 12px/1.35 Arial, Helvetica, sans-serif; }
+      .phone-heritage .mobile-sitemap {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .phone-heritage .mobile-sitemap-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: center;
+        min-height: 52px;
+        padding: 12px;
+        border-radius: 12px;
+        color: #02385c;
+        background: #fffdf8;
+        border: 1px solid rgba(2,56,92,0.14);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .phone-heritage .mobile-sitemap-row strong { font-size: 13px; }
+      .phone-heritage .mobile-sitemap-row span { color: #d8b552; font-weight: 900; }
+      .phone-heritage .heritage-phone-footer {
+        padding: 20px;
+        color: #fff8e7;
+        background: #02385c;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .phone-heritage .heritage-phone-footer strong { color: #f3dfaa; font-size: 14px; }
+      .phone-heritage .heritage-phone-footer p { color: rgba(255,248,231,0.7); font-size: 12px; }
+      .phone-heritage .heritage-footer-menu { display: grid; gap: 8px; margin-top: 14px; }
+      .phone-heritage .heritage-footer-menu div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 40px;
+        padding: 0 12px;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.08);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .phone-heritage .heritage-footer-meta { display: flex; justify-content: space-between; margin-top: 14px; color: rgba(255,248,231,0.58); font-size: 11px; }
+
+      .phone-vibrant { color: #141414; background: #f4eee5; }
+      .phone-vibrant .phone-top { background: #f4eee5; }
+      .phone-vibrant h2 { font-size: 38px; }
+      .phone-vibrant .phone-btn { color: #141414; background: #ff9ef3; border-radius: 999px; }
+      .phone-vibrant .phone-card { padding: 18px; background: #198ef2; transform: rotate(-2deg); }
+      .phone-vibrant .vibrant-mobile-hero {
+        position: relative;
+        min-height: 390px;
+        padding: 28px 18px 24px;
+        overflow: hidden;
+      }
+      .phone-vibrant .vibrant-mobile-hero h2 {
+        position: relative;
+        z-index: 2;
+        max-width: 286px;
+        font-size: 43px;
+        line-height: 0.92;
+      }
+      .phone-vibrant .vibrant-mobile-hero p {
+        position: relative;
+        z-index: 2;
+        max-width: 210px;
+        font-size: 15px;
+        font-weight: 900;
+        line-height: 1.18;
+      }
+      .phone-vibrant .vibrant-mobile-hero .phone-btn { position: relative; z-index: 3; margin-top: 14px; }
+      .phone-vibrant .mobile-hype-card {
+        position: absolute;
+        z-index: 1;
+        overflow: hidden;
+        border-radius: 18px;
+        box-shadow: 0 12px 26px rgba(20,20,20,0.16);
+      }
+      .phone-vibrant .mobile-hype-card strong { display: block; font-size: 26px; line-height: 0.98; }
+      .phone-vibrant .mobile-hype-card span { display: block; margin-top: 8px; font-size: 11px; font-weight: 900; line-height: 1.15; }
+      .phone-vibrant .mobile-hype-card.event { right: 16px; bottom: 88px; width: 148px; min-height: 128px; padding: 16px; background: #d8f36a; transform: rotate(7deg); }
+      .phone-vibrant .mobile-hype-card.photo { left: 18px; bottom: 18px; width: 158px; height: 110px; transform: rotate(-4deg); }
+      .phone-vibrant .mobile-hype-card.stat { right: 24px; bottom: 10px; width: 132px; min-height: 94px; padding: 14px; background: #ff9ef3; transform: rotate(-5deg); }
+      .phone-vibrant .vibrant-mobile-stack {
+        display: grid;
+        gap: 14px;
+        margin-top: 16px;
+      }
+      .phone-vibrant .vibrant-mobile-action {
+        min-height: 172px;
+        padding: 18px;
+        border-radius: 22px;
+        background: #fff;
+      }
+      .phone-vibrant .vibrant-mobile-action:nth-child(1),
+      .phone-vibrant .vibrant-mobile-action:nth-child(4) { background: #ff9ef3; }
+      .phone-vibrant .vibrant-mobile-action:nth-child(2),
+      .phone-vibrant .vibrant-mobile-action:nth-child(5) { background: #d8f36a; }
+      .phone-vibrant .vibrant-mobile-action h3 { margin: 0; font-size: 27px; line-height: 0.98; }
+      .phone-vibrant .vibrant-mobile-action p { margin-top: 10px; font-size: 13px; font-weight: 900; line-height: 1.24; }
+      .phone-vibrant .vibrant-mobile-action .vibrant-mini-photo { height: 82px; margin: 14px 0 0; }
+      .phone-vibrant .vibrant-mobile-action .gallery-strip { height: 94px; margin-top: 14px; }
+      .phone-vibrant .vibrant-mobile-action .portal-list div { background: rgba(20,20,20,0.08); }
+      .phone-vibrant .vibrant-mobile-action .directory-chip { margin-top: 12px; }
+      .phone-vibrant .vibrant-phone-footer {
+        padding: 20px;
+        color: #fff;
+        background: #141414;
+      }
+      .phone-vibrant .vibrant-phone-footer strong { font-size: 14px; }
+      .phone-vibrant .vibrant-phone-footer p { color: rgba(255,255,255,0.68); font-size: 12px; }
+      .phone-vibrant .vibrant-footer-cta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 42px;
+        margin-top: 14px;
+        padding: 0 13px;
+        border-radius: 999px;
+        color: #141414;
+        background: #ff9ef3;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .phone-vibrant .vibrant-footer-menu { display: grid; gap: 8px; margin-top: 14px; }
+      .phone-vibrant .vibrant-footer-menu div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 40px;
+        padding: 0 12px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.08);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .phone-vibrant .vibrant-footer-meta { display: flex; justify-content: space-between; margin-top: 14px; color: rgba(255,255,255,0.55); font-size: 11px; }
+      .phone-vibrant .phone-list-row:nth-child(1), .phone-vibrant .phone-tile:nth-child(1) { background: #ff9ef3; }
+      .phone-vibrant .phone-list-row:nth-child(2), .phone-vibrant .phone-tile:nth-child(2) { background: #d8f36a; }
+      .phone-vibrant .phone-list-row:nth-child(3), .phone-vibrant .phone-tile:nth-child(3) { background: #fff; }
+      .phone-vibrant .phone-list-row:nth-child(4), .phone-vibrant .phone-tile:nth-child(4) { background: #39c892; }
+
+      .phone-clean { position: relative; isolation: isolate; color: #111315; background: #fbf7ec; }
+      .phone-clean:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: -80px -70px auto;
+        height: 520px;
+        background:
+          radial-gradient(circle at 5% 40%, rgba(95,190,214,0.78) 0 20%, transparent 40%),
+          radial-gradient(circle at 40% 82%, rgba(223,104,170,0.55) 0 22%, transparent 42%),
+          radial-gradient(circle at 95% 48%, rgba(255,139,74,0.76) 0 32%, transparent 50%),
+          linear-gradient(120deg, #cfe1f1 0%, #fffaf2 42%, #ffd3c0 100%);
+        filter: blur(14px);
+      }
+      .phone-clean .phone-top { background: rgba(255,255,255,0.58); backdrop-filter: blur(14px); }
+      .phone-clean h2 { font-size: 36px; }
+      .phone-clean .phone-btn { color: #111; background: #d8f36a; border-radius: 999px; }
+      .phone-clean .phone-list-row, .phone-clean .phone-tile { background: #fff; border: 1px solid rgba(21,23,26,0.1); }
+      .phone-clean .clean-mobile-hero {
+        padding: 52px 20px 22px;
+        text-align: center;
+      }
+      .phone-clean .clean-mobile-actions {
+        display: grid;
+        gap: 10px;
+        margin-top: 18px;
+      }
+      .phone-clean .clean-mobile-actions .phone-btn { margin-top: 0; }
+      .phone-clean .clean-mobile-actions .secondary {
+        color: #111315;
+        background: rgba(255,255,255,0.82);
+        border: 1px solid rgba(21,23,26,0.12);
+      }
+      .phone-clean .clean-mobile-events {
+        margin-top: 16px;
+        padding: 14px;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.84);
+        box-shadow: 0 18px 42px rgba(21,23,26,0.12);
+      }
+      .phone-clean .clean-mobile-events-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 2px 4px 10px;
+        font-weight: 900;
+      }
+      .phone-clean .clean-mobile-events-head span:last-child {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: #d8f36a;
+        font-size: 12px;
+      }
+      .phone-clean .clean-module-stack,
+      .phone-clean .clean-content-stack {
+        display: grid;
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .phone-clean .clean-module-card {
+        min-height: 104px;
+        padding: 16px;
+        border-radius: 18px;
+        background: #fff;
+        border: 1px solid rgba(21,23,26,0.1);
+      }
+      .phone-clean .clean-module-card:first-child {
+        color: #fff;
+        background: #111315;
+      }
+      .phone-clean .clean-module-card h3,
+      .phone-clean .clean-content-mobile-card h3 {
+        font-size: 18px;
+        margin: 0;
+      }
+      .phone-clean .clean-module-card p,
+      .phone-clean .clean-content-mobile-card p {
+        margin-top: 7px;
+        color: inherit;
+        opacity: 0.78;
+        font-size: 12px;
+        line-height: 1.34;
+      }
+      .phone-clean .clean-content-mobile-card {
+        padding: 12px;
+        border-radius: 18px;
+        background: #fff;
+        border: 1px solid rgba(21,23,26,0.1);
+      }
+      .phone-clean .clean-content-mobile-card .photo {
+        height: 118px;
+        overflow: hidden;
+        border-radius: 14px;
+        margin-bottom: 12px;
+      }
+      .phone-clean .clean-phone-footer {
+        padding: 20px;
+        color: #fff;
+        background: #111315;
+      }
+      .phone-clean .clean-phone-footer strong { font-size: 14px; }
+      .phone-clean .clean-phone-footer p { color: rgba(255,255,255,0.68); font-size: 12px; }
+      .phone-clean .clean-footer-cta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 42px;
+        margin-top: 14px;
+        padding: 0 13px;
+        border-radius: 999px;
+        color: #111;
+        background: #d8f36a;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .phone-clean .clean-footer-menu { display: grid; gap: 8px; margin-top: 14px; }
+      .phone-clean .clean-footer-menu div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 40px;
+        padding: 0 12px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.08);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .phone-clean .clean-footer-meta { display: flex; justify-content: space-between; margin-top: 14px; color: rgba(255,255,255,0.55); font-size: 11px; }
+
+      .modern { color: #fff; background: var(--navy); }
+      .modern .desktop-canvas { background: var(--navy); }
+      .modern .topbar { color: #ead7a8; background: rgba(14,30,43,0.98); }
+      .modern .hero {
+        position: relative;
+        min-height: 780px;
+        padding: 112px 72px 70px;
+      }
+      .modern .hero-bg { position: absolute; inset: 0; opacity: 0.62; }
+      .modern .hero:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, rgba(14,30,43,0.98), rgba(14,30,43,0.72) 48%, rgba(14,30,43,0.25));
+      }
+      .modern .hero-content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr 440px;
+        gap: 70px;
+      }
+      .modern h1 {
+        max-width: 760px;
+        color: #f4d889;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 80px;
+        line-height: 0.94;
+      }
+      .modern .lead { max-width: 610px; margin-top: 26px; color: rgba(255,255,255,0.76); font-size: 20px; line-height: 1.5; }
+      .official-panel {
+        align-self: end;
+        padding: 26px;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.16);
+        backdrop-filter: blur(12px);
+      }
+      .official-panel strong { display: block; color: #f4d889; font-size: 30px; }
+      .modern-band { padding: 54px 72px; background: #0b1a26; }
+      .dark-card { min-height: 155px; padding: 24px 26px; border-radius: 8px; background: #782138; }
+      .dark-card h3 { color: #f4d889; font-size: 28px; }
+      .dark-card p {
+        display: -webkit-box;
+        margin-top: 14px;
+        overflow: hidden;
+        color: rgba(255,255,255,0.78);
+        line-height: 1.48;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+      }
+      .event-strip { padding: 0 72px 56px; background: #0b1a26; }
+      .event-strip h2 { color: #f4d889; }
+      .event-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 28px; }
+      .event-card { overflow: hidden; border-radius: 10px; background: #122737; border: 1px solid rgba(255,255,255,0.08); }
+      .event-card .photo { height: 260px; overflow: hidden; }
+      .event-card .copy { padding: 20px 22px 24px; }
+      .event-card h3 { color: #f4d889; font-size: 26px; }
+      .event-card p {
+        display: -webkit-box;
+        margin-top: 10px;
+        overflow: hidden;
+        color: rgba(255,255,255,0.74);
+        line-height: 1.45;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+      }
+      .quick-hub {
+        display: grid;
+        grid-template-columns: 0.74fr 1.26fr;
+        gap: 34px;
+        align-items: stretch;
+        margin-top: 28px;
+        padding: 28px;
+        border-radius: 12px;
+        background: #122737;
+        border: 1px solid rgba(244,216,137,0.14);
+      }
+      .quick-intro {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 230px;
+        padding: 28px;
+        border-radius: 10px;
+        background: #782138;
+      }
+      .quick-intro h3 { color: #f4d889; font-size: 34px; }
+      .quick-intro p { margin-top: 14px; color: rgba(255,255,255,0.76); line-height: 1.45; }
+      .quick-intro .btn { width: fit-content; margin-top: 24px; }
+      .quick-routes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .quick-route {
+        display: grid;
+        grid-template-columns: 46px 1fr auto;
+        gap: 14px;
+        align-items: center;
+        min-height: 108px;
+        padding: 20px;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.045);
+        border: 1px solid rgba(244,216,137,0.16);
+      }
+      .quick-route .num {
+        display: grid;
+        width: 46px;
+        height: 46px;
+        place-items: center;
+        border-radius: 50%;
+        color: #111;
+        background: #f4d889;
+        font-weight: 900;
+      }
+      .quick-route strong { display: block; color: #f4d889; font-size: 20px; }
+      .quick-route span { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.35; }
+      .quick-route .arrow { color: #f4d889; font-size: 28px; font-weight: 900; }
+      .modern .footer { color: #fff; background: #091621; border-top: 1px solid rgba(255,255,255,0.08); }
+
+      .heritage-full { color: var(--heritage); background: #f8f5ee; font-family: Georgia, "Times New Roman", serif; }
+      .heritage-full .desktop-canvas { background: #f8f5ee; }
+      .heritage-full .topbar { color: #f3dfaa; background: var(--heritage); font-family: Arial, Helvetica, sans-serif; }
+      .heritage-full .logo:before { background: #f6ead1; border: 1px solid rgba(216,196,140,0.55); }
+      .heritage-cover {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        min-height: 760px;
+        background: var(--heritage);
+      }
+      .heritage-copy { padding: 86px 72px; color: #fff8e7; }
+      .heritage-copy h1 { max-width: 650px; font-size: 82px; line-height: 0.94; }
+      .heritage-copy p { max-width: 620px; margin-top: 26px; color: rgba(255,255,255,0.78); font: 19px/1.55 Arial, Helvetica, sans-serif; }
+      .heritage-photo { margin: 70px 72px 70px 0; overflow: hidden; border-radius: 14px; box-shadow: 0 28px 70px rgba(0,0,0,0.32); }
+      .heritage-section { padding: 70px 72px; }
+      .editorial-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 30px; }
+      .editorial-card {
+        min-height: 340px;
+        overflow: hidden;
+        padding: 0;
+        border-top: 5px solid var(--heritage);
+        border-radius: 12px;
+        background: #fffdf8;
+        box-shadow: 0 14px 36px rgba(2,56,92,0.08);
+        cursor: pointer;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+      .editorial-card:hover { transform: translateY(-8px); box-shadow: 0 22px 46px rgba(2,56,92,0.14); }
+      .editorial-card .photo { height: 155px; overflow: hidden; }
+      .editorial-card .body { padding: 24px 28px 28px; }
+      .editorial-card h3 { color: var(--heritage); font-size: 34px; }
+      .editorial-card p { margin-top: 14px; color: #4a5965; font: 16px/1.45 Arial, Helvetica, sans-serif; }
+      .editorial-card .meta { display: flex; gap: 8px; margin-top: 18px; font: 900 12px/1 Arial, Helvetica, sans-serif; text-transform: uppercase; }
+      .editorial-card .meta span { padding: 7px 9px; border-radius: 999px; color: #fff8e7; background: var(--heritage); }
+      .lifecycle-panel {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 34px;
+        margin-top: 30px;
+        padding: 30px;
+        border-radius: 16px;
+        background: #fffdf8;
+        box-shadow: 0 18px 42px rgba(2,56,92,0.08);
+      }
+      .timeline { display: grid; gap: 14px; }
+      .timeline button {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 16px;
+        align-items: center;
+        width: 100%;
+        padding: 16px;
+        border: 1px solid rgba(2,56,92,0.16);
+        border-radius: 12px;
+        color: var(--heritage);
+        background: #fff;
+        text-align: left;
+        font: inherit;
+        cursor: pointer;
+      }
+      .timeline button.active { color: #fff8e7; background: var(--heritage); }
+      .timeline .num { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 50%; background: rgba(216,181,82,0.28); font-weight: 900; }
+      .lifecycle-preview {
+        overflow: hidden;
+        border-radius: 14px;
+        background: var(--heritage);
+        color: #fff8e7;
+      }
+      .lifecycle-preview .photo { height: 250px; overflow: hidden; opacity: 0.9; }
+      .lifecycle-preview .copy { padding: 28px; }
+      .lifecycle-preview h3 { font-size: 40px; }
+      .lifecycle-preview p { margin-top: 12px; color: rgba(255,255,255,0.78); font: 17px/1.5 Arial, Helvetica, sans-serif; }
+      .sitemap-browser {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 28px;
+        margin-top: 30px;
+      }
+      .sitemap-menu {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+      .sitemap-menu button {
+        padding: 18px 20px;
+        border: 1px solid rgba(2,56,92,0.14);
+        border-radius: 12px;
+        color: var(--heritage);
+        background: #fff;
+        font: 900 17px/1 Arial, Helvetica, sans-serif;
+        text-align: left;
+        cursor: pointer;
+      }
+      .sitemap-menu button.active { color: #fff8e7; background: var(--heritage); }
+      .sitemap-preview {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        padding: 24px;
+        border-radius: 16px;
+        background: #f8f5ee;
+        border: 1px solid rgba(2,56,92,0.12);
+      }
+      .sitemap-feature {
+        overflow: hidden;
+        border-radius: 12px;
+        background: #fff;
+      }
+      .sitemap-feature .photo { height: 190px; overflow: hidden; }
+      .sitemap-feature .copy { padding: 22px; }
+      .sitemap-list { display: grid; gap: 12px; }
+      .sitemap-list div { padding: 16px; border-radius: 10px; color: var(--heritage); background: #fff; font-weight: 900; }
+      .heritage-full .footer { background: var(--heritage); color: #fff8e7; font-family: Arial, Helvetica, sans-serif; }
+
+      @keyframes floatTilt {
+        0% { transform: translateY(0) rotate(var(--r)); }
+        50% { transform: translateY(-12px) rotate(calc(var(--r) + 1deg)); }
+        100% { transform: translateY(0) rotate(var(--r)); }
+      }
+      .vibrant-full { color: #141414; background: #f4eee5; }
+      .vibrant-full .desktop-canvas { background: #f4eee5; }
+      .vibrant-full .topbar { background: #f4eee5; }
+      .vibrant-full .nav { gap: 0; padding: 14px 20px; border-radius: 14px; background: #fff; box-shadow: 0 10px 24px rgba(20,20,20,0.06); }
+      .vibrant-full .nav span { padding: 0 14px; }
+      .vibrant-hero-full { padding: 62px 30px 20px; }
+      .vibrant-hero-full h1 { max-width: 1000px; font-size: 90px; line-height: 0.94; }
+      .vibrant-hero-full p { max-width: 460px; margin-top: 24px; font-size: 26px; font-weight: 900; line-height: 1.16; }
+      .hyped-stack { position: relative; height: 470px; margin-top: 26px; }
+      .hyped-card { position: absolute; overflow: hidden; border-radius: 28px; box-shadow: 0 18px 34px rgba(20,20,20,0.13); animation: floatTilt 8s ease-in-out infinite; }
+      .hyped-blue { --r: 7deg; left: 42px; top: 38px; width: 350px; height: 340px; padding: 32px; background: var(--blue); }
+      .hyped-photo { --r: 5deg; left: 390px; top: 24px; width: 370px; height: 365px; }
+      .hyped-green { --r: -7deg; left: 725px; top: 42px; width: 350px; height: 340px; padding: 32px; background: var(--green); z-index: 2; }
+      .hyped-ticket { --r: -3deg; right: 36px; top: 56px; width: 300px; height: 340px; padding: 28px; background: linear-gradient(135deg, #ff9ef3, #ffd86f); }
+      .hyped-card .metric { font-size: 64px; font-weight: 900; }
+      .hyped-card .caption { position: absolute; left: 30px; right: 30px; bottom: 28px; padding-top: 11px; border-top: 2px solid #111; font-weight: 900; }
+      .vibrant-statement { padding: 70px 72px; }
+      .vibrant-statement h2 { max-width: 1040px; font-size: 60px; line-height: 1.03; }
+      .vibrant-actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; padding: 0 72px 72px; }
+      .vibrant-action { min-height: 310px; padding: 28px; border-radius: 28px; background: #fff; }
+      .vibrant-action:nth-child(1) { background: #ff9ef3; }
+      .vibrant-action:nth-child(2) { background: #d8f36a; }
+      .vibrant-action h3 { font-size: 36px; }
+      .vibrant-action p { margin-top: 16px; font-size: 18px; font-weight: 800; line-height: 1.34; }
+      .vibrant-mini-photo { height: 96px; overflow: hidden; margin: 20px -6px 0; border-radius: 18px; }
+      .vibrant-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+      .vibrant-tags span { padding: 8px 10px; border-radius: 999px; background: rgba(20,20,20,0.1); font-size: 13px; font-weight: 900; }
+      .portal-list { display: grid; gap: 10px; margin-top: 18px; }
+      .portal-list div { display: flex; justify-content: space-between; padding: 12px 14px; border-radius: 12px; background: #f4eee5; font-weight: 900; }
+      .gallery-strip { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 10px; margin-top: 18px; height: 112px; }
+      .gallery-strip div { overflow: hidden; border-radius: 16px; }
+      .directory-chip { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; padding: 14px; border-radius: 16px; background: rgba(20,20,20,0.08); font-weight: 900; }
+      .directory-chip span { padding: 7px 10px; border-radius: 999px; background: #fff; }
+      .wa-bubble { margin-top: 18px; padding: 16px; border-radius: 18px 18px 18px 6px; background: #d8f36a; font-weight: 900; }
+      .wa-bubble small { display: block; margin-top: 7px; opacity: 0.68; }
+      .vibrant-full .footer { background: #141414; color: #fff; }
+
+      @keyframes gradientDrift {
+        0% { transform: translate3d(-2%, 1%, 0) scale(1); }
+        50% { transform: translate3d(3%, -2%, 0) scale(1.06); }
+        100% { transform: translate3d(-2%, 1%, 0) scale(1); }
+      }
+      .clean-full { position: relative; isolation: isolate; color: #111315; background: #fbf7ec; }
+      .clean-full .desktop-canvas { background: #fbf7ec; }
+      .clean-full .desktop-canvas:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: -130px -160px auto;
+        height: 1120px;
+        background:
+          radial-gradient(circle at 8% 42%, rgba(95,190,214,0.72) 0 18%, transparent 36%),
+          radial-gradient(circle at 39% 82%, rgba(223,104,170,0.54) 0 19%, transparent 38%),
+          radial-gradient(circle at 92% 52%, rgba(255,139,74,0.7) 0 28%, transparent 48%),
+          radial-gradient(circle at 58% 45%, rgba(255,255,255,0.9) 0 26%, transparent 48%),
+          linear-gradient(120deg, #cfe1f1 0%, #fffaf2 42%, #ffd3c0 100%);
+        filter: blur(18px);
+        animation: gradientDrift 13s ease-in-out infinite;
+      }
+      .clean-full .desktop-canvas > * { position: relative; z-index: 1; }
+      .clean-full .topbar { background: rgba(255,255,255,0.46); backdrop-filter: blur(18px); }
+      .clean-hero-full { padding: 106px 72px 52px; text-align: center; }
+      .clean-hero-full h1 { max-width: 900px; margin: 0 auto; font-size: 72px; line-height: 0.98; }
+      .clean-hero-full p { max-width: 720px; margin: 22px auto 0; color: rgba(21,23,26,0.64); font-size: 20px; line-height: 1.45; }
+      .portal-preview-large { max-width: 760px; margin: 36px auto 0; padding: 16px; border-radius: 28px; background: rgba(255,255,255,0.86); box-shadow: 0 34px 80px rgba(21,23,26,0.16); }
+      .portal-row { display: grid; grid-template-columns: 48px 1fr auto; gap: 14px; align-items: center; min-height: 72px; margin-top: 12px; padding: 14px; border-radius: 16px; background: #fff; border: 1px solid rgba(21,23,26,0.08); text-align: left; }
+      .portal-icon { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 12px; background: var(--lime); font-weight: 900; }
+      .clean-modules { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding: 28px 72px 56px; }
+      .clean-module { min-height: 175px; padding: 24px; border-radius: 24px; background: #fff; border: 1px solid rgba(21,23,26,0.1); }
+      .clean-module:first-child { color: #fff; background: #111315; }
+      .clean-content { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; padding: 0 72px 72px; }
+      .clean-content-card { padding: 18px; border-radius: 24px; background: #fff; border: 1px solid rgba(21,23,26,0.1); }
+      .clean-content-card .photo { height: 210px; overflow: hidden; border-radius: 18px; margin-bottom: 18px; }
+      .clean-full .footer { background: #111315; color: #fff; }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <article class="home modern" id="home-modern-professional">
+        <div class="desktop-canvas">
+        <nav class="topbar"><div class="logo"><img src="assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><div class="nav"><span>NEWS</span><span>EVENTS</span><span>MEMBERSHIP</span><span>DIRECTORY</span><span>SUPPORT</span></div><span class="btn gold">Member portal</span></nav>
+        <section class="hero"><div class="hero-bg"><img src="full_homepage_assets/samuel-tak-lee-building.jpg" alt="DBS campus building" /></div><div class="hero-content"><div><div class="tag">Modern Professional</div><h1>DSOBA: honouring heritage, engaging the future.</h1><p class="lead">A public homepage for alumni, visitors and event attendees. It leads users to news, heritage, events, membership, support and the member portal with a formal, credible tone.</p><div style="display:flex;gap:14px;margin-top:30px"><span class="btn gold">Explore our legacy</span><span class="btn light">Join DSOBA</span></div></div><aside class="official-panel"><strong>Phase 1 flows visible</strong><p style="margin-top:14px;color:rgba(255,255,255,0.75);line-height:1.5">Public event registration, membership application, Annual Dinner ticket/table booking, directory entry, portal login and support case routing.</p></aside></div></section>
+        <section class="modern-band"><h2 class="section-title" style="color:#f4d889">Latest from DSOBA</h2><div class="grid-3" style="margin-top:28px"><div class="dark-card"><h3>Annual Dinner 2026</h3><p>Individual tickets and table booking coexist. Seat and table assignment appears after registration closes.</p></div><div class="dark-card"><h3>Membership route</h3><p>Youth members convert to Trial at age 18. Trial members move to paid membership at age 28.</p></div><div class="dark-card"><h3>WhatsApp updates</h3><p>Phase 1 uses WhatsApp for outbound notifications: reminders, event confirmation and payment status.</p></div></div></section>
+        <section class="event-strip"><h2 class="section-title">Upcoming events</h2><div class="event-grid"><div class="event-card"><div class="photo"><img src="full_homepage_assets/grand-steps.jpg" alt="Annual Dinner event venue" /></div><div class="copy"><h3>Annual Dinner 2026</h3><p>Register individual tickets or table booking, then receive seat assignment after registration closes.</p></div></div><div class="event-card"><div class="photo"><img src="full_homepage_assets/dbs-field.jpg" alt="Games Day event venue" /></div><div class="copy"><h3>Games Day</h3><p>Sports and community gathering for old boys, families and chapter groups.</p></div></div><div class="event-card"><div class="photo"><img src="full_homepage_assets/samuel-tak-lee-building.jpg" alt="Chapter talk venue" /></div><div class="copy"><h3>Chapter talk</h3><p>Professional chapter gathering with member registration and portal reminder notifications.</p></div></div></div></section>
+        <section class="modern-band" style="padding-top:0"><h2 class="section-title" style="color:#f4d889">Quick paths</h2><div class="quick-hub"><div class="quick-intro"><div><h3>Start from the task</h3><p>These are shortcut actions for visitors who already know what they need, separate from the full footer sitemap.</p></div><span class="btn gold">Open member portal</span></div><div class="quick-routes"><div class="quick-route"><div class="num">01</div><div><strong>Read latest news</strong><span>Updates, newsletters, galleries and archives.</span></div><div class="arrow">›</div></div><div class="quick-route"><div class="num">02</div><div><strong>Register event</strong><span>Upcoming events, Annual Dinner and chapter gatherings.</span></div><div class="arrow">›</div></div><div class="quick-route"><div class="num">03</div><div><strong>Apply membership</strong><span>Membership types, fees, application and policies.</span></div><div class="arrow">›</div></div><div class="quick-route"><div class="num">04</div><div><strong>Get support</strong><span>FAQ, contact, WhatsApp and payment help.</span></div><div class="arrow">›</div></div></div></div></section>
+        <footer class="footer"><div><h3>DSOBA</h3><p>Diocesan School Old Boys' Association public homepage prototype using high-resolution DBS campus imagery from Wikimedia Commons.</p></div><div><h3>News</h3><ul><li>DSOBA News</li><li>DBS Updates</li><li>Gallery</li><li>Archives</li></ul></div><div><h3>Events</h3><ul><li>Upcoming Events</li><li>Annual Dinner</li><li>Chapter Events</li><li>Past Events</li></ul></div><div><h3>Membership</h3><ul><li>Why Join</li><li>Types</li><li>Apply</li><li>Fees</li></ul></div><div><h3>Support</h3><ul><li>FAQ</li><li>Contact</li><li>WhatsApp</li><li>Payment Help</li></ul></div></footer>
+        </div>
+        <aside class="mobile-showcase">
+          <div class="phone phone-modern">
+            <div class="phone-top"><div class="phone-logo"><img src="assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>DSOBA</span><span class="phone-menu">≡</span></div>
+            <section class="hero-mobile"><div class="bg"><img src="full_homepage_assets/samuel-tak-lee-building.jpg" alt="DBS campus mobile hero" /></div><div class="copy"><h4>Modern Professional</h4><h2>Honouring heritage, engaging the future.</h2><p>Formal mobile homepage for news, heritage, events, membership and portal access.</p><span class="phone-btn">Explore legacy</span></div></section>
+            <section class="phone-section"><h4>Latest</h4><div class="latest-card"><h3>Annual Dinner 2026</h3><p>Individual tickets and table booking are open. Seat and table assignment appears after registration closes.</p></div></section>
+            <section class="phone-section"><h4>Upcoming events</h4><div class="event-scroll"><article class="mobile-event-card"><div class="photo"><img src="full_homepage_assets/grand-steps.jpg" alt="Annual Dinner mobile event" /></div><div class="copy"><h3>Annual Dinner 2026</h3><p>Register individual tickets or table booking in one public flow.</p></div></article><article class="mobile-event-card"><div class="photo"><img src="full_homepage_assets/dbs-field.jpg" alt="Games Day mobile event" /></div><div class="copy"><h3>Games Day</h3><p>Sports and community gathering for old boys, families and chapters.</p></div></article><article class="mobile-event-card"><div class="photo"><img src="full_homepage_assets/samuel-tak-lee-building.jpg" alt="Chapter talk mobile event" /></div><div class="copy"><h3>Chapter talk</h3><p>Professional chapter gathering with member registration support.</p></div></article></div></section>
+            <section class="phone-section"><h4>Quick Path</h4><div class="quick-buttons"><div class="quick-button"><span>News</span><span>›</span></div><div class="quick-button"><span>Events</span><span>›</span></div><div class="quick-button"><span>Membership</span><span>›</span></div><div class="quick-button"><span>Support</span><span>›</span></div></div></section>
+            <footer class="phone-footer"><strong>DSOBA</strong><p>Diocesan School Old Boys' Association mobile homepage direction.</p><div class="footer-portal"><span>Open member portal</span><span>›</span></div><div class="mobile-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </aside>
+      </article>
+
+      <article class="home heritage-full" id="home-editorial-heritage">
+        <div class="desktop-canvas">
+        <nav class="topbar"><div class="logo"><img src="assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><div class="nav"><span>NEWS</span><span>EVENTS</span><span>MEMBERSHIP</span><span>DIRECTORY</span><span>SUPPORT</span></div><span class="btn gold">Join DSOBA</span></nav>
+        <section class="heritage-cover"><div class="heritage-copy"><div class="tag">Editorial Heritage</div><h1>A living archive for the DBS alumni community.</h1><p>Built for heritage, governance and alumni stories while still making Phase 1 actions visible: event registration, membership application, portal login and support.</p><div style="display:flex;gap:14px;margin-top:30px"><span class="btn gold">Read heritage</span><span class="btn light">View events</span></div></div><div class="heritage-photo"><img src="full_homepage_assets/dbs-main-building.jpg" alt="DBS main building" /></div></section>
+        <section class="heritage-section"><h2 class="section-title">Featured editorial sections</h2><div class="editorial-grid"><div class="editorial-card" role="button" tabindex="0"><div class="photo"><img src="full_homepage_assets/dbs-main-building.jpg" alt="President's note feature image" /></div><div class="body"><h3>President's note</h3><p>Formal association updates and committee messages appear as curated editorial stories rather than plain announcements.</p><div class="meta"><span>Read</span><span>Committee</span></div></div></div><div class="editorial-card" role="button" tabindex="0"><div class="photo"><img src="full_homepage_assets/grand-steps.jpg" alt="Annual Dinner feature image" /></div><div class="body"><h3>Annual Dinner</h3><p>Flagship event campaign with public registration, member pricing, individual tickets and table booking in one journey.</p><div class="meta"><span>Register</span><span>Event</span></div></div></div><div class="editorial-card" role="button" tabindex="0"><div class="photo"><img src="full_homepage_assets/dbs-field.jpg" alt="Alumni directory feature image" /></div><div class="body"><h3>Alumni directory</h3><p>All members are visible by default, with member profiles and discovery entry points inside the authenticated portal.</p><div class="meta"><span>Open</span><span>Portal</span></div></div></div></div></section>
+        <section class="heritage-section" style="padding-top:0"><h2 class="section-title">Membership lifecycle</h2><div class="lifecycle-panel"><div class="timeline"><button class="active" type="button"><span class="num">01</span><span><strong>Youth member</strong><br />Under 18, no payment required.</span></button><button type="button"><span class="num">02</span><span><strong>Trial member</strong><br />Auto-convert at age 18.</span></button><button type="button"><span class="num">03</span><span><strong>Paid member</strong><br />Required when member turns 28.</span></button><button type="button"><span class="num">04</span><span><strong>Inactive</strong><br />Unpaid members become inactive.</span></button></div><div class="lifecycle-preview"><div class="photo"><img src="full_homepage_assets/samuel-tak-lee-building.jpg" alt="Membership lifecycle preview" /></div><div class="copy"><h3>Interactive status preview</h3><p>The prototype can show the selected membership state, reminders, payment link and WhatsApp notification outcome before implementation starts.</p><span class="btn gold" style="margin-top:18px">View member flow</span></div></div></div></section>
+        <section class="heritage-section" style="background:#fffdf8"><h2 class="section-title">Public sitemap coverage</h2><div class="sitemap-browser"><div class="sitemap-menu"><button class="active" type="button">About & History</button><button type="button">News & Media</button><button type="button">Events</button><button type="button">Membership</button><button type="button">Support</button></div><div class="sitemap-preview"><div class="sitemap-feature"><div class="photo"><img src="full_homepage_assets/dbs-main-building.jpg" alt="Sitemap preview image" /></div><div class="copy"><h3>About & History</h3><p>Overview, history, committees, presidents, CFL, DBS history and contact are grouped as institutional content.</p></div></div><div class="sitemap-list"><div>Overview</div><div>History</div><div>Committees</div><div>DBS History</div><div>Contact</div></div></div></div></section>
+        <footer class="footer"><div><h3>DSOBA</h3><p>Editorial homepage direction for a heritage-led association site.</p></div><div><h3>News</h3><ul><li>DSOBA News</li><li>DBS Updates</li><li>Gallery</li><li>Archives</li></ul></div><div><h3>Events</h3><ul><li>Upcoming Events</li><li>Annual Dinner</li><li>Chapter Events</li><li>Past Events</li></ul></div><div><h3>Membership</h3><ul><li>Why Join</li><li>Types</li><li>Apply</li><li>Fees</li></ul></div><div><h3>Support</h3><ul><li>FAQ</li><li>Contact</li><li>WhatsApp</li><li>Payment Help</li></ul></div></footer>
+        </div>
+        <aside class="mobile-showcase">
+          <div class="phone phone-heritage">
+            <div class="phone-top"><div class="phone-logo"><img src="assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Heritage</span><span class="phone-menu">≡</span></div>
+            <section class="phone-section"><h4>Editorial Heritage</h4><h2>A living archive for the DBS alumni community.</h2><p>Heritage-first mobile page with curated stories and visible Phase 1 actions.</p><span class="phone-btn">Read heritage</span></section>
+            <section class="phone-section"><h4>Featured editorial sections</h4><div class="editorial-scroll"><article class="mobile-editorial-card"><div class="photo"><img src="full_homepage_assets/dbs-main-building.jpg" alt="President's note mobile editorial" /></div><div class="copy"><h3>President's note</h3><p>Formal association updates and committee messages presented as curated stories.</p></div></article><article class="mobile-editorial-card"><div class="photo"><img src="full_homepage_assets/grand-steps.jpg" alt="Annual Dinner mobile editorial" /></div><div class="copy"><h3>Annual Dinner</h3><p>Flagship event campaign with public registration and table booking.</p></div></article><article class="mobile-editorial-card"><div class="photo"><img src="full_homepage_assets/dbs-field.jpg" alt="Alumni directory mobile editorial" /></div><div class="copy"><h3>Alumni directory</h3><p>Member discovery and profile entry point inside the authenticated portal.</p></div></article></div></section>
+            <section class="phone-section"><h4>Membership lifecycle</h4><div class="mobile-lifecycle"><div class="mobile-life-step"><strong>Youth member</strong><span>Under 18, no payment required.</span></div><div class="mobile-life-step"><strong>Trial member</strong><span>Auto-convert at age 18.</span></div><div class="mobile-life-step"><strong>Paid member</strong><span>Required when member turns 28.</span></div><div class="mobile-life-step"><strong>Inactive</strong><span>Unpaid members become inactive.</span></div></div></section>
+            <section class="phone-section"><h4>Public sitemap coverage</h4><div class="mobile-sitemap"><div class="mobile-sitemap-row"><strong>News</strong><span>DSOBA, DBS, Gallery</span></div><div class="mobile-sitemap-row"><strong>Events</strong><span>Annual Dinner</span></div><div class="mobile-sitemap-row"><strong>Membership</strong><span>Apply, Fees</span></div><div class="mobile-sitemap-row"><strong>Directory</strong><span>Member profiles</span></div><div class="mobile-sitemap-row"><strong>Support</strong><span>FAQ, Contact</span></div></div></section>
+            <footer class="heritage-phone-footer"><strong>DSOBA</strong><p>Editorial mobile homepage direction for heritage-led public content.</p><div class="heritage-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="heritage-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </aside>
+      </article>
+
+      <article class="home vibrant-full" id="home-community-vibrant">
+        <div class="desktop-canvas">
+        <nav class="topbar"><div class="logo"><img src="assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><div class="nav"><span>NEWS</span><span>EVENTS</span><span>MEMBERSHIP</span><span>DIRECTORY</span><span>SUPPORT</span></div><span class="btn" style="background:#ff9ef3;color:#141414">Join community</span></nav>
+        <section class="vibrant-hero-full"><h1>Make alumni life feel active. Make events impossible to miss.</h1><p>For younger alumni who respond to events, moments and clear community energy.</p><div class="hyped-stack"><div class="hyped-card hyped-blue"><div class="metric">2026</div><div class="caption">Annual Dinner<br />Register ticket or table</div></div><div class="hyped-card hyped-photo"><img src="full_homepage_assets/dbs-field.jpg" alt="DBS event venue and field" /></div><div class="hyped-card hyped-green"><div class="metric">30+</div><div class="caption">Chapter events<br />Public talks and gatherings</div></div><div class="hyped-card hyped-ticket"><div class="metric" style="font-size:42px">Table booking open</div><div class="caption">Seat assignment after registration closes</div></div></div></section>
+        <section class="vibrant-statement"><h2>We surface the moments alumni care about: dinners, chapters, events, profiles and ways to support the school community.</h2></section>
+        <section class="vibrant-actions"><div class="vibrant-action"><h3>Events first</h3><p>Annual Dinner, public talks and chapter gatherings become the primary visual entry points.</p><div class="vibrant-mini-photo"><img src="full_homepage_assets/grand-steps.jpg" alt="Annual Dinner event venue" /></div><div class="vibrant-tags"><span>Tickets</span><span>Tables</span><span>Payment</span></div></div><div class="vibrant-action"><h3>Find chapters</h3><p>Legal, medical, ICT, design, music, sports and overseas groups are easier to discover.</p><div class="vibrant-tags"><span>Legal</span><span>Medical</span><span>ICT</span><span>Music</span><span>Sports</span><span>Overseas</span></div></div><div class="vibrant-action"><h3>Portal actions</h3><p>Membership, payments, booking and support stay one click away from the public homepage.</p><div class="portal-list"><div><span>Membership status</span><span>Open</span></div><div><span>Event tickets</span><span>Pay</span></div><div><span>Support case</span><span>New</span></div></div></div></section>
+        <section class="vibrant-actions" style="padding-top:0"><div class="vibrant-action"><h3>Gallery</h3><p>Event galleries and year archives make the community feel active and current.</p><div class="gallery-strip"><div><img src="full_homepage_assets/dbs-field.jpg" alt="Event gallery thumbnail" /></div><div><img src="full_homepage_assets/samuel-tak-lee-building.jpg" alt="Event gallery thumbnail" /></div></div></div><div class="vibrant-action"><h3>Directory</h3><p>Member visibility is on by default, supporting discovery and connection.</p><div class="directory-chip"><strong>All members visible</strong><span>Default</span></div><div class="directory-chip"><strong>Profile fields</strong><span>All</span></div></div><div class="vibrant-action"><h3>WhatsApp</h3><p>Notifications for membership and events appear as a useful service touchpoint.</p><div class="wa-bubble">Annual Dinner payment reminder sent.<small>Outbound notification · Phase 1</small></div></div></section>
+        <footer class="footer"><div><h3>DSOBA</h3><p>Energetic full homepage direction for events, chapters and younger alumni engagement.</p></div><div><h3>News</h3><ul><li>DSOBA News</li><li>DBS Updates</li><li>Gallery</li><li>Archives</li></ul></div><div><h3>Events</h3><ul><li>Upcoming Events</li><li>Annual Dinner</li><li>Chapter Events</li><li>Past Events</li></ul></div><div><h3>Membership</h3><ul><li>Why Join</li><li>Types</li><li>Apply</li><li>Fees</li></ul></div><div><h3>Support</h3><ul><li>FAQ</li><li>Contact</li><li>WhatsApp</li><li>Payment Help</li></ul></div></footer>
+        </div>
+        <aside class="mobile-showcase">
+          <div class="phone phone-vibrant">
+            <div class="phone-top"><div class="phone-logo"><img src="assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Community</span><span class="phone-menu">≡</span></div>
+            <section class="vibrant-mobile-hero"><h2>Make events impossible to miss.</h2><span class="phone-btn">Join community</span><div class="mobile-hype-card event"><strong>2026</strong><span>Annual Dinner booking open</span></div><div class="mobile-hype-card photo"><img src="full_homepage_assets/grand-steps.jpg" alt="Community event mobile card" /></div><div class="mobile-hype-card stat"><strong>30+</strong><span>Chapter events</span></div></section>
+            <section class="phone-section"><div class="vibrant-mobile-stack"><div class="vibrant-mobile-action"><h3>Events first</h3><p>Annual Dinner, public talks and chapter gatherings become the primary visual entry points.</p><div class="vibrant-mini-photo"><img src="full_homepage_assets/grand-steps.jpg" alt="Annual Dinner mobile venue" /></div><div class="vibrant-tags"><span>Tickets</span><span>Tables</span><span>Payment</span></div></div><div class="vibrant-mobile-action"><h3>Find chapters</h3><p>Legal, medical, ICT, design, music, sports and overseas groups are easier to discover.</p><div class="vibrant-tags"><span>Legal</span><span>Medical</span><span>ICT</span><span>Music</span><span>Sports</span><span>Overseas</span></div></div><div class="vibrant-mobile-action"><h3>Portal actions</h3><p>Membership, payments, booking and support stay one click away from the public homepage.</p><div class="portal-list"><div><span>Membership status</span><span>Open</span></div><div><span>Event tickets</span><span>Pay</span></div><div><span>Support case</span><span>New</span></div></div></div><div class="vibrant-mobile-action"><h3>Gallery</h3><p>Event galleries and year archives make the community feel active and current.</p><div class="gallery-strip"><div><img src="full_homepage_assets/dbs-field.jpg" alt="Event gallery mobile thumbnail" /></div><div><img src="full_homepage_assets/samuel-tak-lee-building.jpg" alt="Event gallery mobile thumbnail" /></div></div></div><div class="vibrant-mobile-action"><h3>Directory</h3><p>Member visibility is on by default, supporting discovery and connection.</p><div class="directory-chip"><strong>All members visible</strong><span>Default</span></div><div class="directory-chip"><strong>Profile fields</strong><span>All</span></div></div><div class="vibrant-mobile-action"><h3>WhatsApp</h3><p>Notifications for membership and events appear as a useful service touchpoint.</p><div class="wa-bubble">Annual Dinner payment reminder sent.<small>Outbound notification · Phase 1</small></div></div></div></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>Energetic mobile homepage direction for events, chapters and alumni community activity.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </aside>
+      </article>
+
+      <article class="home clean-full" id="home-clean-easy">
+        <div class="desktop-canvas">
+        <nav class="topbar"><div class="logo"><img src="assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><div class="nav"><span>NEWS</span><span>EVENTS</span><span>MEMBERSHIP</span><span>DIRECTORY</span><span>SUPPORT</span></div><span class="btn dark">Open portal</span></nav>
+        <section class="clean-hero-full"><div class="tag" style="color:#111315">Clean Easy</div><h1>A simpler alumni portal, organised around real actions.</h1><p>Explain the system, show the portal, then guide users into membership, events, booking, directory and support flows.</p><div style="display:flex;justify-content:center;gap:12px;margin-top:26px"><span class="btn lime">Start with membership</span><span class="btn light">View event flow</span></div><div class="portal-preview-large"><div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px 14px;font-weight:900"><span>Event List</span><span class="btn lime" style="min-height:32px;border-radius:999px">Latest 3</span></div><div class="portal-row"><span class="portal-icon">1</span><div><strong>Annual Dinner 2026</strong><br />Latest event · tickets and table booking open</div><span>Register</span></div><div class="portal-row"><span class="portal-icon">2</span><div><strong>Chapter talk</strong><br />Professional chapter gathering · member registration</div><span>Open</span></div><div class="portal-row"><span class="portal-icon">3</span><div><strong>Games Day</strong><br />Community sports event · registration details</div><span>View</span></div></div></section>
+        <section class="clean-modules"><div class="clean-module"><h3>About</h3><p>Overview, history, committees, presidents, CFL, DBS history and public contact.</p></div><div class="clean-module"><h3>News & Media</h3><p>DSOBA news, DBS updates, newsletters, gallery, obituaries and year archives.</p></div><div class="clean-module"><h3>Events</h3><p>Upcoming events, past events, Annual Dinner, chapter events and event detail pages.</p></div><div class="clean-module"><h3>Membership</h3><p>Why join, membership types, application, fees, FAQ and member policies.</p></div></section>
+        <section class="clean-content"><div class="clean-content-card"><div class="photo"><img src="full_homepage_assets/dbs-main-building.jpg" alt="About DSOBA section preview" /></div><h3>About & history</h3><p>Introduce DSOBA, committees, presidents and DBS history as the institutional entry point.</p></div><div class="clean-content-card"><div class="photo"><img src="full_homepage_assets/grand-steps.jpg" alt="Events section preview" /></div><h3>Events & Annual Dinner</h3><p>Surface public events, Annual Dinner ticket/table registration and chapter gatherings clearly.</p></div><div class="clean-content-card"><div class="photo"><img src="full_homepage_assets/samuel-tak-lee-building.jpg" alt="Support section preview" /></div><h3>Support & portal</h3><p>Provide FAQ, contact, WhatsApp notifications, payment help, account help and member login.</p></div></section>
+        <footer class="footer"><div><h3>DSOBA</h3><p>Clean service-led homepage direction for validating Phase 1 flow clarity.</p></div><div><h3>News</h3><ul><li>DSOBA News</li><li>DBS Updates</li><li>Gallery</li><li>Archives</li></ul></div><div><h3>Events</h3><ul><li>Upcoming Events</li><li>Annual Dinner</li><li>Chapter Events</li><li>Past Events</li></ul></div><div><h3>Membership</h3><ul><li>Why Join</li><li>Types</li><li>Apply</li><li>Fees</li></ul></div><div><h3>Support</h3><ul><li>FAQ</li><li>Contact</li><li>WhatsApp</li><li>Payment Help</li></ul></div></footer>
+        </div>
+        <aside class="mobile-showcase">
+          <div class="phone phone-clean">
+            <div class="phone-top"><div class="phone-logo"><img src="assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>DSOBA</span><span class="phone-menu">≡</span></div>
+            <section class="clean-mobile-hero"><h4>Clean Easy</h4><h2>A simpler alumni portal, organised around real actions.</h2><p>Explain the system, show the portal, then guide users into membership, events, booking, directory and support flows.</p><div class="clean-mobile-actions"><span class="phone-btn">Start with membership</span><span class="phone-btn secondary">View event flow</span></div><div class="clean-mobile-events"><div class="clean-mobile-events-head"><span>Event List</span><span>Latest 3</span></div><div class="phone-list" style="margin-top:0"><div class="phone-list-row"><span>Annual Dinner 2026</span><span>Register</span></div><div class="phone-list-row"><span>Chapter talk</span><span>Open</span></div><div class="phone-list-row"><span>Games Day</span><span>View</span></div></div></div></section>
+            <section class="phone-section"><h4>Public sitemap modules</h4><div class="clean-module-stack"><div class="clean-module-card"><h3>About</h3><p>Overview, history, committees, presidents, CFL, DBS history and public contact.</p></div><div class="clean-module-card"><h3>News & Media</h3><p>DSOBA news, DBS updates, newsletters, gallery, obituaries and year archives.</p></div><div class="clean-module-card"><h3>Events</h3><p>Upcoming events, past events, Annual Dinner, chapter events and event detail pages.</p></div><div class="clean-module-card"><h3>Membership</h3><p>Why join, membership types, application, fees, FAQ and member policies.</p></div></div></section>
+            <section class="phone-section"><h4>Homepage content</h4><div class="clean-content-stack"><div class="clean-content-mobile-card"><div class="photo"><img src="full_homepage_assets/dbs-main-building.jpg" alt="About DSOBA mobile section" /></div><h3>About & history</h3><p>Introduce DSOBA, committees, presidents and DBS history as the institutional entry point.</p></div><div class="clean-content-mobile-card"><div class="photo"><img src="full_homepage_assets/grand-steps.jpg" alt="Events mobile section" /></div><h3>Events & Annual Dinner</h3><p>Surface public events, Annual Dinner ticket/table registration and chapter gatherings clearly.</p></div><div class="clean-content-mobile-card"><div class="photo"><img src="full_homepage_assets/samuel-tak-lee-building.jpg" alt="Support mobile section" /></div><h3>Support & portal</h3><p>Provide FAQ, contact, WhatsApp notifications, payment help, account help and member login.</p></div></div></section>
+            <footer class="clean-phone-footer"><strong>DSOBA</strong><p>Clean service-led mobile homepage direction for validating Phase 1 flow clarity.</p><div class="clean-footer-cta"><span>Open portal</span><span>›</span></div><div class="clean-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="clean-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </aside>
+      </article>
+    </main>
+    <script>
+      const lifecycleData = [
+        ["Interactive status preview", "The prototype can show the selected membership state, reminders, payment link and WhatsApp notification outcome before implementation starts."],
+        ["Auto-conversion at 18", "Youth members become Trial members automatically on their 18th birthday, with outbound notification support."],
+        ["Paid upgrade at 28", "Trial members need to become paid members at age 28. Payment status and receipt are visible in the portal."],
+        ["Inactive outcome", "If the required paid membership is not completed, the member status becomes inactive and service access can be restricted."]
+      ];
+      document.querySelectorAll("#home-editorial-heritage .timeline button").forEach((button, index) => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll("#home-editorial-heritage .timeline button").forEach((b) => b.classList.remove("active"));
+          button.classList.add("active");
+          const [title, body] = lifecycleData[index];
+          document.querySelector("#home-editorial-heritage .lifecycle-preview h3").textContent = title;
+          document.querySelector("#home-editorial-heritage .lifecycle-preview p").textContent = body;
+        });
+      });
+
+      const sitemapData = {
+        "About & History": ["About & History", "Overview, history, committees, presidents, CFL, DBS history and contact are grouped as institutional content.", ["Overview", "History", "Committees", "DBS History", "Contact"]],
+        "News & Media": ["News & Media", "DSOBA news, DBS updates, newsletters, gallery, obituaries and archive pages are grouped for easier browsing.", ["DSOBA News", "DBS Updates", "Newsletters", "Gallery", "News Archive"]],
+        "Events": ["Events", "Upcoming, past, Annual Dinner, category and chapter event pages all follow one discoverable structure.", ["Upcoming Events", "Annual Dinner", "Event Categories", "Chapter Events", "Event Detail"]],
+        "Membership": ["Membership", "Membership types, fees, application, FAQ and policies support the Youth, Trial and paid member lifecycle.", ["Why Join", "Membership Types", "Apply for Membership", "Membership Fees", "Membership FAQ"]],
+        "Support": ["Support", "FAQ, contact support, WhatsApp, payment help, account help and issue reporting are grouped into one support area.", ["FAQ", "Contact Support", "WhatsApp Channel", "Payment Help", "Account Help"]]
+      };
+      document.querySelectorAll("#home-editorial-heritage .sitemap-menu button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll("#home-editorial-heritage .sitemap-menu button").forEach((b) => b.classList.remove("active"));
+          button.classList.add("active");
+          const [title, body, paths] = sitemapData[button.textContent.trim()];
+          document.querySelector("#home-editorial-heritage .sitemap-feature h3").textContent = title;
+          document.querySelector("#home-editorial-heritage .sitemap-feature p").textContent = body;
+          document.querySelector("#home-editorial-heritage .sitemap-list").innerHTML = paths.map((path) => `<div>${path}</div>`).join("");
+        });
+      });
+    </script>
+  </body>
+</html>

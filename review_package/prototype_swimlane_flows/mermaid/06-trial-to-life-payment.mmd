@@ -1,0 +1,57 @@
+---
+config:
+  theme: base
+  flowchart:
+    curve: basis
+---
+flowchart TD
+  %% Trial To Life Payment
+  subgraph L0["Scheduler"]
+    start(["Check Trial Member age"])
+  end
+  subgraph L1["Membership System"]
+    soon{"Approaching age 28?"}
+    reminder[/"Status: payment due soon"/]
+    age28{"Has turned 28?"}
+    activeTrial[/"Status: Active Trial"/]
+    pending[/"Status: Pending Life Payment"/]
+    paid{"Payment completed?"}
+    life[/"Status: Active Life Member"/]
+    inactive[/"Status: Inactive membership"/]
+  end
+  subgraph L2["Trial Member"]
+    open["Open Life payment link"]
+    notify["Send status notification"]
+  end
+  subgraph L3["Payment Service"]
+    pay["Process HKD 2000 payment"]
+  end
+  start --> soon
+  soon -- "Yes" --> reminder
+  soon -- "No" --> age28
+  reminder --> age28
+  age28 -- "No" --> activeTrial
+  age28 -- "Yes" --> pending
+  pending --> open
+  open --> pay
+  pay --> paid
+  paid -- "Yes" --> life
+  paid -- "No" --> inactive
+  life --> notify
+  inactive --> notify
+  classDef start fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef process fill:#FFE8A6,stroke:#D6AE3E,color:#172033;
+  classDef decision fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef status fill:#D9C2F5,stroke:#9C6FD2,color:#172033;
+  class start start;
+  class soon decision;
+  class reminder status;
+  class age28 decision;
+  class activeTrial status;
+  class pending status;
+  class open process;
+  class pay process;
+  class paid decision;
+  class life status;
+  class inactive status;
+  class notify process;

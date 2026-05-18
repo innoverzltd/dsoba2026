@@ -1,0 +1,1463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Editorial Heritage Mobile Layout Preview</title>
+    <style>
+      :root {
+        --navy: #02385c;
+        --deep: #f8f5ee;
+        --panel: #fffdf8;
+        --gold: #02385c;
+        --gold2: #d8b552;
+        --wine: #7d2138;
+        --text: #02385c;
+        --muted: rgba(2,56,92,0.68);
+        --line: rgba(2,56,92,0.14);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 12% 8%, rgba(216,181,82,0.22), transparent 24%),
+          linear-gradient(135deg, #f8f5ee 0%, #fffdf8 48%, #e7edf0 100%);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .frame {
+        width: min(100%, 1540px);
+        min-height: 4320px;
+        margin: 0 auto;
+        padding: 42px;
+        color: var(--text);
+      }
+      .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 30px;
+        margin-bottom: 34px;
+      }
+      .head h1 {
+        margin: 0;
+        max-width: 980px;
+        color: var(--gold);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 58px;
+        line-height: 0.98;
+      }
+      .head p {
+        max-width: 570px;
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.45;
+      }
+      .flow {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .pill {
+        min-height: 32px;
+        padding: 9px 12px 0;
+        border-radius: 999px;
+        color: var(--gold);
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(244,216,137,0.12);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .arrow { color: rgba(244,216,137,0.5); font-weight: 900; }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 430px);
+        gap: 30px 34px;
+        align-items: start;
+        justify-content: center;
+      }
+      .page {
+        display: grid;
+        gap: 10px;
+        align-self: start;
+      }
+      .label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: rgba(2,56,92,0.72);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .label span:last-child {
+        padding: 5px 8px;
+        border-radius: 999px;
+        color: #111;
+        background: var(--gold2);
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .phone {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 430px;
+        height: 932px;
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border: 9px solid #101216;
+        border-radius: 34px;
+        background: var(--deep);
+        box-shadow: 0 22px 60px rgba(2,56,92,0.22);
+        scrollbar-width: thin;
+        scrollbar-color: rgba(216,181,82,0.7) rgba(255,255,255,0.08);
+      }
+      .phone::-webkit-scrollbar {
+        width: 5px;
+      }
+      .phone::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.08);
+      }
+      .phone::-webkit-scrollbar-thumb {
+        border-radius: 999px;
+        background: rgba(216,181,82,0.72);
+      }
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 66px;
+        padding: 10px 17px;
+        color: #fff8e7;
+        background: var(--navy);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .logo { width: 42px; height: 48px; }
+      img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .logo img { object-fit: contain; }
+      .menu {
+        padding: 0;
+        border: 0;
+        color: #fff8e7;
+        background: transparent;
+        font: inherit;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .section { padding: 20px 17px 17px; }
+      .hero {
+        position: relative;
+        min-height: 310px;
+        padding: 24px 18px;
+        overflow: hidden;
+      }
+      .hero img {
+        position: absolute;
+        inset: 0;
+        opacity: 0.35;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(8,23,36,0.2), rgba(8,23,36,0.94));
+      }
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        padding-top: 74px;
+      }
+      h2, h3, h4, p { margin: 0; }
+      h2 {
+        color: var(--gold);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 34px;
+        line-height: 0.96;
+        margin-bottom: 12px;
+      }
+      h3 {
+        color: var(--gold);
+        font-size: 21px;
+        line-height: 1.05;
+      }
+      h4 {
+        color: #fff;
+        font-size: 15px;
+        line-height: 1.1;
+      }
+      p {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+      .tag {
+        display: inline-flex;
+        min-height: 24px;
+        align-items: center;
+        padding: 0 8px;
+        margin-bottom: 8px;
+        border-radius: 999px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .button {
+        display: flex;
+        min-height: 37px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 14px;
+        padding: 0 14px;
+        border-radius: 9px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1;
+        text-align: center;
+      }
+      .button.submit {
+        width: 100%;
+      }
+      .tabs {
+        display: flex;
+        gap: 8px;
+        margin-top: 13px;
+        overflow: hidden;
+      }
+      .tabs span {
+        flex: 0 0 auto;
+        min-height: 28px;
+        padding: 8px 10px 0;
+        border-radius: 999px;
+        color: rgba(255,255,255,0.76);
+        background: rgba(255,255,255,0.08);
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .tabs span.active { color: #111; background: var(--gold2); }
+      .photo {
+        height: 142px;
+        overflow: hidden;
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .card {
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 15px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+      .wine { background: var(--wine); }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: center;
+        min-height: 56px;
+        margin-top: 9px;
+        padding: 12px;
+        border-radius: 13px;
+        background: var(--wine);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .row small {
+        display: block;
+        margin-top: 3px;
+        color: rgba(255,255,255,0.65);
+        font-size: 10px;
+        font-weight: 700;
+      }
+      .event-list {
+        display: grid;
+        gap: 10px;
+      }
+      .event-list-card {
+        display: grid;
+        grid-template-columns: 94px 1fr;
+        gap: 10px;
+        align-items: stretch;
+        min-height: 110px;
+        padding: 8px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+        border: 1px solid rgba(255,255,255,0.09);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+      }
+      .event-list-thumb {
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      .event-list-copy {
+        display: grid;
+        align-content: space-between;
+        padding: 4px 0;
+      }
+      .event-list-copy p {
+        margin-top: 6px;
+        max-width: 180px;
+      }
+      .event-list-hero {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 16px;
+        background: rgba(132,34,59,0.78);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .event-list-hero h3 {
+        font-size: 16px;
+      }
+      .event-list-hero p {
+        margin-top: 6px;
+        color: rgba(255,255,255,0.78);
+      }
+      .pending-box {
+        display: grid;
+        place-items: center;
+        width: 88px;
+        height: 100px;
+        border-radius: 18px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(216,181,82,0.22), transparent 44%),
+          linear-gradient(180deg, #ffffff 0%, #f6f7fb 100%);
+        box-shadow: inset 0 0 0 1px rgba(12,20,30,0.1);
+      }
+      .pending-mark {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #f7f8fb;
+        box-shadow: 0 0 0 6px rgba(14,30,43,0.10);
+      }
+      .pending-mark::before {
+        content: "";
+        position: absolute;
+        inset: 7px;
+        border-radius: 50%;
+        border: 3px solid #0e1e2b;
+        border-right-color: #d8b552;
+        border-top-color: #84223b;
+        transform: rotate(25deg);
+      }
+      .pending-mark::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 10px;
+        height: 10px;
+        margin: -5px 0 0 -5px;
+        border-radius: 50%;
+        background: #0e1e2b;
+        box-shadow: 0 -13px 0 -3px #d8b552, 0 13px 0 -3px #84223b;
+      }
+      .screen {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .screen:first-child { margin-top: 0; }
+      .screen-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .screen-head span {
+        color: rgba(255,255,255,0.7);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .screen-head strong {
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .list-item {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 10px;
+        align-items: center;
+        min-height: 72px;
+        margin-top: 8px;
+        padding: 8px;
+        border-radius: 13px;
+        background: rgba(255,255,255,0.06);
+      }
+      .list-item:first-of-type { margin-top: 0; }
+      .list-thumb {
+        height: 56px;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+      .list-item h4 {
+        font-size: 12px;
+      }
+      .list-item p {
+        margin-top: 4px;
+        font-size: 10px;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .meta span {
+        min-height: 20px;
+        padding: 4px 8px 0;
+        border-radius: 999px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 9px;
+        font-weight: 900;
+      }
+      .event-card {
+        overflow: hidden;
+        margin-top: 12px;
+        border-radius: 16px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+      .event-card .photo { border: 0; border-radius: 0; height: 150px; }
+      .event-card .copy { padding: 14px; }
+      .event-info {
+        margin-top: 12px;
+        padding: 13px;
+        border-radius: 16px;
+        color: #0e1e2b;
+        background: #f8f4e8;
+        border: 1px solid rgba(224,186,74,0.55);
+      }
+      .event-info h4 {
+        color: #0e1e2b;
+        font-size: 14px;
+        line-height: 1.12;
+      }
+      .event-info p {
+        color: rgba(14,30,43,0.76);
+        font-size: 10.5px;
+        line-height: 1.35;
+      }
+      .info-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .info-chip {
+        min-height: 54px;
+        padding: 10px;
+        border-radius: 12px;
+        background: #fff;
+        border: 1px solid rgba(14,30,43,0.12);
+      }
+      .info-chip strong {
+        display: block;
+        color: #8a1f3b;
+        font-size: 10px;
+        text-transform: uppercase;
+      }
+      .info-chip span {
+        display: block;
+        margin-top: 3px;
+        color: #0e1e2b;
+        font-size: 11px;
+        font-weight: 900;
+        line-height: 1.2;
+      }
+      .info-block {
+        margin-top: 10px;
+        padding: 11px;
+        border-radius: 13px;
+        background: #fff;
+        border-left: 4px solid #8a1f3b;
+      }
+      .info-block h5 {
+        color: #0e1e2b;
+        font-size: 11px;
+        text-transform: uppercase;
+      }
+      .info-block ul {
+        margin: 7px 0 0;
+        padding-left: 15px;
+        color: rgba(14,30,43,0.78);
+        font-size: 9.5px;
+        line-height: 1.35;
+      }
+      .stepper {
+        display: grid;
+        gap: 8px;
+        margin-top: 13px;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 9px;
+        align-items: start;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.28;
+      }
+      .num {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border-radius: 50%;
+        color: #111;
+        background: var(--gold2);
+        font-size: 11px;
+        font-weight: 900;
+      }
+      .segmented {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .segment {
+        min-height: 78px;
+        padding: 12px;
+        border-radius: 13px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid var(--line);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .segment.active {
+        color: #111;
+        background: var(--gold2);
+      }
+      .input {
+        min-height: 42px;
+        margin-top: 8px;
+        padding: 12px;
+        border-radius: 11px;
+        color: rgba(255,255,255,0.74);
+        background: rgba(255,255,255,0.07);
+        border: 1px solid var(--line);
+        font-size: 11px;
+      }
+      .upload-field {
+        display: grid;
+        grid-template-columns: 34px 1fr auto;
+        gap: 10px;
+        align-items: center;
+        min-height: 56px;
+        margin-top: 8px;
+        padding: 10px;
+        border-radius: 13px;
+        color: rgba(255,255,255,0.82);
+        background: rgba(255,255,255,0.07);
+        border: 1px dashed rgba(224,186,74,0.7);
+      }
+      .upload-icon {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 10px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 15px;
+        font-weight: 900;
+      }
+      .upload-field strong {
+        display: block;
+        color: #fff;
+        font-size: 11px;
+        line-height: 1.15;
+      }
+      .upload-field small {
+        display: block;
+        margin-top: 3px;
+        color: rgba(255,255,255,0.58);
+        font-size: 9px;
+        line-height: 1.2;
+      }
+      .upload-action {
+        padding: 7px 9px;
+        border-radius: 999px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 9px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+      .status-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+        margin-top: 12px;
+      }
+      .membership-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 12px;
+      }
+      .membership-card {
+        display: grid;
+        grid-template-columns: 58px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        min-height: 94px;
+        padding: 14px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(216,181,82,0.18), rgba(255,255,255,0.04));
+        border: 1px solid rgba(216,181,82,0.3);
+      }
+      .membership-icon {
+        position: relative;
+        width: 54px;
+        height: 54px;
+        border-radius: 17px;
+        background:
+          linear-gradient(135deg, rgba(244,216,137,0.95), rgba(216,181,82,0.78));
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.28), 0 10px 18px rgba(0,0,0,0.2);
+      }
+      .membership-icon::before {
+        content: "";
+        position: absolute;
+        left: 16px;
+        top: 9px;
+        width: 22px;
+        height: 28px;
+        border-radius: 12px 12px 8px 8px;
+        background: var(--deep);
+        clip-path: polygon(50% 0, 90% 16%, 82% 78%, 50% 100%, 18% 78%, 10% 16%);
+      }
+      .membership-icon::after {
+        content: "";
+        position: absolute;
+        left: 25px;
+        top: 35px;
+        width: 5px;
+        height: 13px;
+        border-radius: 999px;
+        background: var(--wine);
+        box-shadow: -9px 3px 0 #f5f7fb, 9px -2px 0 var(--wine);
+        transform: rotate(34deg);
+      }
+      .membership-card strong {
+        color: #fff;
+        font-size: 15px;
+      }
+      .membership-card p {
+        margin-top: 4px;
+        font-size: 11px;
+      }
+      .membership-status {
+        min-height: 26px;
+        padding: 7px 10px 0;
+        border-radius: 999px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .status {
+        min-height: 88px;
+        padding: 12px;
+        border-radius: 14px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+      .status strong {
+        display: block;
+        color: var(--gold);
+        font-size: 18px;
+      }
+      .ticket {
+        display: grid;
+        grid-template-columns: 1fr 82px;
+        gap: 12px;
+        align-items: center;
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 16px;
+        background: var(--wine);
+      }
+      .qr {
+        display: grid;
+        width: 82px;
+        height: 82px;
+        place-items: center;
+        border-radius: 10px;
+        color: var(--deep);
+        background:
+          linear-gradient(90deg, #111 8px, transparent 8px 16px, #111 16px 24px, transparent 24px),
+          linear-gradient(#fff,#fff);
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .bottom-nav {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin-top: 14px;
+        padding: 9px;
+        border-radius: 15px;
+        background: rgba(255,255,255,0.06);
+      }
+      .bottom-nav span {
+        text-align: center;
+        color: rgba(255,255,255,0.72);
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .footer {
+        margin-top: auto;
+        padding: 16px;
+        background: #07131f;
+        border-top: 1px solid var(--line);
+      }
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        min-height: 34px;
+        align-items: center;
+        margin-top: 8px;
+        padding: 0 10px;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.06);
+        font-size: 11px;
+        font-weight: 900;
+      }
+      .portal-menu {
+        position: absolute;
+        inset: 0 0 0 auto;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        width: 330px;
+        max-width: 82%;
+        padding: 22px 16px 18px;
+        border-radius: 26px 0 0 26px;
+        background: #f8fafc;
+        border-left: 1px solid rgba(216,181,82,0.45);
+        box-shadow: -24px 0 54px rgba(0,0,0,0.45);
+      }
+      .portal-menu[hidden] {
+        display: none;
+      }
+      .portal-menu h4 {
+        color: #0e1e2b;
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+      .portal-menu p {
+        margin: 0 0 14px;
+        color: rgba(14,30,43,0.58);
+        font-size: 11px;
+        line-height: 1.25;
+      }
+      .portal-menu-list {
+        display: grid;
+        gap: 8px;
+      }
+      .portal-menu-row {
+        display: grid;
+        grid-template-columns: 38px 1fr auto;
+        gap: 11px;
+        align-items: center;
+        min-height: 56px;
+        padding: 9px 10px;
+        border-radius: 16px;
+        color: #0e1e2b;
+        background: rgba(14,30,43,0.055);
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .portal-menu-row span:first-child {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 13px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 14px;
+      }
+      .portal-menu-row small {
+        color: rgba(14,30,43,0.46);
+        font-size: 18px;
+      }
+      .portal-menu-row.logout {
+        margin-top: auto;
+        color: #fff;
+        background: var(--wine);
+      }
+      .portal-menu-row.logout span:first-child {
+        color: #fff;
+        background: rgba(255,255,255,0.18);
+      }
+      .portal-backdrop {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        background: rgba(0,0,0,0.42);
+        backdrop-filter: blur(2px);
+      }
+      .portal-backdrop[hidden] {
+        display: none;
+      }
+      .event-scroll {
+        display: flex;
+        gap: 10px;
+        margin: 12px -17px 0;
+        padding: 0 17px 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .event-scroll::-webkit-scrollbar {
+        display: none;
+      }
+      .mini-event {
+        flex: 0 0 196px;
+        scroll-snap-align: start;
+        overflow: hidden;
+        border-radius: 15px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+      .mini-event .photo {
+        height: 96px;
+        border: 0;
+        border-radius: 0;
+      }
+      .mini-event .copy { padding: 11px; }
+      .quick-list {
+        display: grid;
+        gap: 9px;
+        margin-top: 12px;
+      }
+      .quick {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 42px;
+        padding: 0 12px;
+        border-radius: 11px;
+        color: var(--gold);
+        background: var(--panel);
+        border: 1px solid rgba(244,216,137,0.2);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .flow-layout {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 15px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid var(--line);
+      }
+      .flow-layout h4 { margin-bottom: 10px; }
+      .flow-screens {
+        display: grid;
+        gap: 8px;
+      }
+      .flow-screen {
+        display: grid;
+        grid-template-columns: 40px 1fr auto;
+        gap: 9px;
+        align-items: center;
+        min-height: 54px;
+        padding: 9px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.06);
+      }
+      .flow-screen.active {
+        background: rgba(216,181,82,0.17);
+        border: 1px solid rgba(216,181,82,0.35);
+      }
+      .flow-screen .thumb {
+        display: grid;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border-radius: 10px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .flow-screen strong {
+        display: block;
+        color: #fff;
+        font-size: 12px;
+      }
+      .flow-screen small {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.25;
+      }
+      .flow-screen .state {
+        color: var(--gold);
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .callout {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 10px;
+        align-items: center;
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 14px;
+        background: rgba(216,181,82,0.16);
+        border: 1px solid rgba(216,181,82,0.25);
+      }
+      .badge {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border-radius: 50%;
+        color: #111;
+        background: var(--gold2);
+        font-weight: 900;
+      }
+      .phone {
+        color: #02385c;
+        background: #f8f5ee;
+        font-family: Georgia, "Times New Roman", serif;
+      }
+      .top {
+        color: #fff8e7;
+        background: #02385c;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .menu { color: #fff8e7; }
+      h2, h3, h4 { color: #02385c; }
+      p { color: #4a5965; font-family: Arial, Helvetica, sans-serif; }
+      .tag,
+      .button,
+      .membership-status,
+      .num,
+      .upload-action,
+      .portal-menu-row span:first-child {
+        color: #111;
+        background: #d8b552;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .card,
+      .row,
+      .event-card,
+      .event-list-card,
+      .status,
+      .segment,
+      .input,
+      .upload-field,
+      .membership-card,
+      .mini-event {
+        color: #02385c;
+        background: #fffdf8;
+        border: 1px solid rgba(2,56,92,0.14);
+      }
+      .card h4,
+      .row h4,
+      .event-card h4,
+      .event-list-card h4,
+      .status h4,
+      .membership-card strong,
+      .upload-field strong {
+        color: #02385c;
+      }
+      .row {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .row small,
+      .membership-card p,
+      .upload-field small {
+        color: rgba(2,56,92,0.56);
+      }
+      .wine,
+      .ticket {
+        color: #02385c;
+        background: #fffdf8;
+        border: 1px solid rgba(2,56,92,0.14);
+      }
+      .wine h4,
+      .ticket h4 {
+        color: #02385c;
+      }
+      .wine p,
+      .ticket p {
+        color: #4a5965;
+      }
+      .ticket {
+        box-shadow: inset 4px 0 0 #d8b552;
+      }
+      .ticket .pending-box {
+        background:
+          radial-gradient(circle at 50% 42%, rgba(216,181,82,0.24), transparent 44%),
+          linear-gradient(180deg, #fffdf8 0%, #f3efe5 100%);
+      }
+      .event-list-hero {
+        background: #02385c;
+        border-color: rgba(2,56,92,0.2);
+      }
+      .event-list-hero h3,
+      .event-list-hero p {
+        color: #fff8e7;
+      }
+      .tabs span {
+        color: #02385c;
+        background: #fffdf8;
+        border: 1px solid rgba(2,56,92,0.12);
+      }
+      .tabs span.active {
+        color: #111;
+        background: #d8b552;
+      }
+      .footer {
+        margin-top: auto;
+        padding: 18px 20px;
+        color: #fff8e7;
+        background: #02385c;
+      }
+      .footer h4 {
+        color: #fff8e7;
+        font-size: 15px;
+      }
+      .footer p {
+        color: rgba(255,248,231,0.72);
+        font-size: 12px;
+      }
+      .footer-row {
+        color: #fff8e7;
+        background: rgba(255,255,255,0.08);
+        font-family: Arial, Helvetica, sans-serif;
+        min-height: 38px;
+        margin-top: 8px;
+        padding: 0 12px;
+      }
+      .footer::after {
+        content: "Contact   Privacy   © DSOBA";
+        display: flex;
+        justify-content: space-between;
+        margin-top: 14px;
+        color: rgba(255,248,231,0.55);
+        font: 11px/1 Arial, Helvetica, sans-serif;
+        white-space: pre;
+      }
+      .portal-menu {
+        background: #fffdf8;
+        border-left-color: rgba(2,56,92,0.2);
+      }
+      .portal-menu-row {
+        color: #02385c;
+        background: rgba(2,56,92,0.055);
+      }
+      .portal-menu-row.logout {
+        color: #fff8e7;
+        background: #7d2138;
+      }
+      .event-info {
+        color: #02385c;
+        background: #fffdf8;
+        border-color: rgba(2,56,92,0.14);
+      }
+      .event-info h4,
+      .event-info h5,
+      .event-info p,
+      .info-chip span {
+        color: #02385c;
+      }
+      .info-block {
+        border-left-color: #02385c;
+      }
+      .membership-icon::before {
+        background: #02385c;
+      }
+      .phone-heritage-home {
+        color: #02385c;
+        background: #f8f5ee;
+        font-family: Georgia, "Times New Roman", serif;
+      }
+      .phone-heritage-home .phone-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 70px;
+        padding: 12px 18px;
+        color: #fff8e7;
+        background: #02385c;
+        font: 900 12px/1 Arial, Helvetica, sans-serif;
+      }
+      .phone-heritage-home .phone-logo {
+        width: 42px;
+        height: 50px;
+      }
+      .phone-heritage-home .phone-logo img {
+        object-fit: contain;
+      }
+      .phone-heritage-home .phone-section {
+        padding: 22px 20px;
+      }
+      .phone-heritage-home .phone-section:first-of-type {
+        color: #fff8e7;
+        background: #02385c;
+      }
+      .phone-heritage-home .phone-section:first-of-type h2,
+      .phone-heritage-home .phone-section:first-of-type h4,
+      .phone-heritage-home .phone-section:first-of-type p {
+        color: #fff8e7;
+      }
+      .phone-heritage-home h4 {
+        margin: 0;
+        color: #02385c;
+        font: 900 12px/1 Arial, Helvetica, sans-serif;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .phone-heritage-home h2 {
+        margin: 8px 0 0;
+        color: inherit;
+        font-size: 34px;
+        line-height: 0.96;
+      }
+      .phone-heritage-home p {
+        margin-top: 12px;
+        font: 14px/1.35 Arial, Helvetica, sans-serif;
+      }
+      .phone-heritage-home .phone-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        margin-top: 18px;
+        padding: 0 16px;
+        border-radius: 8px;
+        color: #111;
+        background: #d8b552;
+        font: 900 13px/1 Arial, Helvetica, sans-serif;
+      }
+      .editorial-scroll {
+        display: flex;
+        gap: 12px;
+        margin: 16px -20px 0;
+        padding: 0 20px 8px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+      }
+      .editorial-scroll::-webkit-scrollbar { height: 4px; }
+      .editorial-scroll::-webkit-scrollbar-thumb { background: rgba(2,56,92,0.32); border-radius: 999px; }
+      .mobile-editorial-card {
+        flex: 0 0 245px;
+        overflow: hidden;
+        border-radius: 16px;
+        background: #fffdf8;
+        border: 1px solid rgba(2,56,92,0.16);
+        scroll-snap-align: start;
+      }
+      .mobile-editorial-card .photo { height: 122px; overflow: hidden; border-radius: 0; border: 0; }
+      .mobile-editorial-card .copy { padding: 14px; }
+      .mobile-editorial-card h3 { color: #02385c; font-size: 20px; }
+      .mobile-editorial-card p { color: #4a5965; font: 12px/1.35 Arial, Helvetica, sans-serif; }
+      .mobile-lifecycle {
+        display: grid;
+        gap: 0;
+        margin-top: 16px;
+        padding-left: 12px;
+        border-left: 2px solid rgba(2,56,92,0.18);
+      }
+      .mobile-life-step {
+        position: relative;
+        padding: 0 0 16px 18px;
+      }
+      .mobile-life-step:before {
+        content: "";
+        position: absolute;
+        left: -19px;
+        top: 2px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #d8b552;
+        box-shadow: 0 0 0 4px #f8f5ee;
+      }
+      .mobile-life-step strong { display: block; color: #02385c; font-size: 16px; }
+      .mobile-life-step span { display: block; margin-top: 4px; color: #4a5965; font: 12px/1.35 Arial, Helvetica, sans-serif; }
+      .mobile-sitemap {
+        display: grid;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .mobile-sitemap-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        min-height: 52px;
+        padding: 12px;
+        border-radius: 12px;
+        background: #fffdf8;
+        border: 1px solid rgba(2,56,92,0.14);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .mobile-sitemap-row strong { color: #02385c; font-size: 13px; }
+      .mobile-sitemap-row span { color: #4a5965; font-size: 12px; text-align: right; }
+      .heritage-phone-footer {
+        margin-top: auto;
+        padding: 18px 20px;
+        color: #fff8e7;
+        background: #02385c;
+      }
+      .heritage-phone-footer strong { font-size: 15px; }
+      .heritage-phone-footer p { color: rgba(255,248,231,0.72); font-size: 12px; }
+      .heritage-footer-menu { display: grid; gap: 8px; margin-top: 14px; }
+      .heritage-footer-menu div {
+        display: flex;
+        justify-content: space-between;
+        min-height: 38px;
+        align-items: center;
+        padding: 0 12px;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.08);
+        font: 900 12px/1 Arial, Helvetica, sans-serif;
+      }
+      .heritage-footer-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 14px;
+        color: rgba(255,248,231,0.55);
+        font: 11px/1 Arial, Helvetica, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="frame">
+      <div class="head">
+        <div>
+          <h1>Editorial Heritage Mobile App Layout Preview</h1>
+          <p>One frame showing the Editorial Heritage mobile page layouts and flow UI before building the real prototype pages.</p>
+        </div>
+      </div>
+
+      <section class="grid">
+        <article class="page">
+          <div class="label">Home <span>current theme</span></div>
+          <div class="phone phone-heritage-home">
+            <div class="phone-top"><div class="phone-logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Heritage</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="phone-section"><h4>Editorial Heritage</h4><h2>A living archive for the DBS alumni community.</h2><p>Heritage-first mobile page with curated stories and visible Phase 1 actions.</p><span class="phone-btn">Read heritage</span></section>
+            <section class="phone-section"><h4>Featured editorial sections</h4><div class="editorial-scroll"><article class="mobile-editorial-card"><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-main-building.jpg" alt="President's note mobile editorial" /></div><div class="copy"><h3>President's note</h3><p>Formal association updates and committee messages presented as curated stories.</p></div></article><article class="mobile-editorial-card"><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/grand-steps.jpg" alt="Annual Dinner mobile editorial" /></div><div class="copy"><h3>Annual Dinner</h3><p>Flagship event campaign with public registration and table booking.</p></div></article><article class="mobile-editorial-card"><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-field.jpg" alt="Alumni directory mobile editorial" /></div><div class="copy"><h3>Alumni directory</h3><p>Member discovery and profile entry point inside the authenticated portal.</p></div></article></div></section>
+            <section class="phone-section"><h4>Membership lifecycle</h4><div class="mobile-lifecycle"><div class="mobile-life-step"><strong>Youth member</strong><span>Under 18, no payment required.</span></div><div class="mobile-life-step"><strong>Trial member</strong><span>Auto-convert at age 18.</span></div><div class="mobile-life-step"><strong>Paid member</strong><span>Required when member turns 28.</span></div><div class="mobile-life-step"><strong>Inactive</strong><span>Unpaid members become inactive.</span></div></div></section>
+            <section class="phone-section"><h4>Public sitemap coverage</h4><div class="mobile-sitemap"><div class="mobile-sitemap-row"><strong>News</strong><span>DSOBA, DBS, Gallery</span></div><div class="mobile-sitemap-row"><strong>Events</strong><span>Annual Dinner</span></div><div class="mobile-sitemap-row"><strong>Membership</strong><span>Apply, Fees</span></div><div class="mobile-sitemap-row"><strong>Directory</strong><span>Member profiles</span></div><div class="mobile-sitemap-row"><strong>Support</strong><span>FAQ, Contact</span></div></div></section>
+            <footer class="heritage-phone-footer"><strong>DSOBA</strong><p>Editorial mobile homepage direction for heritage-led public content.</p><div class="heritage-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="heritage-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">DSOBA News <span>listing + article</span></div>
+          <div class="phone">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>News</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="section"><h2>Latest from DSOBA</h2><div class="tabs"><span class="active">All</span><span>DSOBA</span><span>DBS</span><span>Gallery</span></div></section>
+            <section class="section" style="padding-top:0"><div class="event-card"><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-main-building.jpg" alt="News feature" /></div><div class="copy"><h4>President's update</h4><p>Committee message, association direction and member notices.</p><span class="button">Read article</span></div></div><div class="row"><div>DBS campus story<small>School update and photos</small></div><span>Read</span></div><div class="row"><div>Newsletter archive<small>Issue 2026 Q1</small></div><span>View</span></div><div class="row"><div>Event gallery<small>Latest uploads</small></div><span>Open</span></div></section>
+            <footer class="footer"><h4>DSOBA</h4><p>Latest association updates and media archive.</p><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Membership</span><span>+</span></div><div class="footer-row"><span>Directory</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Past Events <span>archive + gallery</span></div>
+          <div class="phone">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Past Events</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="section"><h2>Past events</h2><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-field.jpg" alt="Past events" /></div><div class="segmented"><div class="segment active">2026</div><div class="segment">2025</div></div><div class="row"><div>Annual Dinner 2025<small>Programme, gallery, attendees</small></div><span>View</span></div><div class="row"><div>Games Day<small>Sports and family gathering</small></div><span>View</span></div><div class="row"><div>Chapter talk<small>Professional chapter recap</small></div><span>View</span></div><div class="callout"><div class="badge">36</div><div><h4>Photo archive</h4><p>Grouped by year and event category.</p></div></div></section>
+            <footer class="footer"><h4>DSOBA</h4><p>Past programmes, galleries and annual event records.</p><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Membership</span><span>+</span></div><div class="footer-row"><span>Directory</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Upcoming Events <span>event list</span></div>
+          <div class="phone">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Events</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="section"><h2>Upcoming events</h2><div class="event-list"><div class="event-list-hero"><span class="tag" style="margin-bottom:6px">Featured</span><h3>Annual Dinner 2026</h3><p>Ticket and table booking open. Public visitors can RSVP without account.</p></div><div class="event-list-card"><div class="event-list-thumb"><img src="../prototype_layout_direction/full_homepage_assets/annual-dinner-event-live.jpg" alt="Annual Dinner list" /></div><div class="event-list-copy"><div><h4>Annual Dinner 2026</h4><p>Ticket and table booking open.</p></div><span class="button" style="margin-top:0;width:fit-content">Detail</span></div></div><div class="event-list-card"><div class="event-list-thumb"><img src="../prototype_layout_direction/full_homepage_assets/dbs-field.jpg" alt="Chapter gathering list" /></div><div class="event-list-copy"><div><h4>Chapter gathering</h4><p>Member-only event preview.</p></div><span class="button" style="margin-top:0;width:fit-content">Detail</span></div></div><div class="event-list-card"><div class="event-list-thumb"><img src="../prototype_layout_direction/full_homepage_assets/dbs-main-building.jpg" alt="Public talk list" /></div><div class="event-list-copy"><div><h4>Public talk</h4><p>Open RSVP event.</p></div><span class="button" style="margin-top:0;width:fit-content">Detail</span></div></div></div></section>
+            <footer class="footer"><h4>DSOBA</h4><p>Upcoming event registration starts from event detail pages.</p><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Membership</span><span>+</span></div><div class="footer-row"><span>Directory</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Upcoming Detail <span>event page</span></div>
+          <div class="phone">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Events</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="section"><h2>Annual Dinner 2026</h2><div class="event-card" style="margin-top:0"><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/annual-dinner-event-live.jpg" alt="Annual Dinner detail" /></div><div class="copy"><h4>Event detail</h4><p>Public visitor RSVP allowed without account. Seat and table assignment happens after registration closes.</p><span class="button">RSVP</span><div class="event-info"><h4>DSOBA 105th Annual Dinner information</h4><div class="info-row"><div class="info-chip"><strong>Date</strong><span>28 Nov 2026</span></div><div class="info-chip"><strong>Venue</strong><span>Grand Ballroom, Hopewell Hotel</span></div></div><div class="info-block"><h5>About the dinner</h5><p>The annual dinner is the highlight of the year, fostering Old Boys' connections and supporting the school's continued development.</p></div><div class="info-block"><h5>Prize requirements</h5><ul><li>Raffle prize minimum value: HKD 3,000.</li><li>Table prize minimum value: HKD 150, minimum 150 pieces.</li><li>Door prize has no minimum value requirement.</li></ul></div><div class="info-block"><h5>Sponsor recognition</h5><p>Prize sponsors may be recognised on raffle tickets, event backdrop and the Annual Dinner booklet, subject to organising committee approval.</p></div></div></div></div></section>
+            <footer class="footer"><h4>DSOBA</h4><p>Event details, RSVP and payment follow-up information.</p><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Membership</span><span>+</span></div><div class="footer-row"><span>Directory</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">RSVP <span>ticket selection</span></div>
+          <div class="phone">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>RSVP</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="section"><h2>RSVP</h2><div class="segmented" style="margin-top:0"><div class="segment active">3 Seats ticket<br /><small>HKD 1860 x 3</small></div><div class="segment">Table booking<br /><small>12 seats · HKD 1860 x 12</small></div></div><div class="input">Attendee name · Alex Chan</div><div class="input">Email · alex.chan@example.com</div><div class="input">Mobile · +852 9123 4567</div><span class="button submit">Submit</span></section>
+            <footer class="footer"><h4>DSOBA</h4><p>RSVP submission sends WhatsApp payment follow-up after review.</p><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Membership</span><span>+</span></div><div class="footer-row"><span>Directory</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Confirmation <span>submitted</span></div>
+          <div class="phone">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Confirm</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="section"><h2>Registration submitted</h2><div class="ticket" style="margin-top:0"><div><h4>Waiting for confirmation</h4><p>Payment link will be sent to WhatsApp after review.</p></div><div class="pending-box"><div class="pending-mark" aria-hidden="true"></div></div></div></section>
+            <footer class="footer"><h4>DSOBA</h4><p>Confirmation screen after public RSVP submission.</p><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Membership</span><span>+</span></div><div class="footer-row"><span>Directory</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Application <span>membership</span></div>
+          <div class="phone">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Apply</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="section"><h2>Membership application</h2><div class="input">Full name</div><div class="input">Cladd of Year</div><div class="input">Email</div><div class="input">Mobile</div><div class="upload-field"><div class="upload-icon">↑</div><div><strong>Upload Image</strong><small>JPG or PNG proof document</small></div><span class="upload-action">Choose file</span></div><div class="input">Recommended by · Brian Lee</div><span class="button submit">Submit</span></section>
+            <footer class="footer"><h4>DSOBA</h4><p>Membership application and review submission flow.</p><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Membership</span><span>+</span></div><div class="footer-row"><span>Directory</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Application Submitted <span>confirmation</span></div>
+          <div class="phone">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Confirm</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="section"><h2>Application submitted</h2><div class="ticket" style="margin-top:0"><div><h4>Waiting for review</h4><p>GenCom will review the application. A confirmation update will be sent by WhatsApp and email.</p></div><div class="pending-box"><div class="pending-mark" aria-hidden="true"></div></div></div></section>
+            <footer class="footer"><h4>DSOBA</h4><p>Application status will be available in the membership portal.</p><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Membership</span><span>+</span></div><div class="footer-row"><span>Directory</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Portal Landing <span>member hub</span></div>
+          <div class="phone">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Portal</span><button class="menu portal-menu-trigger" type="button" aria-expanded="false" aria-controls="member-menu">≡</button></div>
+            <div class="portal-backdrop member-menu-backdrop" hidden></div>
+            <div class="portal-menu" id="member-menu" hidden><h4>Member menu</h4><p>Quick access to account, event and member services.</p><div class="portal-menu-list"><div class="portal-menu-row"><span>⌂</span><strong>Dashboard</strong><small>›</small></div><div class="portal-menu-row"><span>★</span><strong>Membership status</strong><small>›</small></div><div class="portal-menu-row"><span>◧</span><strong>Event tickets</strong><small>›</small></div><div class="portal-menu-row"><span>▦</span><strong>Facility booking</strong><small>›</small></div><div class="portal-menu-row"><span>$</span><strong>Payment receipt</strong><small>›</small></div><div class="portal-menu-row"><span>◎</span><strong>Alumni directory</strong><small>›</small></div><div class="portal-menu-row"><span>?</span><strong>Support case</strong><small>›</small></div></div><div class="portal-menu-row logout"><span>×</span><strong>Logout</strong><small>›</small></div></div>
+            <section class="section"><h2>Hi, Edwad Lau</h2><div class="membership-grid"><div class="membership-card"><div class="membership-icon" aria-hidden="true"></div><div><strong>Life member</strong><p>Paid active membership</p></div><span class="membership-status">Active</span></div></div><div class="status-grid"><div class="status"><strong>2</strong><p>Tickets</p></div><div class="status"><strong>On</strong><p>Directory visible</p></div><div class="status"><strong>1</strong><p>Support case</p></div><div class="status"><strong>New</strong><p>Facility booking</p></div></div><div class="ticket"><div><h4>Annual Dinner QR</h4><p>Ticket confirmed · check-in ready.</p></div><div class="qr">QR</div></div></section>
+            <footer class="footer"><h4>DSOBA</h4><p>Mobile member portal footer pattern.</p><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Membership</span><span>+</span></div><div class="footer-row"><span>Directory</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></footer>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script>
+      const siteMenuItems = [
+        ["⌂", "Home"],
+        ["▣", "About & Heritage"],
+        ["N", "News & Media"],
+        ["◧", "Events"],
+        ["★", "Membership"],
+        ["◎", "Alumni Directory"],
+        ["$", "Donate"],
+        ["+", "Join"],
+        ["?", "Contact & Support"]
+      ];
+
+      document.querySelectorAll(".site-menu-trigger").forEach((trigger, index) => {
+        const phone = trigger.closest(".phone");
+        if (!phone) return;
+
+        const backdrop = document.createElement("div");
+        backdrop.className = "portal-backdrop site-menu-backdrop";
+        backdrop.hidden = true;
+
+        const menu = document.createElement("div");
+        menu.className = "portal-menu site-menu";
+        menu.hidden = true;
+        menu.innerHTML = `<h4>Website menu</h4><p>Public site navigation from the sitemap and Phase 1 UR.</p><div class="portal-menu-list">${siteMenuItems.map(([icon, label]) => `<div class="portal-menu-row"><span>${icon}</span><strong>${label}</strong><small>›</small></div>`).join("")}</div>`;
+        menu.id = `site-menu-${index + 1}`;
+        trigger.setAttribute("aria-controls", menu.id);
+
+        const header = trigger.closest(".top, .phone-top");
+        phone.insertBefore(backdrop, header.nextSibling);
+        phone.insertBefore(menu, backdrop.nextSibling);
+
+        const closeMenu = () => {
+          menu.hidden = true;
+          backdrop.hidden = true;
+          trigger.setAttribute("aria-expanded", "false");
+        };
+
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const willOpen = menu.hidden;
+          document.querySelectorAll(".site-menu, #member-menu").forEach((openMenu) => {
+            openMenu.hidden = true;
+          });
+          document.querySelectorAll(".portal-backdrop").forEach((openBackdrop) => {
+            openBackdrop.hidden = true;
+          });
+          document.querySelectorAll(".site-menu-trigger, .portal-menu-trigger").forEach((openTrigger) => {
+            openTrigger.setAttribute("aria-expanded", "false");
+          });
+          menu.hidden = !willOpen;
+          backdrop.hidden = !willOpen;
+          trigger.setAttribute("aria-expanded", String(willOpen));
+        });
+
+        menu.addEventListener("click", (event) => {
+          event.stopPropagation();
+        });
+        backdrop.addEventListener("click", closeMenu);
+        document.addEventListener("click", closeMenu);
+      });
+
+      const portalTrigger = document.querySelector(".portal-menu-trigger");
+      const portalMenu = document.querySelector("#member-menu");
+      const portalBackdrop = document.querySelector(".member-menu-backdrop");
+
+      if (portalTrigger && portalMenu) {
+        const closePortalMenu = () => {
+          portalMenu.hidden = true;
+          if (portalBackdrop) portalBackdrop.hidden = true;
+          portalTrigger.setAttribute("aria-expanded", "false");
+        };
+
+        portalTrigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const willOpen = portalMenu.hidden;
+          document.querySelectorAll(".site-menu, #member-menu").forEach((openMenu) => {
+            openMenu.hidden = true;
+          });
+          document.querySelectorAll(".portal-backdrop").forEach((openBackdrop) => {
+            openBackdrop.hidden = true;
+          });
+          document.querySelectorAll(".site-menu-trigger, .portal-menu-trigger").forEach((openTrigger) => {
+            openTrigger.setAttribute("aria-expanded", "false");
+          });
+          portalMenu.hidden = !willOpen;
+          if (portalBackdrop) portalBackdrop.hidden = !willOpen;
+          portalTrigger.setAttribute("aria-expanded", String(willOpen));
+        });
+
+        portalMenu.addEventListener("click", (event) => {
+          event.stopPropagation();
+        });
+
+        if (portalBackdrop) {
+          portalBackdrop.addEventListener("click", closePortalMenu);
+        }
+
+        document.addEventListener("click", closePortalMenu);
+      }
+    </script>
+  </body>
+</html>

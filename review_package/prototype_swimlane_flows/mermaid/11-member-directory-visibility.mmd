@@ -1,0 +1,55 @@
+---
+config:
+  theme: base
+  flowchart:
+    curve: basis
+---
+flowchart TD
+  %% Member Directory Visibility
+  subgraph L0["Viewing Member"]
+    start(["Start"])
+    open["Open portal Directory"]
+    search["Search member records"]
+    profile["Open member profile"]
+  end
+  subgraph L1["Portal Directory"]
+    blocked[/"Status: access blocked"/]
+    hidden[/"Status: hidden by exception"/]
+  end
+  subgraph L2["Directory System"]
+    access{"Viewer has directory access?"}
+    visible{"Target member visible?"}
+    results[/"Status: visible in results"/]
+    fields[/"Status: all fields visible"/]
+    audit["Log profile view if required"]
+  end
+  subgraph L3["Project / Legal Review"]
+    risk[/"Privacy / consent review required"/]
+  end
+  start --> open
+  open --> access
+  access -- "No" --> blocked
+  access -- "Yes" --> search
+  search --> visible
+  visible -- "No" --> hidden
+  visible -- "Yes" --> results
+  results --> profile
+  profile --> fields
+  fields --> risk
+  risk --> audit
+  classDef start fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef process fill:#FFE8A6,stroke:#D6AE3E,color:#172033;
+  classDef decision fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef status fill:#D9C2F5,stroke:#9C6FD2,color:#172033;
+  class start start;
+  class open process;
+  class access decision;
+  class blocked status;
+  class search process;
+  class visible decision;
+  class hidden status;
+  class results status;
+  class profile process;
+  class fields status;
+  class risk status;
+  class audit process;

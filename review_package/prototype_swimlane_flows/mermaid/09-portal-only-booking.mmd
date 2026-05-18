@@ -1,0 +1,72 @@
+---
+config:
+  theme: base
+  flowchart:
+    curve: basis
+---
+flowchart TD
+  %% Portal-only Facility Booking
+  subgraph L0["Member"]
+    start(["Start"])
+    open["Open portal Booking"]
+    select["Select facility and slot"]
+    submit["Submit booking request"]
+    cancel{"Cancel before cutoff?"}
+  end
+  subgraph L1["Portal Booking"]
+    blocked[/"Status: booking blocked"/]
+    unavailable[/"Status: unavailable slot"/]
+  end
+  subgraph L2["Booking System"]
+    allowed{"Member allowed to book?"}
+    available{"Slot available and not blackout?"}
+    draft[/"Status: draft request"/]
+    approved[/"Status: approved"/]
+    cancelled[/"Status: cancelled"/]
+  end
+  subgraph L3["Payment / Approval"]
+    approval{"Payment / approval required?"}
+    pending[/"Status: pending payment / approval"/]
+  end
+  subgraph L4["Staff"]
+    staffDecision{"Staff approve?"}
+    rejected[/"Status: rejected"/]
+  end
+  start --> open
+  open --> allowed
+  allowed -- "No" --> blocked
+  allowed -- "Yes" --> select
+  select --> available
+  available -- "No" --> unavailable
+  unavailable --> select
+  available -- "Yes" --> draft
+  draft --> submit
+  submit --> approval
+  approval -- "No" --> approved
+  approval -- "Yes" --> pending
+  pending --> staffDecision
+  staffDecision -- "No" --> rejected
+  staffDecision -- "Yes" --> approved
+  approved --> cancel
+  cancel -- "Yes" --> cancelled
+  cancel -- "No" --> approved
+  classDef start fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef process fill:#FFE8A6,stroke:#D6AE3E,color:#172033;
+  classDef decision fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef status fill:#D9C2F5,stroke:#9C6FD2,color:#172033;
+  class start start;
+  class open process;
+  class allowed decision;
+  class blocked status;
+  class select process;
+  class available decision;
+  class unavailable status;
+  class draft status;
+  class submit process;
+  class approval decision;
+  class pending status;
+  class staffDecision decision;
+  class rejected status;
+  class approved status;
+  class cancel decision;
+  class cancelled status;

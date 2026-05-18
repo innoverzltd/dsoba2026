@@ -1,0 +1,21 @@
+{
+  "name": "dsoba-prototype",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render:prototype-direction": "node prototype_direction_slides/render.mjs",
+    "build:prototype-direction-pptx": "node prototype_direction_slides/build_pptx.mjs",
+    "build:flows": "node prototype_flow_diagrams/build_flows.mjs",
+    "render:flows": "node prototype_flow_diagrams/render_flows.mjs",
+    "build:flows-pptx": "node prototype_flow_diagrams/build_flow_pptx.mjs",
+    "build:detailed-flows": "node prototype_detailed_flows/build_detailed_flows.mjs",
+    "render:detailed-flows": "node prototype_detailed_flows/render_detailed_flows.mjs",
+    "build:swimlane-flows": "node prototype_swimlane_flows/build_swimlane_flows.mjs",
+    "render:swimlane-flows": "node prototype_swimlane_flows/render_swimlane_flows.mjs",
+    "render:layout-direction": "node prototype_layout_direction/render_mockups.mjs",
+    "verify:layout-direction": "node prototype_layout_direction/verify_layout_direction.mjs"
+  },
+  "dependencies": {
+    "playwright": "bundled-runtime"
+  }
+}

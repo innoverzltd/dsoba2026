@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1466" height="1692" viewBox="0 0 1466 1692">
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+        <path d="M 0 0 L 10 4 L 0 8 z" fill="#9AA3AF"/>
+      </marker>
+    </defs>
+    <rect width="1466" height="1692" fill="#ffffff"/>
+    
+      <rect x="40" y="10" width="250" height="62" fill="#FFE8A6" stroke="none"/>
+      <text text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#222" x="165" y="48"><tspan x="165" dy="0">Member</tspan></text>
+      <rect x="40" y="82" width="250" height="1584" fill="#F5F5F5" stroke="none"/>
+    
+      <rect x="324" y="10" width="250" height="62" fill="#D9C2F5" stroke="none"/>
+      <text text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#222" x="449" y="33"><tspan x="449" dy="0">Event Page</tspan></text>
+      <rect x="324" y="82" width="250" height="1584" fill="#F5F5F5" stroke="none"/>
+    
+      <rect x="608" y="10" width="250" height="62" fill="#B9E1FA" stroke="none"/>
+      <text text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#222" x="733" y="33"><tspan x="733" dy="0">Event System</tspan></text>
+      <rect x="608" y="82" width="250" height="1584" fill="#F5F5F5" stroke="none"/>
+    
+      <rect x="892" y="10" width="250" height="62" fill="#FFC0BE" stroke="none"/>
+      <text text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#222" x="1017" y="48"><tspan x="1017" dy="0">Payment</tspan></text>
+      <rect x="892" y="82" width="250" height="1584" fill="#F5F5F5" stroke="none"/>
+    
+      <rect x="1176" y="10" width="250" height="62" fill="#C8E6C9" stroke="none"/>
+      <text text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#222" x="1301" y="33"><tspan x="1301" dy="0">Event Staff</tspan></text>
+      <rect x="1176" y="82" width="250" height="1584" fill="#F5F5F5" stroke="none"/>
+    
+    <path d="M 165 210 L 165 232" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 165 328 L 165 339 L 449 339 L 449 350" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 449 446 L 449 468" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="421" y="429" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="449" y="442" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">No</text><path d="M 449 446 L 449 516 L 165 516 L 165 586" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="279" y="506" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="307" y="519" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">Yes</text><path d="M 165 682 L 165 693 L 733 693 L 733 704" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="421" y="665" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="449" y="678" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">Individual</text><path d="M 165 682 L 165 693 L 733 693 L 733 704" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="421" y="683" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="449" y="696" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">Table</text><path d="M 733 800 L 733 822" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 733 800 L 733 822" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 733 918 L 733 940" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="705" y="901" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="733" y="914" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">No</text><path d="M 733 918 L 733 929 L 165 929 L 165 940" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="421" y="919" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="449" y="932" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">Yes</text><path d="M 165 1036 L 165 1047 L 1017 1047 L 1017 1058" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 1017 1154 L 1017 1176" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="989" y="1137" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="1017" y="1150" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">No</text><path d="M 1017 1272 L 1017 1058" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 1017 1154 L 1017 1224 L 733 1224 L 733 1294" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="847" y="1214" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="875" y="1227" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">Yes</text><path d="M 733 1390 L 733 1401 L 1301 1401 L 1301 1412" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 1301 1508 L 1301 1530" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <ellipse cx="165" cy="162" rx="93" ry="46" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+      <text text-anchor="middle" font-size="15" fill="#172033" font-family="Arial" x="165" y="167"><tspan x="165" dy="0">Start</tspan></text><rect x="72" y="234" width="186" height="92" fill="#FFE8A6" stroke="#D6AE3E" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="165" y="276.5"><tspan x="165" dy="0">Open Annual Dinner</tspan><tspan x="165" dy="17">page</tspan></text><polygon points="449,352 542,400 449,448 356,400" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+      <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="449" y="405"><tspan x="449" dy="0">Registration open?</tspan></text><rect x="356" y="470" width="186" height="92" fill="#D9C2F5" stroke="#9C6FD2" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="449" y="512.5"><tspan x="449" dy="0">Status:</tspan><tspan x="449" dy="17">registration closed</tspan></text><polygon points="165,588 258,636 165,684 72,636" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+      <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="165" y="632.5"><tspan x="165" dy="0">Individual ticket or</tspan><tspan x="165" dy="17">table?</tspan></text><rect x="640" y="706" width="186" height="92" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="733" y="748.5"><tspan x="733" dy="0">Status: draft</tspan><tspan x="733" dy="17">individual ticket</tspan></text><rect x="640" y="706" width="186" height="92" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="733" y="748.5"><tspan x="733" dy="0">Status: draft table</tspan><tspan x="733" dy="17">booking</tspan></text><polygon points="733,824 826,872 733,920 640,872" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+      <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="733" y="877"><tspan x="733" dy="0">Capacity available?</tspan></text><rect x="640" y="942" width="186" height="92" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="733" y="993"><tspan x="733" dy="0">Status: waitlisted</tspan></text><rect x="72" y="942" width="186" height="92" fill="#FFE8A6" stroke="#D6AE3E" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="165" y="976"><tspan x="165" dy="0">Enter attendee /</tspan><tspan x="165" dy="17">representative</tspan><tspan x="165" dy="17">details</tspan></text><polygon points="1017,1060 1110,1108 1017,1156 924,1108" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+      <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="1017" y="1113"><tspan x="1017" dy="0">Payment completed?</tspan></text><rect x="924" y="1178" width="186" height="92" fill="#FFC0BE" stroke="#DE7D79" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="1017" y="1220.5"><tspan x="1017" dy="0">Status: pending</tspan><tspan x="1017" dy="17">payment</tspan></text><rect x="640" y="1296" width="186" height="92" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="733" y="1338.5"><tspan x="733" dy="0">Status: confirmed,</tspan><tspan x="733" dy="17">seat pending</tspan></text><rect x="1208" y="1414" width="186" height="92" fill="#C8E6C9" stroke="#6AA56D" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="1301" y="1456.5"><tspan x="1301" dy="0">Assign seats/tables</tspan><tspan x="1301" dy="17">after close</tspan></text><rect x="1208" y="1532" width="186" height="92" fill="#C8E6C9" stroke="#6AA56D" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="1301" y="1574.5"><tspan x="1301" dy="0">Status: seat/table</tspan><tspan x="1301" dy="17">assigned</tspan></text>
+    <text x="40" y="1682" font-family="Arial" font-size="13" fill="#6B7280">07-annual-dinner-registration.mmd</text>
+  </svg>

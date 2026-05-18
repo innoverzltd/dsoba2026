@@ -1,0 +1,69 @@
+---
+config:
+  theme: base
+  flowchart:
+    curve: basis
+---
+flowchart TD
+  %% Membership Application And Approval
+  subgraph L0["Applicant"]
+    start(["Start"])
+    draft[/"Status: draft application"/]
+    submit["Submit application details"]
+    pendingInfo[/"Status: pending information"/]
+  end
+  subgraph L1["Membership Admin"]
+    complete{"Application complete?"}
+    duplicate{"Duplicate record risk?"}
+    resolve["Resolve duplicate / link record"]
+    qualified{"Qualification confirmed?"}
+  end
+  subgraph L2["School / Records"]
+    check["Confirm school qualification"]
+  end
+  subgraph L3["GenCom"]
+    gencom[/"Status: pending GenCom"/]
+    decision{"Approve application?"}
+  end
+  subgraph L4["System"]
+    rejected[/"Status: rejected"/]
+    approved[/"Status: approved"/]
+    classify["Classify Youth / Trial / Life payment"]
+    notify["Send notification"]
+  end
+  start --> draft
+  draft --> submit
+  submit --> complete
+  complete -- "No" --> pendingInfo
+  pendingInfo --> submit
+  complete -- "Yes" --> duplicate
+  duplicate -- "Yes" --> resolve
+  duplicate -- "No" --> check
+  resolve --> check
+  check --> qualified
+  qualified -- "No" --> rejected
+  qualified -- "Yes" --> gencom
+  gencom --> decision
+  decision -- "No" --> rejected
+  decision -- "Yes" --> approved
+  approved --> classify
+  classify --> notify
+  classDef start fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef process fill:#FFE8A6,stroke:#D6AE3E,color:#172033;
+  classDef decision fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef status fill:#D9C2F5,stroke:#9C6FD2,color:#172033;
+  class start start;
+  class draft status;
+  class submit process;
+  class complete decision;
+  class pendingInfo status;
+  class duplicate decision;
+  class resolve process;
+  class check process;
+  class qualified decision;
+  class gencom status;
+  class decision decision;
+  class rejected status;
+  class approved status;
+  class classify process;
+  class notify process;

@@ -1,0 +1,1611 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Community Vibrant Mobile Layout Preview</title>
+    <style>
+      :root {
+        --navy: #0e1e2b;
+        --deep: #081724;
+        --panel: #102737;
+        --gold: #f4d889;
+        --gold2: #d8b552;
+        --wine: #84223b;
+        --text: #f8fafc;
+        --muted: rgba(255,255,255,0.68);
+        --line: rgba(255,255,255,0.12);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 92% 8%, rgba(216,181,82,0.18), transparent 24%),
+          linear-gradient(135deg, #07131f 0%, #0e1e2b 55%, #091621 100%);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .frame {
+        width: min(100%, 1540px);
+        min-height: 4320px;
+        margin: 0 auto;
+        padding: 42px;
+        color: var(--text);
+      }
+      .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 30px;
+        margin-bottom: 34px;
+      }
+      .head h1 {
+        margin: 0;
+        max-width: 980px;
+        color: var(--gold);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 58px;
+        line-height: 0.98;
+      }
+      .head p {
+        max-width: 570px;
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.45;
+      }
+      .flow {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .pill {
+        min-height: 32px;
+        padding: 9px 12px 0;
+        border-radius: 999px;
+        color: var(--gold);
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(244,216,137,0.12);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .arrow { color: rgba(244,216,137,0.5); font-weight: 900; }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 430px);
+        gap: 30px 34px;
+        align-items: start;
+        justify-content: center;
+      }
+      .page {
+        display: grid;
+        gap: 10px;
+        align-self: start;
+      }
+      .label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: rgba(255,255,255,0.72);
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .label span:last-child {
+        padding: 5px 8px;
+        border-radius: 999px;
+        color: #111;
+        background: var(--gold2);
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .phone {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 430px;
+        height: 932px;
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border: 9px solid #050a0f;
+        border-radius: 34px;
+        background: var(--deep);
+        box-shadow: 0 22px 60px rgba(0,0,0,0.32);
+        scrollbar-width: thin;
+        scrollbar-color: rgba(216,181,82,0.7) rgba(255,255,255,0.08);
+      }
+      .phone::-webkit-scrollbar {
+        width: 5px;
+      }
+      .phone::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.08);
+      }
+      .phone::-webkit-scrollbar-thumb {
+        border-radius: 999px;
+        background: rgba(216,181,82,0.72);
+      }
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 66px;
+        padding: 10px 17px;
+        color: var(--gold);
+        background: var(--deep);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .logo { width: 42px; height: 48px; }
+      img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .logo img { object-fit: contain; }
+      .menu {
+        padding: 0;
+        border: 0;
+        color: var(--gold);
+        background: transparent;
+        font: inherit;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .section { padding: 20px 17px 17px; }
+      .hero {
+        position: relative;
+        min-height: 310px;
+        padding: 24px 18px;
+        overflow: hidden;
+      }
+      .hero img {
+        position: absolute;
+        inset: 0;
+        opacity: 0.35;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(8,23,36,0.2), rgba(8,23,36,0.94));
+      }
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        padding-top: 74px;
+      }
+      h2, h3, h4, p { margin: 0; }
+      h2 {
+        color: var(--gold);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 34px;
+        line-height: 0.96;
+        margin-bottom: 12px;
+      }
+      h3 {
+        color: var(--gold);
+        font-size: 21px;
+        line-height: 1.05;
+      }
+      h4 {
+        color: #fff;
+        font-size: 15px;
+        line-height: 1.1;
+      }
+      p {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+      .tag {
+        display: inline-flex;
+        min-height: 24px;
+        align-items: center;
+        padding: 0 8px;
+        margin-bottom: 8px;
+        border-radius: 999px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .button {
+        display: flex;
+        min-height: 37px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 14px;
+        padding: 0 14px;
+        border-radius: 9px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 12px;
+        font-weight: 900;
+        line-height: 1;
+        text-align: center;
+      }
+      .button.submit {
+        width: 100%;
+      }
+      .tabs {
+        display: flex;
+        gap: 8px;
+        margin-top: 13px;
+        overflow: hidden;
+      }
+      .tabs span {
+        flex: 0 0 auto;
+        min-height: 28px;
+        padding: 8px 10px 0;
+        border-radius: 999px;
+        color: rgba(255,255,255,0.76);
+        background: rgba(255,255,255,0.08);
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .tabs span.active { color: #111; background: var(--gold2); }
+      .photo {
+        height: 142px;
+        overflow: hidden;
+        border-radius: 15px;
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .card {
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 15px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+      .wine { background: var(--wine); }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: center;
+        min-height: 56px;
+        margin-top: 9px;
+        padding: 12px;
+        border-radius: 13px;
+        background: var(--wine);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .row small {
+        display: block;
+        margin-top: 3px;
+        color: rgba(255,255,255,0.65);
+        font-size: 10px;
+        font-weight: 700;
+      }
+      .event-list {
+        display: grid;
+        gap: 10px;
+      }
+      .event-list-card {
+        display: grid;
+        grid-template-columns: 94px 1fr;
+        gap: 10px;
+        align-items: stretch;
+        min-height: 110px;
+        padding: 8px;
+        border-radius: 18px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+        border: 1px solid rgba(255,255,255,0.09);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+      }
+      .event-list-thumb {
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      .event-list-copy {
+        display: grid;
+        align-content: space-between;
+        padding: 4px 0;
+      }
+      .event-list-copy p {
+        margin-top: 6px;
+        max-width: 180px;
+      }
+      .event-list-hero {
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 16px;
+        background: rgba(132,34,59,0.78);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .event-list-hero h3 {
+        font-size: 16px;
+      }
+      .event-list-hero p {
+        margin-top: 6px;
+        color: rgba(255,255,255,0.78);
+      }
+      .pending-box {
+        display: grid;
+        place-items: center;
+        width: 88px;
+        height: 100px;
+        border-radius: 18px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(216,181,82,0.22), transparent 44%),
+          linear-gradient(180deg, #ffffff 0%, #f6f7fb 100%);
+        box-shadow: inset 0 0 0 1px rgba(12,20,30,0.1);
+      }
+      .pending-mark {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #f7f8fb;
+        box-shadow: 0 0 0 6px rgba(14,30,43,0.10);
+      }
+      .pending-mark::before {
+        content: "";
+        position: absolute;
+        inset: 7px;
+        border-radius: 50%;
+        border: 3px solid #0e1e2b;
+        border-right-color: #d8b552;
+        border-top-color: #84223b;
+        transform: rotate(25deg);
+      }
+      .pending-mark::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 10px;
+        height: 10px;
+        margin: -5px 0 0 -5px;
+        border-radius: 50%;
+        background: #0e1e2b;
+        box-shadow: 0 -13px 0 -3px #d8b552, 0 13px 0 -3px #84223b;
+      }
+      .screen {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .screen:first-child { margin-top: 0; }
+      .screen-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .screen-head span {
+        color: rgba(255,255,255,0.7);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .screen-head strong {
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .list-item {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 10px;
+        align-items: center;
+        min-height: 72px;
+        margin-top: 8px;
+        padding: 8px;
+        border-radius: 13px;
+        background: rgba(255,255,255,0.06);
+      }
+      .list-item:first-of-type { margin-top: 0; }
+      .list-thumb {
+        height: 56px;
+        overflow: hidden;
+        border-radius: 10px;
+      }
+      .list-item h4 {
+        font-size: 12px;
+      }
+      .list-item p {
+        margin-top: 4px;
+        font-size: 10px;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .meta span {
+        min-height: 20px;
+        padding: 4px 8px 0;
+        border-radius: 999px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 9px;
+        font-weight: 900;
+      }
+      .event-card {
+        overflow: hidden;
+        margin-top: 12px;
+        border-radius: 16px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+      .event-card .photo { border: 0; border-radius: 0; height: 150px; }
+      .event-card .copy { padding: 14px; }
+      .event-info {
+        margin-top: 12px;
+        padding: 13px;
+        border-radius: 16px;
+        color: #0e1e2b;
+        background: #f8f4e8;
+        border: 1px solid rgba(224,186,74,0.55);
+      }
+      .event-info h4 {
+        color: #0e1e2b;
+        font-size: 14px;
+        line-height: 1.12;
+      }
+      .event-info p {
+        color: rgba(14,30,43,0.76);
+        font-size: 10.5px;
+        line-height: 1.35;
+      }
+      .info-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .info-chip {
+        min-height: 54px;
+        padding: 10px;
+        border-radius: 12px;
+        background: #fff;
+        border: 1px solid rgba(14,30,43,0.12);
+      }
+      .info-chip strong {
+        display: block;
+        color: #8a1f3b;
+        font-size: 10px;
+        text-transform: uppercase;
+      }
+      .info-chip span {
+        display: block;
+        margin-top: 3px;
+        color: #0e1e2b;
+        font-size: 11px;
+        font-weight: 900;
+        line-height: 1.2;
+      }
+      .info-block {
+        margin-top: 10px;
+        padding: 11px;
+        border-radius: 13px;
+        background: #fff;
+        border-left: 4px solid #8a1f3b;
+      }
+      .info-block h5 {
+        color: #0e1e2b;
+        font-size: 11px;
+        text-transform: uppercase;
+      }
+      .info-block ul {
+        margin: 7px 0 0;
+        padding-left: 15px;
+        color: rgba(14,30,43,0.78);
+        font-size: 9.5px;
+        line-height: 1.35;
+      }
+      .stepper {
+        display: grid;
+        gap: 8px;
+        margin-top: 13px;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 9px;
+        align-items: start;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.28;
+      }
+      .num {
+        display: grid;
+        width: 28px;
+        height: 28px;
+        place-items: center;
+        border-radius: 50%;
+        color: #111;
+        background: var(--gold2);
+        font-size: 11px;
+        font-weight: 900;
+      }
+      .segmented {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .segment {
+        min-height: 78px;
+        padding: 12px;
+        border-radius: 13px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid var(--line);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .segment.active {
+        color: #111;
+        background: var(--gold2);
+      }
+      .input {
+        min-height: 42px;
+        margin-top: 8px;
+        padding: 12px;
+        border-radius: 11px;
+        color: rgba(255,255,255,0.74);
+        background: rgba(255,255,255,0.07);
+        border: 1px solid var(--line);
+        font-size: 11px;
+      }
+      .upload-field {
+        display: grid;
+        grid-template-columns: 34px 1fr auto;
+        gap: 10px;
+        align-items: center;
+        min-height: 56px;
+        margin-top: 8px;
+        padding: 10px;
+        border-radius: 13px;
+        color: rgba(255,255,255,0.82);
+        background: rgba(255,255,255,0.07);
+        border: 1px dashed rgba(224,186,74,0.7);
+      }
+      .upload-icon {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 10px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 15px;
+        font-weight: 900;
+      }
+      .upload-field strong {
+        display: block;
+        color: #fff;
+        font-size: 11px;
+        line-height: 1.15;
+      }
+      .upload-field small {
+        display: block;
+        margin-top: 3px;
+        color: rgba(255,255,255,0.58);
+        font-size: 9px;
+        line-height: 1.2;
+      }
+      .upload-action {
+        padding: 7px 9px;
+        border-radius: 999px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 9px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+      .status-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+        margin-top: 12px;
+      }
+      .membership-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 12px;
+      }
+      .membership-card {
+        display: grid;
+        grid-template-columns: 58px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        min-height: 94px;
+        padding: 14px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(216,181,82,0.18), rgba(255,255,255,0.04));
+        border: 1px solid rgba(216,181,82,0.3);
+      }
+      .membership-icon {
+        position: relative;
+        width: 54px;
+        height: 54px;
+        border-radius: 17px;
+        background:
+          linear-gradient(135deg, rgba(244,216,137,0.95), rgba(216,181,82,0.78));
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.28), 0 10px 18px rgba(0,0,0,0.2);
+      }
+      .membership-icon::before {
+        content: "";
+        position: absolute;
+        left: 16px;
+        top: 9px;
+        width: 22px;
+        height: 28px;
+        border-radius: 12px 12px 8px 8px;
+        background: var(--deep);
+        clip-path: polygon(50% 0, 90% 16%, 82% 78%, 50% 100%, 18% 78%, 10% 16%);
+      }
+      .membership-icon::after {
+        content: "";
+        position: absolute;
+        left: 25px;
+        top: 35px;
+        width: 5px;
+        height: 13px;
+        border-radius: 999px;
+        background: var(--wine);
+        box-shadow: -9px 3px 0 #f5f7fb, 9px -2px 0 var(--wine);
+        transform: rotate(34deg);
+      }
+      .membership-card strong {
+        color: #fff;
+        font-size: 15px;
+      }
+      .membership-card p {
+        margin-top: 4px;
+        font-size: 11px;
+      }
+      .membership-status {
+        min-height: 26px;
+        padding: 7px 10px 0;
+        border-radius: 999px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .status {
+        min-height: 88px;
+        padding: 12px;
+        border-radius: 14px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+      .status strong {
+        display: block;
+        color: var(--gold);
+        font-size: 18px;
+      }
+      .ticket {
+        display: grid;
+        grid-template-columns: 1fr 82px;
+        gap: 12px;
+        align-items: center;
+        margin-top: 12px;
+        padding: 14px;
+        border-radius: 16px;
+        background: var(--wine);
+      }
+      .qr {
+        display: grid;
+        width: 82px;
+        height: 82px;
+        place-items: center;
+        border-radius: 10px;
+        color: var(--deep);
+        background:
+          linear-gradient(90deg, #111 8px, transparent 8px 16px, #111 16px 24px, transparent 24px),
+          linear-gradient(#fff,#fff);
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .bottom-nav {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin-top: 14px;
+        padding: 9px;
+        border-radius: 15px;
+        background: rgba(255,255,255,0.06);
+      }
+      .bottom-nav span {
+        text-align: center;
+        color: rgba(255,255,255,0.72);
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .footer {
+        margin-top: auto;
+        padding: 16px;
+        background: #07131f;
+        border-top: 1px solid var(--line);
+      }
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        min-height: 34px;
+        align-items: center;
+        margin-top: 8px;
+        padding: 0 10px;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.06);
+        font-size: 11px;
+        font-weight: 900;
+      }
+      .portal-menu {
+        position: absolute;
+        inset: 0 0 0 auto;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        width: 330px;
+        max-width: 82%;
+        padding: 22px 16px 18px;
+        border-radius: 26px 0 0 26px;
+        background: #f8fafc;
+        border-left: 1px solid rgba(216,181,82,0.45);
+        box-shadow: -24px 0 54px rgba(0,0,0,0.45);
+      }
+      .portal-menu[hidden] {
+        display: none;
+      }
+      .portal-menu h4 {
+        color: #0e1e2b;
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+      .portal-menu p {
+        margin: 0 0 14px;
+        color: rgba(14,30,43,0.58);
+        font-size: 11px;
+        line-height: 1.25;
+      }
+      .portal-menu-list {
+        display: grid;
+        gap: 8px;
+      }
+      .portal-menu-row {
+        display: grid;
+        grid-template-columns: 38px 1fr auto;
+        gap: 11px;
+        align-items: center;
+        min-height: 56px;
+        padding: 9px 10px;
+        border-radius: 16px;
+        color: #0e1e2b;
+        background: rgba(14,30,43,0.055);
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .portal-menu-row span:first-child {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 13px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 14px;
+      }
+      .portal-menu-row small {
+        color: rgba(14,30,43,0.46);
+        font-size: 18px;
+      }
+      .portal-menu-row.logout {
+        margin-top: auto;
+        color: #fff;
+        background: var(--wine);
+      }
+      .portal-menu-row.logout span:first-child {
+        color: #fff;
+        background: rgba(255,255,255,0.18);
+      }
+      .portal-backdrop {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        background: rgba(0,0,0,0.42);
+        backdrop-filter: blur(2px);
+      }
+      .portal-backdrop[hidden] {
+        display: none;
+      }
+      .event-scroll {
+        display: flex;
+        gap: 10px;
+        margin: 12px -17px 0;
+        padding: 0 17px 6px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .event-scroll::-webkit-scrollbar {
+        display: none;
+      }
+      .mini-event {
+        flex: 0 0 196px;
+        scroll-snap-align: start;
+        overflow: hidden;
+        border-radius: 15px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+      .mini-event .photo {
+        height: 96px;
+        border: 0;
+        border-radius: 0;
+      }
+      .mini-event .copy { padding: 11px; }
+      .quick-list {
+        display: grid;
+        gap: 9px;
+        margin-top: 12px;
+      }
+      .quick {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 42px;
+        padding: 0 12px;
+        border-radius: 11px;
+        color: var(--gold);
+        background: var(--panel);
+        border: 1px solid rgba(244,216,137,0.2);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .flow-layout {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 15px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid var(--line);
+      }
+      .flow-layout h4 { margin-bottom: 10px; }
+      .flow-screens {
+        display: grid;
+        gap: 8px;
+      }
+      .flow-screen {
+        display: grid;
+        grid-template-columns: 40px 1fr auto;
+        gap: 9px;
+        align-items: center;
+        min-height: 54px;
+        padding: 9px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.06);
+      }
+      .flow-screen.active {
+        background: rgba(216,181,82,0.17);
+        border: 1px solid rgba(216,181,82,0.35);
+      }
+      .flow-screen .thumb {
+        display: grid;
+        width: 40px;
+        height: 40px;
+        place-items: center;
+        border-radius: 10px;
+        color: #111;
+        background: var(--gold2);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .flow-screen strong {
+        display: block;
+        color: #fff;
+        font-size: 12px;
+      }
+      .flow-screen small {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.25;
+      }
+      .flow-screen .state {
+        color: var(--gold);
+        font-size: 10px;
+        font-weight: 900;
+      }
+      .callout {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 10px;
+        align-items: center;
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 14px;
+        background: rgba(216,181,82,0.16);
+        border: 1px solid rgba(216,181,82,0.25);
+      }
+      .badge {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border-radius: 50%;
+        color: #111;
+        background: var(--gold2);
+        font-weight: 900;
+      }
+
+      /* Community Vibrant theme overrides for the full mobile flow preview. */
+      :root {
+        --cream: #f4eee5;
+        --ink: #141414;
+        --lime: #d8f36a;
+        --pink: #ff9ef3;
+        --blue: #198ef2;
+        --green: #39c892;
+        --sun: #ffd86f;
+        --line-vibrant: rgba(20,20,20,0.12);
+      }
+      body {
+        background:
+          radial-gradient(circle at 8% 8%, rgba(255,158,243,0.42), transparent 22%),
+          radial-gradient(circle at 90% 14%, rgba(216,243,106,0.46), transparent 20%),
+          linear-gradient(135deg, #f7efe7 0%, #e9f4ff 45%, #fff6cf 100%);
+      }
+      .frame { color: var(--ink); }
+      .head h1 { color: var(--ink); font-family: Arial, Helvetica, sans-serif; letter-spacing: 0; }
+      .head p, .label { color: rgba(20,20,20,0.7); }
+      .label span:last-child { color: var(--ink); background: var(--lime); }
+      .phone { background: var(--cream); scrollbar-color: var(--pink) rgba(20,20,20,0.08); }
+      .phone::-webkit-scrollbar-track { background: rgba(20,20,20,0.08); }
+      .phone::-webkit-scrollbar-thumb { background: var(--pink); }
+      .phone-vibrant { color: var(--ink); background: var(--cream); }
+      .phone-vibrant .top,
+      .phone-vibrant .phone-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 66px;
+        padding: 10px 17px;
+        color: var(--ink);
+        background: var(--cream);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .phone-vibrant .phone-logo { width: 42px; height: 50px; }
+      .phone-vibrant .phone-logo img { object-fit: contain; }
+      .phone-vibrant .menu,
+      .phone-vibrant .phone-menu { color: var(--ink); background: transparent; border: 0; font: inherit; font-size: 24px; line-height: 1; cursor: pointer; }
+      .phone-vibrant h2,
+      .phone-vibrant h3,
+      .phone-vibrant h4 { color: var(--ink); font-family: Arial, Helvetica, sans-serif; letter-spacing: 0; }
+      .phone-vibrant h2 { font-size: 38px; line-height: 0.94; }
+      .phone-vibrant p { color: rgba(20,20,20,0.68); font-weight: 800; }
+      .phone-vibrant .tag,
+      .phone-vibrant .meta span,
+      .phone-vibrant .num,
+      .phone-vibrant .badge,
+      .phone-vibrant .upload-icon { color: var(--ink); background: var(--lime); }
+      .phone-vibrant .button,
+      .phone-vibrant .phone-btn,
+      .phone-vibrant .upload-action,
+      .phone-vibrant .membership-status { color: var(--ink); background: var(--pink); border-radius: 999px; }
+      .phone-vibrant .tabs span { color: rgba(20,20,20,0.74); background: rgba(20,20,20,0.07); }
+      .phone-vibrant .tabs span.active { color: var(--ink); background: var(--lime); }
+      .phone-vibrant .card,
+      .phone-vibrant .event-card,
+      .phone-vibrant .mini-event,
+      .phone-vibrant .screen,
+      .phone-vibrant .status,
+      .phone-vibrant .flow-layout,
+      .phone-vibrant .flow-screen,
+      .phone-vibrant .input,
+      .phone-vibrant .upload-field {
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line-vibrant);
+      }
+      .phone-vibrant .wine,
+      .phone-vibrant .event-list-hero,
+      .phone-vibrant .ticket,
+      .phone-vibrant .callout { color: var(--ink); background: var(--blue); border: 0; }
+      .phone-vibrant .row { color: var(--ink); background: #fff; border: 1px solid var(--line-vibrant); }
+      .phone-vibrant .row:nth-of-type(2n) { background: var(--pink); }
+      .phone-vibrant .row:nth-of-type(3n) { background: var(--lime); }
+      .phone-vibrant .row small,
+      .phone-vibrant .screen-head span,
+      .phone-vibrant .flow-screen small { color: rgba(20,20,20,0.58); }
+      .phone-vibrant .screen-head strong,
+      .phone-vibrant .flow-screen .state,
+      .phone-vibrant .quick { color: var(--ink); }
+      .phone-vibrant .event-list-card,
+      .phone-vibrant .membership-card {
+        background: #fff;
+        border: 1px solid var(--line-vibrant);
+        box-shadow: 0 10px 22px rgba(20,20,20,0.06);
+      }
+      .phone-vibrant .event-info { color: var(--ink); background: #fff9d8; border-color: rgba(20,20,20,0.12); }
+      .phone-vibrant .event-info h4,
+      .phone-vibrant .event-info p,
+      .phone-vibrant .info-chip strong,
+      .phone-vibrant .info-chip span,
+      .phone-vibrant .info-block h5,
+      .phone-vibrant .info-block ul { color: var(--ink); }
+      .phone-vibrant .info-block { border-left-color: var(--pink); }
+      .phone-vibrant .segment { color: var(--ink); background: #fff; border: 1px solid var(--line-vibrant); }
+      .phone-vibrant .segment.active { color: var(--ink); background: var(--lime); }
+      .phone-vibrant .status strong,
+      .phone-vibrant .membership-card strong,
+      .phone-vibrant .flow-screen strong,
+      .phone-vibrant .upload-field strong { color: var(--ink); }
+      .phone-vibrant .pending-mark::before {
+        border-right-color: var(--lime);
+        border-top-color: var(--pink);
+      }
+      .phone-vibrant .pending-mark::after {
+        background: var(--blue);
+        box-shadow: 0 -13px 0 -3px var(--pink), 0 13px 0 -3px var(--lime);
+      }
+      .phone-vibrant .membership-icon::after {
+        background: var(--pink);
+        box-shadow: -9px 3px 0 #fff, 9px -2px 0 var(--lime);
+      }
+      .phone-vibrant .bottom-nav { background: rgba(20,20,20,0.08); }
+      .phone-vibrant .bottom-nav span { color: rgba(20,20,20,0.68); }
+      .phone-vibrant .footer { color: #fff; background: var(--ink); border-top: 0; }
+      .phone-vibrant .footer p { color: rgba(255,255,255,0.68); }
+      .phone-vibrant .footer-row { color: #fff; background: rgba(255,255,255,0.08); }
+      .phone-vibrant .portal-menu { background: #fff; border-left: 1px solid var(--line-vibrant); }
+      .phone-vibrant .portal-menu h4,
+      .phone-vibrant .portal-menu-row { color: var(--ink); }
+      .phone-vibrant .portal-menu p { color: rgba(20,20,20,0.58); }
+      .phone-vibrant .portal-menu-row { background: rgba(20,20,20,0.055); }
+      .phone-vibrant .portal-menu-row span:first-child { color: var(--ink); background: var(--lime); }
+      .phone-vibrant .portal-menu-row.logout { color: var(--ink); background: var(--pink); }
+      .phone-vibrant .vibrant-mobile-hero { position: relative; min-height: 390px; padding: 28px 18px 24px; overflow: hidden; }
+      .phone-vibrant .vibrant-mobile-hero h2 { position: relative; z-index: 2; max-width: 286px; font-size: 43px; line-height: 0.92; }
+      .phone-vibrant .vibrant-mobile-hero p { position: relative; z-index: 2; max-width: 210px; font-size: 15px; font-weight: 900; line-height: 1.18; }
+      .phone-vibrant .vibrant-mobile-hero .phone-btn { position: relative; z-index: 3; display: inline-flex; align-items: center; justify-content: center; min-height: 38px; margin-top: 14px; padding: 0 16px; font-size: 13px; font-weight: 900; }
+      .phone-vibrant .mobile-hype-card { position: absolute; z-index: 1; overflow: hidden; border-radius: 18px; box-shadow: 0 12px 26px rgba(20,20,20,0.16); }
+      .phone-vibrant .mobile-hype-card strong { display: block; font-size: 26px; line-height: 0.98; }
+      .phone-vibrant .mobile-hype-card span { display: block; margin-top: 8px; font-size: 11px; font-weight: 900; line-height: 1.15; }
+      .phone-vibrant .mobile-hype-card.event { right: 16px; bottom: 88px; width: 148px; min-height: 128px; padding: 16px; background: var(--lime); transform: rotate(7deg); }
+      .phone-vibrant .mobile-hype-card.photo { left: 18px; bottom: 18px; width: 158px; height: 110px; transform: rotate(-4deg); }
+      .phone-vibrant .mobile-hype-card.stat { right: 24px; bottom: 10px; width: 132px; min-height: 94px; padding: 14px; background: var(--pink); transform: rotate(-5deg); }
+      .phone-vibrant .phone-section { padding: 22px 20px; }
+      .phone-vibrant .vibrant-mobile-stack { display: grid; gap: 14px; margin-top: 16px; }
+      .phone-vibrant .vibrant-mobile-action { min-height: 172px; padding: 18px; border-radius: 22px; background: #fff; }
+      .phone-vibrant .vibrant-mobile-action:nth-child(1),
+      .phone-vibrant .vibrant-mobile-action:nth-child(4) { background: var(--pink); }
+      .phone-vibrant .vibrant-mobile-action:nth-child(2),
+      .phone-vibrant .vibrant-mobile-action:nth-child(5) { background: var(--lime); }
+      .phone-vibrant .vibrant-mobile-action h3 { margin: 0; font-size: 27px; line-height: 0.98; }
+      .phone-vibrant .vibrant-mobile-action p { margin-top: 10px; font-size: 13px; font-weight: 900; line-height: 1.24; }
+      .vibrant-mini-photo { height: 96px; overflow: hidden; margin: 20px -6px 0; border-radius: 18px; }
+      .phone-vibrant .vibrant-mobile-action .vibrant-mini-photo { height: 82px; margin: 14px 0 0; }
+      .vibrant-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+      .vibrant-tags span { padding: 8px 10px; border-radius: 999px; background: rgba(20,20,20,0.1); font-size: 13px; font-weight: 900; }
+      .portal-list { display: grid; gap: 10px; margin-top: 18px; }
+      .portal-list div { display: flex; justify-content: space-between; padding: 12px 14px; border-radius: 12px; background: rgba(20,20,20,0.08); font-weight: 900; }
+      .gallery-strip { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 10px; margin-top: 18px; height: 112px; }
+      .gallery-strip div { overflow: hidden; border-radius: 16px; }
+      .phone-vibrant .vibrant-mobile-action .gallery-strip { height: 94px; margin-top: 14px; }
+      .directory-chip { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-top: 18px; padding: 14px; border-radius: 16px; background: rgba(20,20,20,0.08); font-weight: 900; }
+      .directory-chip span { padding: 7px 10px; border-radius: 999px; background: #fff; }
+      .phone-vibrant .vibrant-mobile-action .directory-chip { margin-top: 12px; }
+      .wa-bubble { margin-top: 18px; padding: 16px; border-radius: 18px 18px 18px 6px; color: var(--ink); background: var(--lime); font-weight: 900; }
+      .wa-bubble small { display: block; margin-top: 7px; opacity: 0.68; }
+      .phone-vibrant .vibrant-phone-footer { padding: 20px; color: #fff; background: var(--ink); }
+      .phone-vibrant .vibrant-phone-footer strong { font-size: 14px; }
+      .phone-vibrant .vibrant-phone-footer p { color: rgba(255,255,255,0.68); font-size: 12px; }
+      .phone-vibrant .vibrant-footer-cta { display: flex; justify-content: space-between; align-items: center; min-height: 42px; margin-top: 14px; padding: 0 13px; border-radius: 999px; color: var(--ink); background: var(--pink); font-size: 13px; font-weight: 900; }
+      .phone-vibrant .vibrant-footer-menu { display: grid; gap: 8px; margin-top: 14px; }
+      .phone-vibrant .vibrant-footer-menu div { display: flex; justify-content: space-between; align-items: center; min-height: 40px; padding: 0 12px; border-radius: 12px; background: rgba(255,255,255,0.08); font-size: 12px; font-weight: 900; }
+      .phone-vibrant .vibrant-footer-meta { display: flex; justify-content: space-between; margin-top: 14px; color: rgba(255,255,255,0.55); font-size: 11px; }
+      .vibrant-page-hero {
+        display: grid;
+        gap: 14px;
+        padding: 26px 20px 16px;
+      }
+      .vibrant-page-hero h2 {
+        max-width: 340px;
+        margin: 0;
+        font-size: 42px;
+      }
+      .vibrant-feed {
+        display: grid;
+        gap: 12px;
+      }
+      .vibrant-feature-card,
+      .vibrant-event-feature,
+      .vibrant-campaign-card,
+      .vibrant-status-card,
+      .vibrant-member-hero {
+        overflow: hidden;
+        border-radius: 24px;
+        box-shadow: 0 14px 28px rgba(20,20,20,0.08);
+      }
+      .vibrant-feature-card {
+        background: #fff;
+        border: 1px solid var(--line-vibrant);
+      }
+      .vibrant-feature-card .photo {
+        height: 176px;
+        border: 0;
+        border-radius: 0;
+      }
+      .vibrant-feature-card .copy {
+        padding: 16px;
+      }
+      .vibrant-feed-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        align-items: center;
+        min-height: 76px;
+        padding: 15px;
+        border-radius: 20px;
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--line-vibrant);
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .vibrant-feed-row:nth-child(2n) { background: var(--pink); }
+      .vibrant-feed-row:nth-child(3n) { background: var(--lime); }
+      .vibrant-feed-row small {
+        display: block;
+        margin-top: 4px;
+        color: rgba(20,20,20,0.58);
+        font-size: 10px;
+      }
+      .vibrant-feed-row span:last-child,
+      .vibrant-arrow {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 50%;
+        background: rgba(20,20,20,0.1);
+        font-size: 16px;
+        font-weight: 900;
+      }
+      .vibrant-year-switch {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .vibrant-year-switch div {
+        min-height: 82px;
+        padding: 15px;
+        border-radius: 20px;
+        background: #fff;
+        border: 1px solid var(--line-vibrant);
+        font-weight: 900;
+      }
+      .vibrant-year-switch .active { background: var(--lime); }
+      .vibrant-event-feature {
+        position: relative;
+        min-height: 188px;
+        padding: 18px;
+        background: var(--blue);
+      }
+      .vibrant-event-feature h3 {
+        max-width: 250px;
+        font-size: 30px;
+        line-height: 0.96;
+      }
+      .vibrant-event-feature p {
+        max-width: 230px;
+        color: rgba(20,20,20,0.76);
+      }
+      .vibrant-event-feature .tag { background: var(--lime); }
+      .vibrant-event-feature .event-date {
+        position: absolute;
+        right: 16px;
+        bottom: 16px;
+        width: 94px;
+        min-height: 86px;
+        padding: 13px;
+        border-radius: 18px;
+        background: var(--pink);
+        transform: rotate(6deg);
+        font-weight: 900;
+      }
+      .vibrant-event-card {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 12px;
+        align-items: center;
+        padding: 10px;
+        border-radius: 22px;
+        background: #fff;
+        border: 1px solid var(--line-vibrant);
+      }
+      .vibrant-event-card:nth-child(2n) { background: #fff9d8; }
+      .vibrant-event-card .event-list-thumb {
+        width: 96px;
+        height: 88px;
+        border-radius: 16px;
+      }
+      .vibrant-campaign-card {
+        background: #fff;
+        border: 1px solid var(--line-vibrant);
+      }
+      .vibrant-campaign-card .photo {
+        height: 205px;
+        border: 0;
+        border-radius: 0;
+      }
+      .vibrant-campaign-copy {
+        padding: 16px;
+      }
+      .vibrant-info-chips {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .vibrant-info-chip {
+        min-height: 78px;
+        padding: 13px;
+        border-radius: 18px;
+        background: var(--lime);
+        font-weight: 900;
+      }
+      .vibrant-info-chip:nth-child(2) { background: var(--pink); }
+      .vibrant-note {
+        margin-top: 10px;
+        padding: 14px;
+        border-radius: 18px;
+        background: #fff9d8;
+        border-left: 6px solid var(--pink);
+      }
+      .vibrant-note ul {
+        margin: 8px 0 0;
+        padding-left: 17px;
+        color: rgba(20,20,20,0.72);
+        font-size: 11px;
+        line-height: 1.35;
+      }
+      .vibrant-note li + li { margin-top: 3px; }
+      .vibrant-ticket-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .vibrant-ticket-option {
+        min-height: 112px;
+        padding: 15px;
+        border-radius: 22px;
+        background: #fff;
+        border: 1px solid var(--line-vibrant);
+        font-weight: 900;
+      }
+      .vibrant-ticket-option small {
+        display: block;
+        margin-top: 4px;
+        font-size: 10.5px;
+        line-height: 1.25;
+      }
+      .vibrant-ticket-option.active {
+        background: var(--lime);
+      }
+      .vibrant-form-stack {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .vibrant-progress {
+        display: flex;
+        gap: 7px;
+        margin-top: 14px;
+      }
+      .vibrant-progress span {
+        flex: 1;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(20,20,20,0.1);
+      }
+      .vibrant-progress span.active { background: var(--pink); }
+      .vibrant-status-card {
+        display: grid;
+        grid-template-columns: 1fr 92px;
+        gap: 16px;
+        align-items: center;
+        padding: 18px;
+        background: var(--blue);
+      }
+      .vibrant-status-card h4 {
+        font-size: 22px;
+        line-height: 1;
+      }
+      .vibrant-next-steps {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .vibrant-next-steps div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 48px;
+        padding: 0 14px;
+        border-radius: 16px;
+        background: #fff;
+        border: 1px solid var(--line-vibrant);
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .vibrant-upload {
+        min-height: 94px;
+        border-radius: 22px;
+      }
+      .vibrant-member-hero {
+        display: grid;
+        grid-template-columns: 58px 1fr auto;
+        gap: 12px;
+        align-items: center;
+        padding: 16px;
+        background: var(--lime);
+      }
+      .vibrant-action-tiles {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .vibrant-action-tile {
+        min-height: 112px;
+        padding: 15px;
+        border-radius: 22px;
+        background: #fff;
+        border: 1px solid var(--line-vibrant);
+      }
+      .vibrant-action-tile:nth-child(1) { background: var(--pink); }
+      .vibrant-action-tile:nth-child(4) { background: var(--green); }
+      .vibrant-action-tile strong {
+        display: block;
+        font-size: 25px;
+        line-height: 1;
+      }
+      .vibrant-qr-card {
+        display: grid;
+        grid-template-columns: 1fr 82px;
+        gap: 12px;
+        align-items: center;
+        margin-top: 12px;
+        padding: 16px;
+        border-radius: 24px;
+        background: var(--blue);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="frame">
+      <div class="head">
+        <div>
+          <h1>Community Vibrant Mobile App Layout Preview</h1>
+          <p>One frame showing the Community Vibrant theme across the proposed mobile page layouts and flow UI.</p>
+        </div>
+      </div>
+
+      <section class="grid">
+        <article class="page">
+          <div class="label">Home <span>Community Vibrant source</span></div>
+          <div class="phone phone-vibrant community-home-source">
+            <div class="phone-top"><div class="phone-logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Community</span><button class="phone-menu menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="vibrant-mobile-hero"><h2>Make events impossible to miss.</h2><span class="phone-btn">Join community</span><div class="mobile-hype-card event"><strong>2026</strong><span>Annual Dinner booking open</span></div><div class="mobile-hype-card photo"><img src="../prototype_layout_direction/full_homepage_assets/annual-dinner-event-live.jpg" alt="Community event mobile card" /></div><div class="mobile-hype-card stat"><strong>30+</strong><span>Chapter events</span></div></section>
+            <section class="phone-section"><div class="vibrant-mobile-stack"><div class="vibrant-mobile-action"><h3>Events first</h3><p>Annual Dinner, public talks and chapter gatherings become the primary visual entry points.</p><div class="vibrant-mini-photo"><img src="../prototype_layout_direction/full_homepage_assets/annual-dinner-event-live.jpg" alt="Annual Dinner mobile venue" /></div><div class="vibrant-tags"><span>Tickets</span><span>Tables</span><span>Payment</span></div></div><div class="vibrant-mobile-action"><h3>Find chapters</h3><p>Legal, medical, ICT, design, music, sports and overseas groups are easier to discover.</p><div class="vibrant-tags"><span>Legal</span><span>Medical</span><span>ICT</span><span>Music</span><span>Sports</span><span>Overseas</span></div></div><div class="vibrant-mobile-action"><h3>Portal actions</h3><p>Membership, payments, booking and support stay one click away from the public homepage.</p><div class="portal-list"><div><span>Membership status</span><span>Open</span></div><div><span>Event tickets</span><span>Pay</span></div><div><span>Support case</span><span>New</span></div></div></div><div class="vibrant-mobile-action"><h3>Gallery</h3><p>Event galleries and year archives make the community feel active and current.</p><div class="gallery-strip"><div><img src="../prototype_layout_direction/full_homepage_assets/dbs-field.jpg" alt="Event gallery mobile thumbnail" /></div><div><img src="../prototype_layout_direction/full_homepage_assets/samuel-tak-lee-building.jpg" alt="Event gallery mobile thumbnail" /></div></div></div><div class="vibrant-mobile-action"><h3>Directory</h3><p>Member visibility is on by default, supporting discovery and connection.</p><div class="directory-chip"><strong>All members visible</strong><span>Default</span></div><div class="directory-chip"><strong>Profile fields</strong><span>All</span></div></div><div class="vibrant-mobile-action"><h3>WhatsApp</h3><p>Notifications for membership and events appear as a useful service touchpoint.</p><div class="wa-bubble">Annual Dinner payment reminder sent.<small>Outbound notification · Phase 1</small></div></div></div></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>Energetic mobile homepage direction for events, chapters and alumni community activity.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">DSOBA News <span>listing + article</span></div>
+          <div class="phone phone-vibrant">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>News</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="vibrant-page-hero"><h2>Latest from DSOBA</h2><div class="tabs"><span class="active">All</span><span>DSOBA</span><span>DBS</span><span>Gallery</span></div></section>
+            <section class="section" style="padding-top:0"><div class="vibrant-feed"><article class="vibrant-feature-card"><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-main-building.jpg" alt="News feature" /></div><div class="copy"><h4>President's update</h4><p>Committee message, association direction and member notices.</p><span class="button">Read article</span></div></article><div class="vibrant-feed-row"><div>DBS campus story<small>School update and photos</small></div><span>›</span></div><div class="vibrant-feed-row"><div>Newsletter archive<small>Issue 2026 Q1</small></div><span>›</span></div><div class="vibrant-feed-row"><div>Event gallery<small>Latest uploads</small></div><span>›</span></div></div></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>Latest association updates and media archive.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Past Events <span>archive + gallery</span></div>
+          <div class="phone phone-vibrant">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Past Events</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="vibrant-page-hero"><h2>Past events</h2><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-field.jpg" alt="Past events" /></div><div class="vibrant-year-switch"><div class="active">2026</div><div>2025</div></div></section>
+            <section class="section" style="padding-top:0"><div class="vibrant-feed"><div class="vibrant-feed-row"><div>Annual Dinner 2025<small>Programme, gallery, attendees</small></div><span>›</span></div><div class="vibrant-feed-row"><div>Games Day<small>Sports and family gathering</small></div><span>›</span></div><div class="vibrant-feed-row"><div>Chapter talk<small>Professional chapter recap</small></div><span>›</span></div><div class="vibrant-status-card"><div><h4>36 photo stories</h4><p>Grouped by year and event category.</p></div><div class="badge">36</div></div></div></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>Past programmes, galleries and annual event records.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Upcoming Events <span>event list</span></div>
+          <div class="phone phone-vibrant">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Events</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="vibrant-page-hero"><h2>Upcoming events</h2></section>
+            <section class="section" style="padding-top:0"><div class="event-list"><div class="vibrant-event-feature"><span class="tag" style="margin-bottom:8px">Featured</span><h3>Annual Dinner 2026</h3><p>Ticket and table booking open. Public visitors can RSVP without account.</p><div class="event-date">28 Nov<br /><small>Hopewell</small></div></div><div class="vibrant-event-card"><div class="event-list-thumb"><img src="../prototype_layout_direction/full_homepage_assets/annual-dinner-event-live.jpg" alt="Annual Dinner list" /></div><div class="event-list-copy"><div><h4>Annual Dinner 2026</h4><p>Ticket and table booking open.</p></div><span class="button" style="margin-top:8px;width:fit-content">Detail</span></div></div><div class="vibrant-event-card"><div class="event-list-thumb"><img src="../prototype_layout_direction/full_homepage_assets/dbs-field.jpg" alt="Chapter gathering list" /></div><div class="event-list-copy"><div><h4>Chapter gathering</h4><p>Member-only event preview.</p></div><span class="button" style="margin-top:8px;width:fit-content">Detail</span></div></div><div class="vibrant-event-card"><div class="event-list-thumb"><img src="../prototype_layout_direction/full_homepage_assets/dbs-main-building.jpg" alt="Public talk list" /></div><div class="event-list-copy"><div><h4>Public talk</h4><p>Open RSVP event.</p></div><span class="button" style="margin-top:8px;width:fit-content">Detail</span></div></div></div></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>Upcoming event registration starts from event detail pages.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Upcoming Detail <span>event page</span></div>
+          <div class="phone phone-vibrant">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Events</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="vibrant-page-hero"><h2>Annual Dinner 2026</h2></section>
+            <section class="section" style="padding-top:0"><article class="vibrant-campaign-card"><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/annual-dinner-event-live.jpg" alt="Annual Dinner detail" /></div><div class="vibrant-campaign-copy"><h4>Event detail</h4><p>Public visitor RSVP allowed without account. Seat and table assignment happens after registration closes.</p><span class="button">RSVP</span><div class="vibrant-info-chips"><div class="vibrant-info-chip"><strong>Date</strong><br />28 Nov 2026</div><div class="vibrant-info-chip"><strong>Venue</strong><br />Grand Ballroom, Hopewell Hotel</div></div><div class="vibrant-note"><h5>About the dinner</h5><p>The annual dinner is the highlight of the year, fostering Old Boys' connections and supporting the school's continued development.</p></div><div class="vibrant-note"><h5>Prize requirements</h5><ul><li>Raffle prize minimum value: HKD 3,000.</li><li>Table prize minimum value: HKD 150, minimum 150 pieces.</li><li>Door prize has no minimum value requirement.</li></ul></div><div class="vibrant-note"><h5>Sponsor recognition</h5><p>Prize sponsors may be recognised on raffle tickets, event backdrop and the Annual Dinner booklet, subject to organising committee approval.</p></div></div></article></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>Event details, RSVP and payment follow-up information.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">RSVP <span>ticket selection</span></div>
+          <div class="phone phone-vibrant">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>RSVP</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="vibrant-page-hero"><h2>RSVP</h2><div class="vibrant-progress"><span class="active"></span><span class="active"></span><span></span></div></section>
+            <section class="section" style="padding-top:0"><div class="vibrant-ticket-options"><div class="vibrant-ticket-option active">3 Seats ticket<br /><small>HKD 1860 x 3</small></div><div class="vibrant-ticket-option">Table booking<br /><small>12 seats · HKD 1860 x 12</small></div></div><div class="vibrant-form-stack"><div class="input">Attendee name · Alex Chan</div><div class="input">Email · alex.chan@example.com</div><div class="input">Mobile · +852 9123 4567</div><span class="button submit">Submit</span></div></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>RSVP submission sends WhatsApp payment follow-up after review.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Confirmation <span>submitted</span></div>
+          <div class="phone phone-vibrant">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Confirm</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="vibrant-page-hero"><h2>Registration submitted</h2></section>
+            <section class="section" style="padding-top:0"><div class="vibrant-status-card"><div><h4>Waiting for confirmation</h4><p>Payment link will be sent to WhatsApp after review.</p></div><div class="pending-box"><div class="pending-mark" aria-hidden="true"></div></div></div><div class="vibrant-next-steps"><div><span>WhatsApp reminder</span><span>Queued</span></div><div><span>Back to events</span><span>›</span></div></div></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>Confirmation screen after public RSVP submission.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Application <span>membership</span></div>
+          <div class="phone phone-vibrant">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Apply</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="vibrant-page-hero"><h2>Membership application</h2><div class="vibrant-progress"><span class="active"></span><span class="active"></span><span></span></div></section>
+            <section class="section" style="padding-top:0"><div class="vibrant-form-stack"><div class="tag">Your details</div><div class="input">Full name</div><div class="input">Class of Year</div><div class="input">Email</div><div class="input">Mobile</div><div class="upload-field vibrant-upload"><div class="upload-icon">↑</div><div><strong>Upload Image</strong><small>JPG or PNG proof document</small></div><span class="upload-action">Choose file</span></div><div class="input">Recommended by · Brian Lee</div><span class="button submit">Submit</span></div></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>Membership application and review submission flow.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Application Submitted <span>confirmation</span></div>
+          <div class="phone phone-vibrant">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Confirm</span><button class="menu site-menu-trigger" type="button" aria-expanded="false">≡</button></div>
+            <section class="vibrant-page-hero"><h2>Application submitted</h2></section>
+            <section class="section" style="padding-top:0"><div class="vibrant-status-card"><div><h4>Waiting for review</h4><p>GenCom will review the application. A confirmation update will be sent by WhatsApp and email.</p></div><div class="pending-box"><div class="pending-mark" aria-hidden="true"></div></div></div><div class="vibrant-next-steps"><div><span>Review status</span><span>Pending</span></div><div><span>Open portal</span><span>›</span></div></div></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>Application status will be available in the membership portal.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+
+        <article class="page">
+          <div class="label">Portal Landing <span>member hub</span></div>
+          <div class="phone phone-vibrant">
+            <div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Portal</span><button class="menu portal-menu-trigger" type="button" aria-expanded="false" aria-controls="member-menu">≡</button></div>
+            <div class="portal-backdrop member-menu-backdrop" hidden></div>
+            <div class="portal-menu" id="member-menu" hidden><h4>Member menu</h4><p>Quick access to account, event and member services.</p><div class="portal-menu-list"><div class="portal-menu-row"><span>⌂</span><strong>Dashboard</strong><small>›</small></div><div class="portal-menu-row"><span>★</span><strong>Membership status</strong><small>›</small></div><div class="portal-menu-row"><span>◧</span><strong>Event tickets</strong><small>›</small></div><div class="portal-menu-row"><span>▦</span><strong>Facility booking</strong><small>›</small></div><div class="portal-menu-row"><span>$</span><strong>Payment receipt</strong><small>›</small></div><div class="portal-menu-row"><span>◎</span><strong>Alumni directory</strong><small>›</small></div><div class="portal-menu-row"><span>?</span><strong>Support case</strong><small>›</small></div></div><div class="portal-menu-row logout"><span>×</span><strong>Logout</strong><small>›</small></div></div>
+            <section class="vibrant-page-hero"><h2>Hi, Edward Lau</h2></section>
+            <section class="section" style="padding-top:0"><div class="vibrant-member-hero"><div class="membership-icon" aria-hidden="true"></div><div><strong>Life member</strong><p>Paid active membership</p></div><span class="membership-status">Active</span></div><div class="vibrant-action-tiles"><div class="vibrant-action-tile"><strong>2</strong><p>Tickets</p></div><div class="vibrant-action-tile"><strong>On</strong><p>Directory visible</p></div><div class="vibrant-action-tile"><strong>1</strong><p>Support case</p></div><div class="vibrant-action-tile"><strong>New</strong><p>Facility booking</p></div></div><div class="vibrant-qr-card"><div><h4>Annual Dinner QR</h4><p>Ticket confirmed · check-in ready.</p></div><div class="qr">QR</div></div></section>
+            <footer class="vibrant-phone-footer"><strong>DSOBA</strong><p>Mobile member portal footer pattern.</p><div class="vibrant-footer-cta"><span>Join community</span><span>›</span></div><div class="vibrant-footer-menu"><div><span>News</span><span>+</span></div><div><span>Events</span><span>+</span></div><div><span>Membership</span><span>+</span></div><div><span>Directory</span><span>+</span></div><div><span>Support</span><span>+</span></div></div><div class="vibrant-footer-meta"><span>Contact</span><span>Privacy</span><span>© DSOBA</span></div></footer>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script>
+      const siteMenuItems = [
+        ["⌂", "Home"],
+        ["▣", "About & Heritage"],
+        ["N", "News & Media"],
+        ["◧", "Events"],
+        ["★", "Membership"],
+        ["◎", "Alumni Directory"],
+        ["$", "Donate"],
+        ["+", "Join"],
+        ["?", "Contact & Support"]
+      ];
+
+      document.querySelectorAll(".site-menu-trigger").forEach((trigger, index) => {
+        const phone = trigger.closest(".phone");
+        if (!phone) return;
+
+        const backdrop = document.createElement("div");
+        backdrop.className = "portal-backdrop site-menu-backdrop";
+        backdrop.hidden = true;
+
+        const menu = document.createElement("div");
+        menu.className = "portal-menu site-menu";
+        menu.hidden = true;
+        menu.innerHTML = `<h4>Website menu</h4><p>Public site navigation from the sitemap and Phase 1 UR.</p><div class="portal-menu-list">${siteMenuItems.map(([icon, label]) => `<div class="portal-menu-row"><span>${icon}</span><strong>${label}</strong><small>›</small></div>`).join("")}</div>`;
+        menu.id = `site-menu-${index + 1}`;
+        trigger.setAttribute("aria-controls", menu.id);
+
+        const header = trigger.closest(".top, .phone-top");
+        if (!header) return;
+
+        phone.insertBefore(backdrop, header.nextSibling);
+        phone.insertBefore(menu, backdrop.nextSibling);
+
+        const closeMenu = () => {
+          menu.hidden = true;
+          backdrop.hidden = true;
+          trigger.setAttribute("aria-expanded", "false");
+        };
+
+        trigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const willOpen = menu.hidden;
+          document.querySelectorAll(".site-menu, #member-menu").forEach((openMenu) => {
+            openMenu.hidden = true;
+          });
+          document.querySelectorAll(".portal-backdrop").forEach((openBackdrop) => {
+            openBackdrop.hidden = true;
+          });
+          document.querySelectorAll(".site-menu-trigger, .portal-menu-trigger").forEach((openTrigger) => {
+            openTrigger.setAttribute("aria-expanded", "false");
+          });
+          menu.hidden = !willOpen;
+          backdrop.hidden = !willOpen;
+          trigger.setAttribute("aria-expanded", String(willOpen));
+        });
+
+        menu.addEventListener("click", (event) => {
+          event.stopPropagation();
+        });
+        backdrop.addEventListener("click", closeMenu);
+        document.addEventListener("click", closeMenu);
+      });
+
+      const portalTrigger = document.querySelector(".portal-menu-trigger");
+      const portalMenu = document.querySelector("#member-menu");
+      const portalBackdrop = document.querySelector(".member-menu-backdrop");
+
+      if (portalTrigger && portalMenu) {
+        const closePortalMenu = () => {
+          portalMenu.hidden = true;
+          if (portalBackdrop) portalBackdrop.hidden = true;
+          portalTrigger.setAttribute("aria-expanded", "false");
+        };
+
+        portalTrigger.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const willOpen = portalMenu.hidden;
+          document.querySelectorAll(".site-menu, #member-menu").forEach((openMenu) => {
+            openMenu.hidden = true;
+          });
+          document.querySelectorAll(".portal-backdrop").forEach((openBackdrop) => {
+            openBackdrop.hidden = true;
+          });
+          document.querySelectorAll(".site-menu-trigger, .portal-menu-trigger").forEach((openTrigger) => {
+            openTrigger.setAttribute("aria-expanded", "false");
+          });
+          portalMenu.hidden = !willOpen;
+          if (portalBackdrop) portalBackdrop.hidden = !willOpen;
+          portalTrigger.setAttribute("aria-expanded", String(willOpen));
+        });
+
+        portalMenu.addEventListener("click", (event) => {
+          event.stopPropagation();
+        });
+
+        if (portalBackdrop) {
+          portalBackdrop.addEventListener("click", closePortalMenu);
+        }
+
+        document.addEventListener("click", closePortalMenu);
+      }
+    </script>
+  </body>
+</html>

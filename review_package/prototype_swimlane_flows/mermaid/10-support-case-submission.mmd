@@ -1,0 +1,63 @@
+---
+config:
+  theme: base
+  flowchart:
+    curve: basis
+---
+flowchart TD
+  %% Support Case Submission
+  subgraph L0["Member"]
+    start(["Start"])
+    open["Open portal Support"]
+    details["Enter details / attachment"]
+    waiting[/"Status: waiting for member"/]
+  end
+  subgraph L1["Portal Support"]
+    type["Choose case type"]
+    draft[/"Status: draft case"/]
+    error[/"Status: validation error"/]
+  end
+  subgraph L2["Support System"]
+    valid{"Required fields complete?"}
+    submitted[/"Status: submitted"/]
+    assign["Assign to staff queue"]
+  end
+  subgraph L3["Staff"]
+    openCase[/"Status: open"/]
+    needInfo{"Need more information?"}
+    resolved[/"Status: resolved"/]
+    closed[/"Status: closed"/]
+  end
+  start --> open
+  open --> type
+  type --> draft
+  draft --> details
+  details --> valid
+  valid -- "No" --> error
+  error --> details
+  valid -- "Yes" --> submitted
+  submitted --> assign
+  assign --> openCase
+  openCase --> needInfo
+  needInfo -- "Yes" --> waiting
+  waiting --> details
+  needInfo -- "No" --> resolved
+  resolved --> closed
+  classDef start fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef process fill:#FFE8A6,stroke:#D6AE3E,color:#172033;
+  classDef decision fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef status fill:#D9C2F5,stroke:#9C6FD2,color:#172033;
+  class start start;
+  class open process;
+  class type process;
+  class draft status;
+  class details process;
+  class valid decision;
+  class error status;
+  class submitted status;
+  class assign process;
+  class openCase status;
+  class needInfo decision;
+  class waiting status;
+  class resolved status;
+  class closed status;

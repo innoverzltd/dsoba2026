@@ -1,0 +1,67 @@
+---
+config:
+  theme: base
+  flowchart:
+    curve: basis
+---
+flowchart TD
+  %% Public Event Guest Registration
+  subgraph L0["Public Visitor"]
+    start(["Start"])
+    open["Open public event detail"]
+    form["Enter guest attendee details"]
+    draft[/"Status: validation error"/]
+    pay["Pay or receive payment link"]
+  end
+  subgraph L1["Public Site"]
+    audience{"Event audience is public?"}
+    blocked[/"Status: alumni login required"/]
+  end
+  subgraph L2["Event System"]
+    capacity{"Capacity available?"}
+    waitlist[/"Status: waitlisted / enquiry only"/]
+    valid{"Required fields valid?"}
+    payment{"Payment required?"}
+    paid{"Payment successful?"}
+    pending[/"Status: pending payment"/]
+    confirmed[/"Status: confirmed registration"/]
+  end
+  subgraph L3["Notification"]
+    notify["Send email / WhatsApp notification"]
+  end
+  start --> open
+  open --> audience
+  audience -- "No" --> blocked
+  audience -- "Yes" --> capacity
+  capacity -- "No" --> waitlist
+  capacity -- "Yes" --> form
+  form --> valid
+  valid -- "No" --> draft
+  draft --> form
+  valid -- "Yes" --> payment
+  payment -- "Yes" --> pay
+  payment -- "No" --> confirmed
+  pay --> paid
+  paid -- "No" --> pending
+  pending --> pay
+  paid -- "Yes" --> confirmed
+  confirmed --> notify
+  classDef start fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef process fill:#FFE8A6,stroke:#D6AE3E,color:#172033;
+  classDef decision fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef status fill:#D9C2F5,stroke:#9C6FD2,color:#172033;
+  class start start;
+  class open process;
+  class audience decision;
+  class blocked status;
+  class capacity decision;
+  class waitlist status;
+  class form process;
+  class valid decision;
+  class draft status;
+  class payment decision;
+  class pay process;
+  class paid decision;
+  class pending status;
+  class confirmed status;
+  class notify process;

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1466" height="1574" viewBox="0 0 1466 1574">
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+        <path d="M 0 0 L 10 4 L 0 8 z" fill="#9AA3AF"/>
+      </marker>
+    </defs>
+    <rect width="1466" height="1574" fill="#ffffff"/>
+    
+      <rect x="40" y="10" width="250" height="62" fill="#FFE8A6" stroke="none"/>
+      <text text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#222" x="165" y="48"><tspan x="165" dy="0">Admin</tspan></text>
+      <rect x="40" y="82" width="250" height="1466" fill="#F5F5F5" stroke="none"/>
+    
+      <rect x="324" y="10" width="250" height="62" fill="#D9C2F5" stroke="none"/>
+      <text text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#222" x="449" y="33"><tspan x="449" dy="0">Admin Portal</tspan></text>
+      <rect x="324" y="82" width="250" height="1466" fill="#F5F5F5" stroke="none"/>
+    
+      <rect x="608" y="10" width="250" height="62" fill="#B9E1FA" stroke="none"/>
+      <text text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#222" x="733" y="33"><tspan x="733" dy="0">Permission System</tspan></text>
+      <rect x="608" y="82" width="250" height="1466" fill="#F5F5F5" stroke="none"/>
+    
+      <rect x="892" y="10" width="250" height="62" fill="#FFC0BE" stroke="none"/>
+      <text text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#222" x="1017" y="33"><tspan x="1017" dy="0">Staff User</tspan></text>
+      <rect x="892" y="82" width="250" height="1466" fill="#F5F5F5" stroke="none"/>
+    
+      <rect x="1176" y="10" width="250" height="62" fill="#C8E6C9" stroke="none"/>
+      <text text-anchor="middle" font-family="Arial" font-size="18" font-weight="700" fill="#222" x="1301" y="33"><tspan x="1301" dy="0">Audit Log</tspan></text>
+      <rect x="1176" y="82" width="250" height="1466" fill="#F5F5F5" stroke="none"/>
+    
+    <path d="M 165 210 L 165 232" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 165 328 L 165 339 L 449 339 L 449 350" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 449 446 L 449 457 L 733 457 L 733 468" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 733 564 L 733 575 L 449 575 L 449 586" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="563" y="547" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="591" y="560" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">No</text><path d="M 449 682 L 449 457 L 165 457 L 165 232" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 733 564 L 733 704" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="705" y="624" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="733" y="637" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">Yes</text><path d="M 733 800 L 733 811 L 165 811 L 165 822" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 165 918 L 165 929 L 1017 929 L 1017 940" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 1017 1036 L 1017 1047 L 733 1047 L 733 1058" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><path d="M 733 1154 L 733 1165 L 1017 1165 L 1017 1176" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="847" y="1137" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="875" y="1150" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">No</text><path d="M 733 1154 L 733 1224 L 1017 1224 L 1017 1294" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/><rect x="847" y="1214" width="56" height="18" fill="#ffffff" opacity="0.86"/>
+        <text x="875" y="1227" text-anchor="middle" font-family="Arial" font-size="13" font-weight="700" fill="#333">Yes</text><path d="M 1017 1390 L 1017 1401 L 1301 1401 L 1301 1412" fill="none" stroke="#9AA3AF" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <ellipse cx="165" cy="162" rx="93" ry="46" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+      <text text-anchor="middle" font-size="15" fill="#172033" font-family="Arial" x="165" y="167"><tspan x="165" dy="0">Start</tspan></text><rect x="72" y="234" width="186" height="92" fill="#FFE8A6" stroke="#D6AE3E" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="165" y="276.5"><tspan x="165" dy="0">Create / edit admin</tspan><tspan x="165" dy="17">type</tspan></text><rect x="356" y="352" width="186" height="92" fill="#D9C2F5" stroke="#9C6FD2" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="449" y="394.5"><tspan x="449" dy="0">Set page and action</tspan><tspan x="449" dy="17">rights</tspan></text><polygon points="733,470 826,518 733,566 640,518" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+      <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="733" y="514.5"><tspan x="733" dy="0">Rights configuration</tspan><tspan x="733" dy="17">valid?</tspan></text><rect x="356" y="588" width="186" height="92" fill="#D9C2F5" stroke="#9C6FD2" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="449" y="630.5"><tspan x="449" dy="0">Status: invalid /</tspan><tspan x="449" dy="17">draft</tspan></text><rect x="640" y="706" width="186" height="92" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="733" y="748.5"><tspan x="733" dy="0">Status: admin type</tspan><tspan x="733" dy="17">active</tspan></text><rect x="72" y="824" width="186" height="92" fill="#FFE8A6" stroke="#D6AE3E" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="165" y="866.5"><tspan x="165" dy="0">Assign admin type</tspan><tspan x="165" dy="17">to Admin / Staff</tspan></text><rect x="924" y="942" width="186" height="92" fill="#FFC0BE" stroke="#DE7D79" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="1017" y="976"><tspan x="1017" dy="0">Attempt view /</tspan><tspan x="1017" dy="17">create / edit /</tspan><tspan x="1017" dy="17">delete</tspan></text><polygon points="733,1060 826,1108 733,1156 640,1108" fill="#B9E1FA" stroke="#6BAED6" stroke-width="1.5"/>
+      <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="733" y="1113"><tspan x="733" dy="0">Action allowed?</tspan></text><rect x="924" y="1178" width="186" height="92" fill="#FFC0BE" stroke="#DE7D79" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="1017" y="1220.5"><tspan x="1017" dy="0">Status: access</tspan><tspan x="1017" dy="17">denied</tspan></text><rect x="924" y="1296" width="186" height="92" fill="#FFC0BE" stroke="#DE7D79" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="1017" y="1347"><tspan x="1017" dy="0">Enter audit reason</tspan></text><rect x="1208" y="1414" width="186" height="92" fill="#C8E6C9" stroke="#6AA56D" stroke-width="1.5"/>
+    <text text-anchor="middle" font-size="14" fill="#172033" font-family="Arial" x="1301" y="1448"><tspan x="1301" dy="0">Status: action</tspan><tspan x="1301" dy="17">completed and</tspan><tspan x="1301" dy="17">logged</tspan></text>
+    <text x="40" y="1564" font-family="Arial" font-size="13" fill="#6B7280">12-admin-type-rights-audit.mmd</text>
+  </svg>

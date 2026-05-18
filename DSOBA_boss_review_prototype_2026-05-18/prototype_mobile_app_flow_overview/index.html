@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DSOBA Mobile App Page And Flow Overview</title>
+    <style>
+      :root {
+        --navy: #0e1e2b;
+        --heritage: #02385c;
+        --gold: #d8b552;
+        --wine: #7d2138;
+        --cream: #f8f5ee;
+        --ink: #111315;
+        --lime: #d8f36a;
+        --pink: #ff91ec;
+        --blue: #198ef2;
+        --green: #39c892;
+        --paper: #e4e9f2;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      header {
+        padding: 44px 52px 34px;
+        color: #fff;
+        background: #111827;
+      }
+      h1, h2, h3, h4, p { margin: 0; }
+      h1 { max-width: 1180px; font-size: 48px; line-height: 1.04; }
+      header p { max-width: 1050px; margin-top: 14px; color: rgba(255,255,255,0.74); font-size: 18px; line-height: 1.5; }
+      .board {
+        display: grid;
+        gap: 44px;
+        padding: 44px 52px 64px;
+      }
+      .theme {
+        overflow: hidden;
+        border-radius: 28px;
+        background: #fff;
+        box-shadow: 0 24px 70px rgba(15,23,42,0.15);
+      }
+      .theme-head {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 28px;
+        padding: 28px;
+        border-bottom: 1px solid rgba(15,23,42,0.1);
+      }
+      .theme-head h2 { font-size: 34px; }
+      .theme-head p { margin-top: 10px; color: #667085; line-height: 1.45; }
+      .flow-map {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .flow-pill {
+        padding: 10px 12px;
+        border-radius: 999px;
+        background: #f3f5f9;
+        color: #344054;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .arrow { color: #98a2b3; font-weight: 900; }
+      .phones {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 18px;
+        padding: 28px;
+        background: #f6f8fb;
+      }
+      .phone-wrap {
+        display: grid;
+        gap: 10px;
+      }
+      .phone-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 32px;
+        color: #475467;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .phone-label span:last-child {
+        padding: 5px 8px;
+        border-radius: 999px;
+        background: rgba(15,23,42,0.08);
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .phone {
+        width: 100%;
+        min-height: 620px;
+        overflow: hidden;
+        border: 7px solid #101216;
+        border-radius: 30px;
+        background: #fff;
+        box-shadow: 0 18px 42px rgba(15,23,42,0.2);
+      }
+      .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 54px;
+        padding: 10px 13px;
+        font-size: 11px;
+        font-weight: 900;
+      }
+      .logo { width: 34px; height: 40px; }
+      img { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .logo img { object-fit: contain; }
+      .menu { font-size: 20px; }
+      .section { padding: 15px; }
+      .tag {
+        display: inline-flex;
+        width: fit-content;
+        min-height: 23px;
+        align-items: center;
+        padding: 0 8px;
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .phone h3 { margin-top: 8px; font-size: 24px; line-height: 0.98; }
+      .phone h4 { font-size: 17px; line-height: 1.05; }
+      .phone p { margin-top: 8px; font-size: 12px; line-height: 1.35; }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 34px;
+        margin-top: 12px;
+        padding: 0 12px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .photo { overflow: hidden; border-radius: 14px; height: 118px; }
+      .list { display: grid; gap: 8px; margin-top: 12px; }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .row small { display: block; margin-top: 3px; opacity: 0.72; font-size: 10px; font-weight: 700; line-height: 1.25; }
+      .card { margin-top: 12px; padding: 12px; border-radius: 14px; }
+      .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+      .tile { min-height: 72px; padding: 10px; border-radius: 12px; font-size: 12px; font-weight: 900; }
+      .steps { display: grid; gap: 8px; margin-top: 12px; }
+      .step {
+        display: grid;
+        grid-template-columns: 26px 1fr;
+        gap: 8px;
+        align-items: start;
+        font-size: 11px;
+        line-height: 1.25;
+      }
+      .num {
+        display: grid;
+        width: 26px;
+        height: 26px;
+        place-items: center;
+        border-radius: 50%;
+        font-size: 11px;
+        font-weight: 900;
+      }
+      .footer-mobile {
+        margin-top: 14px;
+        padding: 14px 15px;
+      }
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        min-height: 32px;
+        align-items: center;
+        margin-top: 7px;
+        padding: 0 10px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 900;
+      }
+
+      .modern .theme-head { color: #f4d889; background: var(--navy); }
+      .modern .theme-head p { color: rgba(255,255,255,0.72); }
+      .modern .flow-pill { color: #f4d889; background: rgba(255,255,255,0.08); }
+      .modern .phone { color: #fff; background: #0e1e2b; }
+      .modern .top { color: #f4d889; background: #081724; }
+      .modern .tag, .modern .button, .modern .num { color: #111; background: #d8b552; }
+      .modern .row, .modern .card, .modern .tile { color: #fff; background: #7d2138; }
+      .modern .footer-mobile { background: #081724; }
+      .modern .footer-row { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.86); }
+      .modern h3, .modern h4 { color: #f4d889; font-family: Georgia, "Times New Roman", serif; }
+
+      .heritage .theme-head { color: #fff8e7; background: var(--heritage); font-family: Georgia, "Times New Roman", serif; }
+      .heritage .theme-head p { color: rgba(255,248,231,0.72); font-family: Arial, Helvetica, sans-serif; }
+      .heritage .flow-pill { color: #fff8e7; background: rgba(255,255,255,0.1); font-family: Arial, Helvetica, sans-serif; }
+      .heritage .phone { color: var(--heritage); background: var(--cream); font-family: Georgia, "Times New Roman", serif; }
+      .heritage .top { color: #fff8e7; background: var(--heritage); font-family: Arial, Helvetica, sans-serif; }
+      .heritage .tag, .heritage .button, .heritage .num { color: #111; background: var(--gold); font-family: Arial, Helvetica, sans-serif; }
+      .heritage .row, .heritage .card, .heritage .tile { background: #fffdf8; border: 1px solid rgba(2,56,92,0.14); }
+      .heritage .footer-mobile { color: #fff8e7; background: var(--heritage); font-family: Arial, Helvetica, sans-serif; }
+      .heritage .footer-row { background: rgba(255,255,255,0.08); }
+      .heritage p, .heritage small { font-family: Arial, Helvetica, sans-serif; }
+
+      .vibrant .theme-head { background: #f4eee5; }
+      .vibrant .flow-pill:nth-child(1), .vibrant .flow-pill:nth-child(5) { background: var(--pink); color: #111; }
+      .vibrant .flow-pill:nth-child(3), .vibrant .flow-pill:nth-child(7) { background: var(--lime); color: #111; }
+      .vibrant .phone { background: #f4eee5; color: #141414; }
+      .vibrant .top { background: #f4eee5; }
+      .vibrant .tag, .vibrant .button, .vibrant .num { color: #111; background: var(--pink); border-radius: 999px; }
+      .vibrant .row:nth-child(odd), .vibrant .card:nth-child(odd), .vibrant .tile:nth-child(odd) { background: var(--pink); }
+      .vibrant .row:nth-child(even), .vibrant .card:nth-child(even), .vibrant .tile:nth-child(even) { background: var(--lime); }
+      .vibrant h3 { font-size: 26px; }
+      .vibrant .footer-mobile { color: #fff; background: #141414; }
+      .vibrant .footer-row { background: rgba(255,255,255,0.08); }
+
+      .clean .theme-head {
+        background:
+          radial-gradient(circle at 8% 50%, rgba(95,190,214,0.45), transparent 32%),
+          radial-gradient(circle at 82% 40%, rgba(255,139,74,0.48), transparent 38%),
+          linear-gradient(120deg, #cfe1f1 0%, #fffaf2 42%, #ffd3c0 100%);
+      }
+      .clean .phone {
+        position: relative;
+        isolation: isolate;
+        background: #fbf7ec;
+      }
+      .clean .phone:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        inset: -80px -60px auto;
+        height: 330px;
+        background:
+          radial-gradient(circle at 5% 44%, rgba(95,190,214,0.72), transparent 37%),
+          radial-gradient(circle at 88% 45%, rgba(255,139,74,0.64), transparent 46%),
+          linear-gradient(120deg, #cfe1f1, #fffaf2 44%, #ffd3c0);
+        filter: blur(12px);
+      }
+      .clean .top { background: rgba(255,255,255,0.6); backdrop-filter: blur(12px); }
+      .clean .tag, .clean .button, .clean .num { color: #111; background: var(--lime); border-radius: 999px; }
+      .clean .row, .clean .card, .clean .tile { background: rgba(255,255,255,0.88); border: 1px solid rgba(21,23,26,0.1); }
+      .clean .footer-mobile { color: #fff; background: #111315; }
+      .clean .footer-row { background: rgba(255,255,255,0.08); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>DSOBA Mobile App Page And Flow Overview</h1>
+      <p>This image board previews the mobile pages required for demo use across all four confirmed themes. It is for scope and flow confirmation only; real HTML pages will be built after this direction is approved.</p>
+    </header>
+
+    <main class="board">
+      <section class="theme modern">
+        <div class="theme-head">
+          <div><h2>Modern Professional</h2><p>Formal, premium mobile UI. Strong for official association credibility and donor/member confidence.</p></div>
+          <div class="flow-map"><span class="flow-pill">Home</span><span class="arrow">→</span><span class="flow-pill">News</span><span class="arrow">→</span><span class="flow-pill">Events</span><span class="arrow">→</span><span class="flow-pill">Registration</span><span class="arrow">→</span><span class="flow-pill">Application</span><span class="arrow">→</span><span class="flow-pill">Portal</span></div>
+        </div>
+        <div class="phones">
+          <div class="phone-wrap"><div class="phone-label">Home <span>from current design</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>DSOBA</span><span class="menu">≡</span></div><div class="section"><span class="tag">Modern</span><h3>Honouring heritage, engaging the future.</h3><p>Gateway to news, events, membership, directory and support.</p><span class="button">Explore legacy</span></div><div class="section"><div class="card"><h4>Annual Dinner 2026</h4><p>Ticket and table booking open. Seat assignment after registration closes.</p></div><div class="card-grid"><div class="tile">News</div><div class="tile">Events</div><div class="tile">Membership</div><div class="tile">Support</div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">DSOBA News <span>display</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>News</span><span class="menu">≡</span></div><div class="section"><span class="tag">News & Media</span><h3>Latest from DSOBA</h3><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-main-building.jpg" alt="News feature" /></div><div class="list"><div class="row"><div>President's update<small>Association announcement</small></div><span>Read</span></div><div class="row"><div>DBS campus story<small>School update</small></div><span>Read</span></div><div class="row"><div>Newsletter archive<small>Issue 2026 Q1</small></div><span>View</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Past Events <span>archive</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Past Events</span><span class="menu">≡</span></div><div class="section"><span class="tag">Archive</span><h3>Past events</h3><div class="list"><div class="row"><div>Annual Dinner 2025<small>Photos, programme, attendees</small></div><span>View</span></div><div class="row"><div>Games Day<small>Sports and family gathering</small></div><span>View</span></div><div class="row"><div>Chapter Talk<small>Professional chapter event</small></div><span>View</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Upcoming + Register <span>flow 02/07</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Events</span><span class="menu">≡</span></div><div class="section"><span class="tag">Clickable</span><h3>Upcoming events</h3><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/grand-steps.jpg" alt="Upcoming event" /></div><div class="card"><h4>Annual Dinner 2026</h4><p>Public registration allowed without account.</p><span class="button">Register</span></div><div class="steps"><div class="step"><span class="num">1</span><span>Select ticket or table</span></div><div class="step"><span class="num">2</span><span>Enter attendee details</span></div><div class="step"><span class="num">3</span><span>Payment / confirmation</span></div><div class="step"><span class="num">4</span><span>Seat assigned after close</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Application <span>flow 04</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Apply</span><span class="menu">≡</span></div><div class="section"><span class="tag">Brian Lee</span><h3>Membership application</h3><p>Applicant flow from public membership CTA to submitted application.</p><div class="steps"><div class="step"><span class="num">1</span><span>Choose member type</span></div><div class="step"><span class="num">2</span><span>Personal and school details</span></div><div class="step"><span class="num">3</span><span>Upload supporting info</span></div><div class="step"><span class="num">4</span><span>Submitted, pending review</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Portal Landing <span>hub</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Portal</span><span class="menu">≡</span></div><div class="section"><span class="tag">Edward Lau</span><h3>Member dashboard</h3><div class="list"><div class="row"><div>Life member<small>Paid status active</small></div><span>Open</span></div><div class="row"><div>Annual Dinner ticket<small>QR and payment status</small></div><span>View</span></div><div class="row"><div>Booking request<small>Portal-only facility booking</small></div><span>New</span></div><div class="row"><div>Support case<small>Payment or account help</small></div><span>Start</span></div></div></div><div class="footer-mobile"><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></div></div></div>
+        </div>
+      </section>
+
+      <section class="theme heritage">
+        <div class="theme-head">
+          <div><h2>Editorial Heritage</h2><p>Heritage-led mobile UI with archive tone, serif hierarchy, and institutional content as curated stories.</p></div>
+          <div class="flow-map"><span class="flow-pill">Home</span><span class="arrow">→</span><span class="flow-pill">News</span><span class="arrow">→</span><span class="flow-pill">Events</span><span class="arrow">→</span><span class="flow-pill">Registration</span><span class="arrow">→</span><span class="flow-pill">Application</span><span class="arrow">→</span><span class="flow-pill">Portal</span></div>
+        </div>
+        <div class="phones">
+          <div class="phone-wrap"><div class="phone-label">Home <span>editorial</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Heritage</span><span class="menu">≡</span></div><div class="section" style="background:#02385c;color:#fff8e7"><span class="tag">Heritage</span><h3>A living archive for the DBS alumni community.</h3><p>Curated stories plus clear Phase 1 action routes.</p><span class="button">Read heritage</span></div><div class="section"><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-main-building.jpg" alt="Heritage home" /></div><div class="list"><div class="row"><div>President's note<small>Committee message</small></div><span>Read</span></div><div class="row"><div>Annual Dinner<small>Register</small></div><span>Open</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">DSOBA News <span>editorial</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Journal</span><span class="menu">≡</span></div><div class="section"><span class="tag">News</span><h3>Association journal</h3><div class="card"><h4>President's update</h4><p>Formal update presented as a magazine-style article.</p></div><div class="card"><h4>DBS update</h4><p>School story and alumni context.</p></div><div class="card"><h4>Gallery archive</h4><p>Photo stories by year and event.</p></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Past Events <span>archive</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Archive</span><span class="menu">≡</span></div><div class="section"><span class="tag">Events</span><h3>Past events archive</h3><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-field.jpg" alt="Past events" /></div><div class="list"><div class="row"><div>Annual Dinner 2025<small>Editorial recap</small></div><span>Read</span></div><div class="row"><div>Chapter gathering<small>Photos and notes</small></div><span>View</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Upcoming + Register <span>flow 02/07</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Events</span><span class="menu">≡</span></div><div class="section"><span class="tag">Annual Dinner</span><h3>Flagship event</h3><div class="card"><h4>Ticket / table booking</h4><p>Individual tickets and tables coexist.</p></div><div class="steps"><div class="step"><span class="num">1</span><span>Choose booking type</span></div><div class="step"><span class="num">2</span><span>Guest details, no account required</span></div><div class="step"><span class="num">3</span><span>Confirm and pay</span></div><div class="step"><span class="num">4</span><span>Seat/table later</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Application <span>flow 04</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Apply</span><span class="menu">≡</span></div><div class="section"><span class="tag">Membership</span><h3>Apply to join DSOBA</h3><p>Editorial intro before a guided application flow.</p><div class="steps"><div class="step"><span class="num">1</span><span>Eligibility and member type</span></div><div class="step"><span class="num">2</span><span>Applicant details</span></div><div class="step"><span class="num">3</span><span>Committee review status</span></div><div class="step"><span class="num">4</span><span>Approved or follow-up required</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Portal Landing <span>hub</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Portal</span><span class="menu">≡</span></div><div class="section"><span class="tag">Member</span><h3>Personal archive and services</h3><div class="list"><div class="row"><div>Membership record<small>Status and payment history</small></div><span>Open</span></div><div class="row"><div>Events and QR<small>Tickets and check-in</small></div><span>View</span></div><div class="row"><div>Directory profile<small>Visible to members</small></div><span>Edit</span></div></div></div><div class="footer-mobile"><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></div></div></div>
+        </div>
+      </section>
+
+      <section class="theme vibrant">
+        <div class="theme-head">
+          <div><h2>Community Vibrant</h2><p>Event-first mobile UI with bold cards, younger-community energy, and chapter discovery as visible service entry points.</p></div>
+          <div class="flow-map"><span class="flow-pill">Home</span><span class="arrow">→</span><span class="flow-pill">News</span><span class="arrow">→</span><span class="flow-pill">Events</span><span class="arrow">→</span><span class="flow-pill">Registration</span><span class="arrow">→</span><span class="flow-pill">Application</span><span class="arrow">→</span><span class="flow-pill">Portal</span></div>
+        </div>
+        <div class="phones">
+          <div class="phone-wrap"><div class="phone-label">Home <span>event-first</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Community</span><span class="menu">≡</span></div><div class="section"><h3>Make events impossible to miss.</h3><span class="button">Join community</span><div class="card"><h4>2026 Annual Dinner</h4><p>Booking open now.</p></div><div class="card"><h4>30+ chapter moments</h4><p>Talks, sports and overseas groups.</p></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">DSOBA News <span>active feed</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Stories</span><span class="menu">≡</span></div><div class="section"><span class="tag">Stories</span><h3>Community updates</h3><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-field.jpg" alt="Community stories" /></div><div class="list"><div class="row"><div>Alumni spotlight<small>Member story</small></div><span>Read</span></div><div class="row"><div>Gallery drop<small>New photos</small></div><span>View</span></div><div class="row"><div>Chapter notice<small>ICT group</small></div><span>Open</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Past Events <span>gallery</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Gallery</span><span class="menu">≡</span></div><div class="section"><h3>Events people remember.</h3><div class="card-grid"><div class="tile">Annual Dinner 2025</div><div class="tile">Games Day</div><div class="tile">Legal Chapter</div><div class="tile">Overseas Dinner</div></div><div class="photo" style="margin-top:12px"><img src="../prototype_layout_direction/full_homepage_assets/grand-steps.jpg" alt="Past event gallery" /></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Upcoming + Register <span>flow 02/07</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Events</span><span class="menu">≡</span></div><div class="section"><h3>Book the next moment.</h3><div class="card"><h4>Annual Dinner 2026</h4><p>Tickets, tables, payment and confirmation.</p><span class="button">Register</span></div><div class="steps"><div class="step"><span class="num">1</span><span>Pick event</span></div><div class="step"><span class="num">2</span><span>Ticket or table</span></div><div class="step"><span class="num">3</span><span>Guest info</span></div><div class="step"><span class="num">4</span><span>Pay and confirm</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Application <span>flow 04</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Join</span><span class="menu">≡</span></div><div class="section"><h3>Join the alumni circle.</h3><div class="card"><h4>Membership application</h4><p>Short, guided, status-aware.</p></div><div class="steps"><div class="step"><span class="num">1</span><span>Select type</span></div><div class="step"><span class="num">2</span><span>School and contact info</span></div><div class="step"><span class="num">3</span><span>Submit</span></div><div class="step"><span class="num">4</span><span>Track approval</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Portal Landing <span>hub</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Portal</span><span class="menu">≡</span></div><div class="section"><h3>Your DSOBA hub.</h3><div class="card-grid"><div class="tile">Membership Active</div><div class="tile">Event ticket QR</div><div class="tile">Directory visible</div><div class="tile">Support case</div></div><div class="card"><h4>WhatsApp reminder</h4><p>Annual Dinner payment reminder sent.</p></div></div><div class="footer-mobile"><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Directory</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></div></div></div>
+        </div>
+      </section>
+
+      <section class="theme clean">
+        <div class="theme-head">
+          <div><h2>Clean Easy</h2><p>Responsive service-led mobile UI. Same elements as desktop, stacked vertically for task clarity.</p></div>
+          <div class="flow-map"><span class="flow-pill">Home</span><span class="arrow">→</span><span class="flow-pill">News</span><span class="arrow">→</span><span class="flow-pill">Events</span><span class="arrow">→</span><span class="flow-pill">Registration</span><span class="arrow">→</span><span class="flow-pill">Application</span><span class="arrow">→</span><span class="flow-pill">Portal</span></div>
+        </div>
+        <div class="phones">
+          <div class="phone-wrap"><div class="phone-label">Home <span>responsive</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>DSOBA</span><span class="menu">≡</span></div><div class="section" style="text-align:center"><span class="tag">Clean Easy</span><h3>A simpler alumni portal, organised around real actions.</h3><span class="button">Start with membership</span></div><div class="section"><div class="list"><div class="row"><div>Annual Dinner 2026<small>Latest event</small></div><span>Register</span></div><div class="row"><div>Chapter talk<small>Member registration</small></div><span>Open</span></div></div><div class="card-grid"><div class="tile">About</div><div class="tile">News & Media</div><div class="tile">Events</div><div class="tile">Membership</div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">DSOBA News <span>listing</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>News</span><span class="menu">≡</span></div><div class="section"><span class="tag">News</span><h3>News & Media</h3><div class="list"><div class="row"><div>DSOBA News<small>Association updates</small></div><span>Read</span></div><div class="row"><div>DBS Updates<small>School stories</small></div><span>Read</span></div><div class="row"><div>Gallery<small>Photos and archives</small></div><span>View</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Past Events <span>archive</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Past</span><span class="menu">≡</span></div><div class="section"><span class="tag">Events</span><h3>Past events</h3><div class="photo"><img src="../prototype_layout_direction/full_homepage_assets/dbs-main-building.jpg" alt="Past events clean" /></div><div class="list"><div class="row"><div>Annual Dinner 2025</div><span>View</span></div><div class="row"><div>Games Day</div><span>View</span></div><div class="row"><div>Chapter gathering</div><span>View</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Upcoming + Register <span>flow 02/07</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Events</span><span class="menu">≡</span></div><div class="section"><span class="tag">Latest 3</span><h3>Upcoming Events</h3><div class="card"><h4>Annual Dinner 2026</h4><p>Public visitor can register without account.</p><span class="button">Register</span></div><div class="steps"><div class="step"><span class="num">1</span><span>Select event</span></div><div class="step"><span class="num">2</span><span>Attendee details</span></div><div class="step"><span class="num">3</span><span>Payment / confirmation</span></div><div class="step"><span class="num">4</span><span>Ticket status</span></div></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Application <span>flow 04</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Apply</span><span class="menu">≡</span></div><div class="section"><span class="tag">Membership</span><h3>Apply for membership</h3><div class="steps"><div class="step"><span class="num">1</span><span>Member type</span></div><div class="step"><span class="num">2</span><span>Personal details</span></div><div class="step"><span class="num">3</span><span>Review and submit</span></div><div class="step"><span class="num">4</span><span>Track status</span></div></div><div class="card"><h4>Brian Lee</h4><p>Submitted application, GenCom pending.</p></div></div></div></div>
+          <div class="phone-wrap"><div class="phone-label">Portal Landing <span>hub</span></div><div class="phone"><div class="top"><div class="logo"><img src="../prototype_layout_direction/assets/dsoba-shield-logo-transparent.png" alt="DSOBA logo" /></div><span>Portal</span><span class="menu">≡</span></div><div class="section"><span class="tag">Dashboard</span><h3>Member portal</h3><div class="list"><div class="row"><div>Membership status<small>Trial member, paid upgrade due at 28</small></div><span>Open</span></div><div class="row"><div>Annual Dinner<small>2 tickets, payment pending</small></div><span>Pay</span></div><div class="row"><div>Alumni directory<small>Profile visible to members</small></div><span>View</span></div><div class="row"><div>Booking</div><span>Request</span></div></div></div><div class="footer-mobile"><div class="footer-row"><span>News</span><span>+</span></div><div class="footer-row"><span>Events</span><span>+</span></div><div class="footer-row"><span>Support</span><span>+</span></div></div></div></div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

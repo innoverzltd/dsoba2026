@@ -1,0 +1,58 @@
+---
+config:
+  theme: base
+  flowchart:
+    curve: basis
+---
+flowchart TD
+  %% Admin Type, Page Rights, And Audit
+  subgraph L0["Admin"]
+    start(["Start"])
+    type["Create / edit admin type"]
+    assign["Assign admin type to Admin / Staff"]
+  end
+  subgraph L1["Admin Portal"]
+    rights["Set page and action rights"]
+    draft[/"Status: invalid / draft"/]
+  end
+  subgraph L2["Permission System"]
+    valid{"Rights configuration valid?"}
+    active[/"Status: admin type active"/]
+    allowed{"Action allowed?"}
+  end
+  subgraph L3["Staff User"]
+    attempt["Attempt view / create / edit / delete"]
+    denied[/"Status: access denied"/]
+    reason["Enter audit reason"]
+  end
+  subgraph L4["Audit Log"]
+    log[/"Status: action completed and logged"/]
+  end
+  start --> type
+  type --> rights
+  rights --> valid
+  valid -- "No" --> draft
+  draft --> type
+  valid -- "Yes" --> active
+  active --> assign
+  assign --> attempt
+  attempt --> allowed
+  allowed -- "No" --> denied
+  allowed -- "Yes" --> reason
+  reason --> log
+  classDef start fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef process fill:#FFE8A6,stroke:#D6AE3E,color:#172033;
+  classDef decision fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef status fill:#D9C2F5,stroke:#9C6FD2,color:#172033;
+  class start start;
+  class type process;
+  class rights process;
+  class valid decision;
+  class draft status;
+  class active status;
+  class assign process;
+  class attempt process;
+  class allowed decision;
+  class denied status;
+  class reason process;
+  class log status;

@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DSOBA Responsive UI Design Directions</title>
+    <style>
+      :root {
+        --ink: #101828;
+        --muted: #667085;
+        --line: #d8dee8;
+        --paper: #f3f5f9;
+        --navy: #10213f;
+        --gold: #d7ad4a;
+        --green: #0f766e;
+        --blue: #255be8;
+        --coral: #e9654d;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      header {
+        padding: 56px 64px 42px;
+        color: #fff;
+        background: #121722;
+      }
+      h1, h2, h3, p { margin: 0; }
+      h1 {
+        max-width: 1040px;
+        font-size: 54px;
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+      header p {
+        max-width: 960px;
+        margin-top: 16px;
+        color: rgba(255,255,255,0.76);
+        font-size: 19px;
+        line-height: 1.5;
+      }
+      main {
+        display: grid;
+        gap: 34px;
+        padding: 34px 64px 64px;
+      }
+      .panel, .direction, .shot {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+      .panel {
+        padding: 28px;
+      }
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .summary-card {
+        min-height: 126px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fff;
+      }
+      .summary-card strong {
+        display: block;
+        color: var(--navy);
+        font-size: 30px;
+      }
+      .summary-card span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.42;
+      }
+      .tag {
+        display: inline-flex;
+        width: fit-content;
+        min-height: 30px;
+        align-items: center;
+        padding: 0 10px;
+        border-radius: 6px;
+        background: #fff6df;
+        color: #8a5d00;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .tag.blue { color: var(--blue); background: #eef4ff; }
+      .tag.green { color: var(--green); background: #eaf8f5; }
+      .tag.coral { color: #b42318; background: #fff1f0; }
+      .html-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        margin-top: 18px;
+        padding: 0 18px;
+        border-radius: 8px;
+        color: #fff;
+        background: var(--navy);
+        font-weight: 900;
+        text-decoration: none;
+      }
+      .direction-head {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 24px;
+        padding: 28px;
+        border-bottom: 1px solid var(--line);
+      }
+      h2 {
+        margin-top: 10px;
+        color: var(--navy);
+        font-size: 34px;
+      }
+      .direction p, .panel p {
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      .reason-list {
+        display: grid;
+        gap: 10px;
+      }
+      .reason {
+        padding: 12px;
+        border-radius: 8px;
+        background: #f7f9fc;
+        color: #344054;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      .principles {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        padding: 0 28px 22px;
+      }
+      .principle {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcfe;
+      }
+      .principle h3 {
+        margin-bottom: 10px;
+        color: var(--navy);
+        font-size: 18px;
+      }
+      .principle p {
+        color: #526071;
+        font-size: 14px;
+        line-height: 1.48;
+      }
+      .shots {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 260px;
+        gap: 20px;
+        padding: 22px;
+        align-items: start;
+      }
+      .shot {
+        overflow: hidden;
+      }
+      .shot button {
+        display: block;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: zoom-in;
+      }
+      .shot img {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #e7ebf2;
+      }
+      .shot.mobile-shot img {
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+      }
+      .caption {
+        padding: 14px 16px 16px;
+        color: #526071;
+        font-size: 15px;
+        line-height: 1.42;
+      }
+      .matrix {
+        display: grid;
+        margin-top: 20px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+      }
+      .matrix-row {
+        display: grid;
+        grid-template-columns: 190px 1fr 1fr 1fr;
+      }
+      .matrix-row > div {
+        padding: 15px;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        color: #344054;
+        font-size: 14px;
+        line-height: 1.4;
+        background: #fff;
+      }
+      .matrix-row > div:last-child { border-right: 0; }
+      .matrix-row:last-child > div { border-bottom: 0; }
+      .matrix-head > div {
+        color: var(--navy);
+        background: #f1f5fa;
+        font-weight: 900;
+      }
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 26px;
+        background: rgba(12,18,32,0.88);
+      }
+      .lightbox.open { display: flex; }
+      .lightbox figure {
+        width: min(1440px, 96vw);
+        max-height: 94vh;
+        margin: 0;
+        overflow: auto;
+        border-radius: 8px;
+        background: #fff;
+      }
+      .lightbox img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .lightbox figcaption {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 16px;
+        color: #344054;
+        font-weight: 900;
+      }
+      .close {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: #fff;
+        color: var(--navy);
+        font-weight: 900;
+        cursor: pointer;
+      }
+      @media (max-width: 1000px) {
+        header, main { padding-left: 22px; padding-right: 22px; }
+        .summary-grid, .direction-head, .shots, .principles, .matrix-row { grid-template-columns: 1fr; }
+        h1 { font-size: 38px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>DSOBA Responsive UI Design Directions</h1>
+      <p>Revised from the supplied desktop and mobile references. Each direction now includes both desktop and mobile views, uses actual image assets, and has a distinct layout strategy rather than a colour-only variation.</p>
+    </header>
+    <main>
+      <section class="summary-grid">
+        <div class="summary-card"><strong>4</strong><span>Design directions: Modern Professional, Editorial Heritage, Community Vibrant, Clean Easy.</span></div>
+        <div class="summary-card"><strong>8</strong><span>Total exported mockups: desktop and mobile for every direction.</span></div>
+        <div class="summary-card"><strong>Real images</strong><span>Campus and alumni portrait areas use image assets derived from the supplied reference, not empty placeholders.</span></div>
+        <div class="summary-card"><strong>Next</strong><span>Choose one public direction, then apply its system to the prototype screen list.</span></div>
+      </section>
+
+      <section class="panel">
+        <span class="tag blue">Designer rationale</span>
+        <h2>What changed from the previous version</h2>
+        <p style="margin-top:12px">The reference is not just a dark homepage. Its useful qualities are: a memorable hero, real campus imagery, portrait credibility, gold call-to-actions, simple mobile actions, and clear content zones for news, events and alumni. These four directions keep those strengths but explore different levels of formality, simplicity, youthfulness, and task clarity.</p>
+        <a class="html-link" href="full_homepages.html">Open full homepage HTML with desktop and mobile side by side</a>
+      </section>
+
+      <section class="direction">
+        <div class="direction-head">
+          <div><span class="tag">Direction 1</span><h2>Modern Professional</h2><p>Closest to the reference. Dark premium surface, gold hierarchy, strong hero, portrait stack, and structured content bands. Best when the client wants the prototype to feel polished, formal and credible without becoming too traditional.</p></div>
+          <div class="reason-list"><div class="reason">Audience principle: senior alumni, committee members and donors need immediate trust, so the first screen behaves like an official association front door.</div><div class="reason">Layout principle: the hero gives emotional context, the portrait stack adds real-person credibility, and the three-column band turns attention into concrete routes: news, events and alumni.</div><div class="reason">Colour principle: #0e1e2b creates authority and contrast; gold is reserved for hierarchy and CTA so important actions feel ceremonial but still clear.</div></div>
+        </div>
+        <div class="principles"><div class="principle"><h3>Desktop rationale</h3><p>The desktop layout uses a wide cinematic hero because public visitors need to understand DSOBA's stature before choosing an action. Portraits on the right create social proof without interrupting the headline. The lower three-column area mirrors the client's sitemap priorities and makes the homepage useful after the brand impression.</p></div><div class="principle"><h3>Mobile rationale</h3><p>The mobile layout compresses the same hierarchy into image, headline and large stacked buttons. This avoids making users read dense navigation on a small screen, while still keeping the key public paths visible: News, Heritage/Events, Alumni Directory and Donate/Join.</p></div></div>
+        <div class="shots"><article class="shot"><button data-lightbox="responsive_exports/modern-professional-desktop.png" data-title="Modern Professional · Desktop"><img src="responsive_exports/modern-professional-desktop.png" alt="Modern Professional desktop design" /></button><div class="caption">Desktop web layout with full hero, alumni portraits, news, events and spotlight alumni.</div></article><article class="shot mobile-shot"><button data-lightbox="responsive_exports/modern-professional-mobile.png" data-title="Modern Professional · Mobile"><img src="responsive_exports/modern-professional-mobile.png" alt="Modern Professional mobile design" /></button><div class="caption">Mobile web layout with hamburger, hero image, and stacked gold actions.</div></article></div>
+      </section>
+
+      <section class="direction">
+        <div class="direction-head">
+          <div><span class="tag">Direction 2</span><h2>Editorial Heritage</h2><p>Elegant and editorial, with #02385c used as the main brand field across the header and hero area. It uses serif typography, archive-style navigation and magazine-like feature cards. Best for presenting DSOBA as an institution with history, continuity and prestige.</p></div>
+          <div class="reason-list"><div class="reason">Audience principle: heritage pages are not purely transactional; they need to feel curated, credible and worth reading.</div><div class="reason">Layout principle: the first viewport behaves like an editorial cover: archive index on the left, institutional statement in the centre, and supporting feature cards on the right. This keeps the page formal without becoming a plain brochure.</div><div class="reason">Colour principle: #02385c is now the dominant surface colour, not a small accent. Warm ivory is used only as a supporting reading surface, while muted gold is reserved for navigation emphasis and CTA warmth. This keeps the design fresh, official and aligned with the logo.</div></div>
+        </div>
+        <div class="principles"><div class="principle"><h3>Desktop rationale</h3><p>The desktop design is intentionally article-like, but the top half now reads clearly as a #02385c brand canvas. The archive index supports formal content such as President's notes, annual dinner history and membership routes. The large serif headline creates a sense of legacy, while the image and feature cards prevent the page from becoming text-only.</p></div><div class="principle"><h3>Mobile rationale</h3><p>On mobile, the header and opening headline sit inside the same #02385c brand field, so the direction remains recognisable even on a narrow screen. The page then moves into campus image and a small number of actions, reducing cognitive load while preserving the premium, archive-led feeling.</p></div></div>
+        <div class="shots"><article class="shot"><button data-lightbox="responsive_exports/editorial-heritage-desktop.png" data-title="Editorial Heritage · Desktop"><img src="responsive_exports/editorial-heritage-desktop.png" alt="Editorial Heritage desktop design" /></button><div class="caption">Desktop web layout for a refined alumni archive and association presence.</div></article><article class="shot mobile-shot"><button data-lightbox="responsive_exports/editorial-heritage-mobile.png" data-title="Editorial Heritage · Mobile"><img src="responsive_exports/editorial-heritage-mobile.png" alt="Editorial Heritage mobile design" /></button><div class="caption">Mobile web layout with editorial cards and focused reading flow.</div></article></div>
+      </section>
+
+      <section class="direction">
+        <div class="direction-head">
+          <div><span class="tag green">Direction 3</span><h2>Community Vibrant</h2><p>Now reworked with the Get Hyped reference language: oversized headline, pill navigation, tilted cards, bold stats and energetic motion. The content remains DSOBA-focused: Annual Dinner, chapter events, alumni stories, directory and portal access.</p></div>
+          <div class="reason-list"><div class="reason">Audience principle: younger alumni are more likely to respond to people, events and visible community momentum than formal association copy alone.</div><div class="reason">Layout principle: the tilted stats/image cards make events and people feel active. The large statement section below the hero keeps the vertical rhythm from the reference while translating it into alumni community messaging.</div><div class="reason">Effect principle: the reference has many effects, but the prototype should use only the useful ones: floating cards, energetic card angles, pill navigation and bold section reveals. This gives movement without making the association site feel like a campaign microsite only.</div></div>
+        </div>
+        <div class="principles"><div class="principle"><h3>Desktop rationale</h3><p>The desktop frame borrows the reference's memorable composition: a huge black headline, central pill navigation, bright tilted cards and image-led proof. For DSOBA, those cards become Annual Dinner, chapter events and alumni story entry points, so the visual energy still supports real site content.</p></div><div class="principle"><h3>Mobile rationale</h3><p>Mobile keeps the same energy in a tighter stack: headline first, then tilted event/stat cards, then direct actions. This avoids copying every desktop effect while preserving the reference's rhythm and making event discovery easy on a phone.</p></div></div>
+        <div class="shots"><article class="shot"><button data-lightbox="responsive_exports/community-vibrant-desktop.png" data-title="Community Vibrant · Desktop"><img src="responsive_exports/community-vibrant-desktop.png" alt="Community Vibrant desktop design" /></button><div class="caption">Desktop web layout with Annual Dinner, people stories, chapters and directory entry.</div></article><article class="shot mobile-shot"><button data-lightbox="responsive_exports/community-vibrant-mobile.png" data-title="Community Vibrant · Mobile"><img src="responsive_exports/community-vibrant-mobile.png" alt="Community Vibrant mobile design" /></button><div class="caption">Mobile web layout with event-first CTAs and social-style content cards.</div></article></div>
+      </section>
+
+      <section class="direction">
+        <div class="direction-head">
+          <div><span class="tag blue">Direction 4</span><h2>Clean Easy</h2><p>Practical and service-led, now closer to the Stacker-style hero treatment: a soft animated gradient background, central headline, rounded portal preview, then vertical service modules for alumni actions.</p></div>
+          <div class="reason-list"><div class="reason">Audience principle: users entering the portal or service flows need orientation more than atmosphere, but a modern animated background helps the page feel current and approachable rather than purely administrative.</div><div class="reason">Layout principle: the page follows a vertical rhythm: central headline, portal preview, core service modules, then supporting content. This makes the prototype easier to explain because each scroll section maps to a Phase 1 flow.</div><div class="reason">Colour principle: pastel blue, pink and orange gradients create a light product-site feeling; black gives structure and readability; soft lime highlights primary alumni actions. The animation should feel ambient and slow, supporting the page without distracting from tasks.</div></div>
+        </div>
+        <div class="principles"><div class="principle"><h3>Desktop rationale</h3><p>The desktop frame behaves like a product page for the DSOBA portal. The central headline mirrors modern SaaS landing pages, while the rounded preview makes the portal tangible with real alumni tasks: membership status, Annual Dinner payment and directory visibility. The animated gradient gives energy without changing the alumni-focused content.</p></div><div class="principle"><h3>Mobile rationale</h3><p>The mobile frame keeps the same vertical order: headline, primary portal action, then service modules. The gradient stays in the opening section only, so stakeholders get the modern feel without sacrificing readability in the flow-heavy content below.</p></div></div>
+        <div class="shots"><article class="shot"><button data-lightbox="responsive_exports/clean-easy-desktop.png" data-title="Clean Easy · Desktop"><img src="responsive_exports/clean-easy-desktop.png" alt="Clean Easy desktop design" /></button><div class="caption">Desktop web layout with product-style portal preview and vertical alumni service modules.</div></article><article class="shot mobile-shot"><button data-lightbox="responsive_exports/clean-easy-mobile.png" data-title="Clean Easy · Mobile"><img src="responsive_exports/clean-easy-mobile.png" alt="Clean Easy mobile design" /></button><div class="caption">Mobile web layout with vertical portal action flow and service modules.</div></article></div>
+      </section>
+
+      <section class="panel">
+        <h2>Comparison Matrix</h2>
+        <p style="margin-top:12px">Use this table to guide client review before applying a chosen direction to all prototype screens.</p>
+        <div class="matrix">
+          <div class="matrix-row matrix-head"><div>Direction</div><div>Best fit</div><div>Trade-off</div><div>Recommended use</div></div>
+          <div class="matrix-row"><div>Modern Professional</div><div>Premium public homepage close to the reference.</div><div>Can feel serious if used for every content page.</div><div>Strong default for public homepage.</div></div>
+          <div class="matrix-row"><div>Editorial Heritage</div><div>History, alumni stories, institutional credibility.</div><div>Less direct for transactional flows.</div><div>Good for Heritage, About, News and Alumni feature pages.</div></div>
+          <div class="matrix-row"><div>Community Vibrant</div><div>Younger alumni, events, chapters, campaign content.</div><div>Needs governance to avoid feeling too casual.</div><div>Good for Events, Annual Dinner and chapter engagement.</div></div>
+          <div class="matrix-row"><div>Clean Easy</div><div>Registration, membership, payment and support actions.</div><div>Less emotional as a brand expression.</div><div>Good for portal and flow-heavy screens.</div></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <figure>
+        <img alt="" id="lightbox-image" />
+        <figcaption><span id="lightbox-title"></span><button class="close" type="button" id="lightbox-close">Close</button></figcaption>
+      </figure>
+    </div>
+    <script>
+      const lightbox = document.getElementById("lightbox");
+      const image = document.getElementById("lightbox-image");
+      const title = document.getElementById("lightbox-title");
+      const close = document.getElementById("lightbox-close");
+      document.querySelectorAll("[data-lightbox]").forEach((button) => {
+        button.addEventListener("click", () => {
+          image.src = button.dataset.lightbox;
+          title.textContent = button.dataset.title;
+          lightbox.classList.add("open");
+          lightbox.setAttribute("aria-hidden", "false");
+        });
+      });
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        image.removeAttribute("src");
+      }
+      close.addEventListener("click", closeLightbox);
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLightbox();
+      });
+    </script>
+  </body>
+</html>

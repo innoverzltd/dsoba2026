@@ -1,0 +1,52 @@
+---
+config:
+  theme: base
+  flowchart:
+    curve: basis
+---
+flowchart TD
+  %% Public Site Design Selection
+  subgraph L0["Prototype Team"]
+    start(["Start"])
+    content["Prepare same dummy content"]
+    variants["Build 3 visual design directions"]
+    revise["Revise or combine selected elements"]
+    apply["Apply to all public sections"]
+    gap["Add missing section page"]
+  end
+  subgraph L1["Stakeholders"]
+    review["Review Home / Events / Membership"]
+    accepted{"Direction accepted?"}
+  end
+  subgraph L2["Project Lead"]
+    select["Confirm selected route"]
+    coverage{"All sitemap sections covered?"}
+    ready[/"Status: ready for sign-off"/]
+  end
+  start --> content
+  content --> variants
+  variants --> review
+  review --> accepted
+  accepted -- "No" --> revise
+  revise --> review
+  accepted -- "Yes" --> select
+  select --> apply
+  apply --> coverage
+  coverage -- "No" --> gap
+  gap --> coverage
+  coverage -- "Yes" --> ready
+  classDef start fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef process fill:#FFE8A6,stroke:#D6AE3E,color:#172033;
+  classDef decision fill:#B9E1FA,stroke:#6BAED6,color:#172033;
+  classDef status fill:#D9C2F5,stroke:#9C6FD2,color:#172033;
+  class start start;
+  class content process;
+  class variants process;
+  class review process;
+  class accepted decision;
+  class revise process;
+  class select process;
+  class apply process;
+  class coverage decision;
+  class gap process;
+  class ready status;
