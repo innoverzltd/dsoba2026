@@ -33,6 +33,92 @@
       h1, h2, h3, h4, p { margin: 0; }
       h1 { max-width: 1180px; font-size: 48px; line-height: 1.04; }
       header p { max-width: 1050px; margin-top: 14px; color: rgba(255,255,255,0.74); font-size: 18px; line-height: 1.5; }
+      .launchpad {
+        padding: 32px 52px 0;
+      }
+      .launchpad-shell {
+        overflow: hidden;
+        border-radius: 28px;
+        background:
+          radial-gradient(circle at top left, rgba(216,181,82,0.22), transparent 24%),
+          linear-gradient(135deg, #0f1723 0%, #17324d 52%, #efe3bc 160%);
+        box-shadow: 0 24px 70px rgba(15,23,42,0.18);
+      }
+      .launchpad-head {
+        display: flex;
+        gap: 18px;
+        justify-content: space-between;
+        align-items: end;
+        padding: 30px 32px 18px;
+        color: #fff;
+      }
+      .launchpad-head h2 { font-size: 32px; }
+      .launchpad-head p {
+        max-width: 760px;
+        margin-top: 10px;
+        color: rgba(255,255,255,0.76);
+        line-height: 1.5;
+      }
+      .launchpad-note {
+        padding: 8px 12px;
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.08);
+        color: #f8f5ee;
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .preview-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        padding: 0 32px 32px;
+      }
+      .preview-card {
+        display: grid;
+        gap: 14px;
+        min-height: 220px;
+        padding: 20px;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 24px;
+        color: inherit;
+        text-decoration: none;
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(10px);
+        transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+      }
+      .preview-card:hover,
+      .preview-card:focus-visible {
+        transform: translateY(-4px);
+        border-color: rgba(255,255,255,0.3);
+        box-shadow: 0 18px 36px rgba(0,0,0,0.18);
+        outline: none;
+      }
+      .preview-kicker {
+        width: fit-content;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .preview-card h3 { font-size: 24px; line-height: 1.02; }
+      .preview-card p { color: rgba(255,255,255,0.82); line-height: 1.45; }
+      .preview-link {
+        margin-top: auto;
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .preview-modern .preview-kicker { color: #111; background: #d8b552; }
+      .preview-heritage .preview-kicker { color: #111; background: #efe3bc; }
+      .preview-vibrant .preview-kicker { color: #111; background: #ff91ec; }
+      .preview-clean .preview-kicker { color: #111; background: #d8f36a; }
       .board {
         display: grid;
         gap: 44px;
@@ -259,6 +345,35 @@
       .clean .row, .clean .card, .clean .tile { background: rgba(255,255,255,0.88); border: 1px solid rgba(21,23,26,0.1); }
       .clean .footer-mobile { color: #fff; background: #111315; }
       .clean .footer-row { background: rgba(255,255,255,0.08); }
+
+      @media (max-width: 1200px) {
+        .preview-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .phones { grid-template-columns: repeat(3, 1fr); }
+      }
+
+      @media (max-width: 900px) {
+        header, .launchpad, .board { padding-left: 24px; padding-right: 24px; }
+        .launchpad { padding-top: 24px; }
+        .launchpad-head,
+        .theme-head { grid-template-columns: 1fr; }
+        .launchpad-head {
+          flex-direction: column;
+          align-items: start;
+        }
+        .preview-grid,
+        .theme-head,
+        .phones { padding-left: 20px; padding-right: 20px; }
+        .phones { grid-template-columns: repeat(2, 1fr); }
+      }
+
+      @media (max-width: 640px) {
+        header { padding-top: 34px; padding-bottom: 26px; }
+        h1 { font-size: 34px; }
+        .launchpad-head h2,
+        .theme-head h2 { font-size: 26px; }
+        .preview-grid,
+        .phones { grid-template-columns: 1fr; }
+      }
     </style>
   </head>
   <body>
@@ -266,6 +381,44 @@
       <h1>DSOBA Mobile App Page And Flow Overview</h1>
       <p>This image board previews the mobile pages required for demo use across all four confirmed themes. It is for scope and flow confirmation only; real HTML pages will be built after this direction is approved.</p>
     </header>
+
+    <section class="launchpad" aria-labelledby="preview-hub-title">
+      <div class="launchpad-shell">
+        <div class="launchpad-head">
+          <div>
+            <h2 id="preview-hub-title">Preview Hub</h2>
+            <p>Use this index as the single link to share. Each card opens the full HTML preview for one confirmed mobile direction, while the original overview board remains below for side-by-side comparison.</p>
+          </div>
+          <div class="launchpad-note">4 clickable mobile previews</div>
+        </div>
+        <div class="preview-grid">
+          <a class="preview-card preview-clean" href="clean_easy_preview.html">
+            <span class="preview-kicker">Clean Easy</span>
+            <h3>Service-led and simple to scan.</h3>
+            <p>Best when you want a cleaner task-first mobile experience with low-friction navigation.</p>
+            <span class="preview-link">Open preview →</span>
+          </a>
+          <a class="preview-card preview-vibrant" href="community_vibrant_preview.html">
+            <span class="preview-kicker">Community Vibrant</span>
+            <h3>Bold, active, event-first energy.</h3>
+            <p>Useful for a younger, more social impression with strong event and chapter visibility.</p>
+            <span class="preview-link">Open preview →</span>
+          </a>
+          <a class="preview-card preview-heritage" href="editorial_heritage_preview.html">
+            <span class="preview-kicker">Editorial Heritage</span>
+            <h3>Archive tone with institutional presence.</h3>
+            <p>Best when the visual direction should feel established, story-led, and heritage conscious.</p>
+            <span class="preview-link">Open preview →</span>
+          </a>
+          <a class="preview-card preview-modern" href="modern_professional_preview.html">
+            <span class="preview-kicker">Modern Professional</span>
+            <h3>Formal and premium for credibility.</h3>
+            <p>Useful when the mobile experience should feel polished, official, and donor/member ready.</p>
+            <span class="preview-link">Open preview →</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <main class="board">
       <section class="theme modern">
